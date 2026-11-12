@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Warranty & Product Age Calculator – Expiry Countdown</title>
+  <meta name="description" content="Calculate the exact age of your vehicle, appliance, electronics, or plant since purchase date. Check warranty expiration countdown and percentage elapsed.">
+  <link rel="canonical" href="https://dobcal.pages.dev/warranty-and-product-age-calculator.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dobcal.pages.dev/warranty-and-product-age-calculator.html">
+  <meta property="og:title" content="Warranty & Product Age Calculator">
+  <meta property="og:description" content="Calculate product age, vehicle years, and remaining warranty expiration countdown.">
+  <meta property="og:image" content="https://dobcal.pages.dev/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="assets/logo-mark.svg">
+  <link rel="manifest" href="manifest.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', '-apple-system', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Warranty & Product Age Calculator",
+    "url": "https://dobcal.pages.dev/warranty-and-product-age-calculator.html",
+    "description": "Calculate product age from purchase date and warranty expiration countdown.",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://dobcal.pages.dev/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Warranty & Product Age Calculator",
+        "item": "https://dobcal.pages.dev/warranty-and-product-age-calculator.html"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How is product age and warranty expiration calculated?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Product age is calculated using calendar subtraction from your original purchase date to today. Warranty expiration adds the manufacturer warranty period (e.g. 1 year, 2 years) to the purchase date to evaluate remaining days."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use this for vehicle and car age calculation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! Enter your vehicle registration or delivery date to track vehicle age in years, months, and days for insurance renewal, roadworthiness inspection, and warranty status."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are my receipt details or purchase dates uploaded anywhere?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. All calculations run strictly client-side inside your browser. No product or purchase information is sent to any server."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="min-h-screen flex flex-col font-sans antialiased relative transition-colors duration-150">
+
+  <!-- Header -->
+  <header class="w-full sticky top-0 z-40 backdrop-blur-md bg-white/80 dark:bg-[#09090B]/80 border-b border-[#E5E7EB] dark:border-[#27272A]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-2.5">
+        <img src="assets/logo-mark.svg" alt="Dobcal Logo" width="32" height="32" class="w-8 h-8 rounded-lg shadow-sm">
+        <div class="flex flex-col">
+          <span class="text-base font-extrabold tracking-tight text-[#111827] dark:text-[#F9FAFB]">Dobcal</span>
+          <span class="text-[10px] uppercase font-semibold tracking-wider text-blue-600 dark:text-blue-400">Product & Asset Tracker</span>
+        </div>
+      </a>
+
+      <div class="flex items-center space-x-2 sm:space-x-4">
+        <a href="index.html" class="text-xs font-semibold text-slate-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition">Home</a>
+        <a href="pet-age-calculator.html" class="hidden sm:inline text-xs font-semibold text-slate-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition">Pet Age</a>
+        <button id="theme-toggle" type="button" aria-label="Toggle theme" class="w-9 h-9 rounded-lg flex items-center justify-center text-slate-600 dark:text-zinc-300 border border-slate-200 dark:border-zinc-800">
+          <span id="theme-icon">◐</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 w-full">
+    
+    <div class="text-center max-w-2xl mx-auto mb-8">
+      <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-wider mb-3">
+        <span>Asset Age & Expiration Tracking</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-[#111827] dark:text-[#F9FAFB] tracking-tight">
+        Warranty & Product Age Calculator
+      </h1>
+      <p class="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 mt-2">
+        Track how long you've owned your car, phone, appliance, or plant, and check your remaining warranty window.
+      </p>
+    </div>
+
+    <!-- Inputs Card -->
+    <div class="cal-card p-6 sm:p-8 mb-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+        <div>
+          <label for="purchase-date" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300 mb-1.5">
+            Date of Purchase / Planting / Delivery
+          </label>
+          <input type="date" id="purchase-date" class="cal-input w-full font-mono text-sm">
+        </div>
+
+        <div>
+          <label for="select-warranty" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300 mb-1.5">
+            Warranty Period Duration
+          </label>
+          <select id="select-warranty" class="cal-input w-full font-semibold text-sm">
+            <option value="6">6 Months</option>
+            <option value="12" selected>1 Year (12 Months)</option>
+            <option value="24">2 Years (24 Months)</option>
+            <option value="36">3 Years (36 Months)</option>
+            <option value="60">5 Years (60 Months - Cars/Laptops)</option>
+            <option value="120">10 Years (120 Months - Motors/Compressors)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Result Banner -->
+      <div class="rounded-2xl p-6 sm:p-8 bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-center mb-6">
+        <span class="text-xs uppercase font-extrabold tracking-widest text-[#2563EB] dark:text-[#3B82F6] block mb-2">
+          Current Product Age
+        </span>
+
+        <div class="text-3xl sm:text-5xl font-black text-[#111827] dark:text-[#F9FAFB] tracking-tight font-mono mb-2">
+          <span id="prod-years">0</span> <span class="text-lg sm:text-2xl font-bold font-sans text-slate-500">Years</span>
+          <span class="text-slate-300 dark:text-zinc-700 mx-1">·</span>
+          <span id="prod-months">0</span> <span class="text-lg sm:text-2xl font-bold font-sans text-slate-500">Months</span>
+          <span class="text-slate-300 dark:text-zinc-700 mx-1">·</span>
+          <span id="prod-days">0</span> <span class="text-lg sm:text-2xl font-bold font-sans text-slate-500">Days</span>
+        </div>
+
+        <p id="warranty-status-desc" class="text-xs sm:text-sm font-semibold text-slate-600 dark:text-zinc-400">
+          Calculating status...
+        </p>
+
+        <!-- Progress Bar -->
+        <div class="mt-4 max-w-md mx-auto">
+          <div class="flex justify-between text-[11px] font-mono text-slate-500 mb-1">
+            <span>Warranty Elapsed</span>
+            <span id="warranty-pct">0%</span>
+          </div>
+          <div class="w-full bg-slate-200 dark:bg-zinc-800 rounded-full h-2 overflow-hidden">
+            <div id="warranty-progress-bar" class="bg-blue-600 h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3-Tile Details Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div class="cal-card p-4">
+          <span class="text-[11px] font-semibold text-slate-500 dark:text-zinc-400 block uppercase">Warranty Expiration</span>
+          <span id="exp-date-text" class="text-base font-bold text-[#111827] dark:text-[#F9FAFB] font-mono mt-1 block">--</span>
+        </div>
+
+        <div class="cal-card p-4">
+          <span class="text-[11px] font-semibold text-slate-500 dark:text-zinc-400 block uppercase">Remaining Window</span>
+          <span id="rem-window-text" class="text-base font-bold text-[#111827] dark:text-[#F9FAFB] font-mono mt-1 block">-- Days</span>
+        </div>
+
+        <div class="cal-card p-4">
+          <span class="text-[11px] font-semibold text-slate-500 dark:text-zinc-400 block uppercase">Total Days Owned</span>
+          <span id="total-days-owned" class="text-base font-bold text-[#111827] dark:text-[#F9FAFB] font-mono mt-1 block">-- Days</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Accordion & Related Tools -->
+    <article class="cal-card p-6 sm:p-8 space-y-4 mb-8">
+      <h2 class="text-lg font-bold text-[#111827] dark:text-[#F9FAFB]">Frequently Asked Questions</h2>
+      <div class="space-y-3">
+        <details class="group p-3.5 rounded-xl border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-900/60 transition">
+          <summary class="flex justify-between items-center font-semibold text-xs text-[#111827] dark:text-[#F9FAFB] cursor-pointer list-none">
+            <span>How is product age and warranty expiration calculated?</span>
+            <span class="text-slate-400 group-hover:text-blue-600 transition">↓</span>
+          </summary>
+          <p class="mt-2 text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            Product age is calculated using calendar subtraction from your original purchase date to today. Warranty expiration adds the manufacturer warranty period (e.g. 1 year, 2 years) to the purchase date to evaluate remaining days.
+          </p>
+        </details>
+
+        <details class="group p-3.5 rounded-xl border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-900/60 transition">
+          <summary class="flex justify-between items-center font-semibold text-xs text-[#111827] dark:text-[#F9FAFB] cursor-pointer list-none">
+            <span>Can I use this for vehicle and car age calculation?</span>
+            <span class="text-slate-400 group-hover:text-blue-600 transition">↓</span>
+          </summary>
+          <p class="mt-2 text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            Yes! Enter your vehicle registration or delivery date to track vehicle age in years, months, and days for insurance renewal, roadworthiness inspection, and warranty status.
+          </p>
+        </details>
+
+        <details class="group p-3.5 rounded-xl border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-900/60 transition">
+          <summary class="flex justify-between items-center font-semibold text-xs text-[#111827] dark:text-[#F9FAFB] cursor-pointer list-none">
+            <span>Are my receipt details or purchase dates uploaded anywhere?</span>
+            <span class="text-slate-400 group-hover:text-blue-600 transition">↓</span>
+          </summary>
+          <p class="mt-2 text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            No. All calculations run strictly client-side inside your browser. No product or purchase information is sent to any server.
+          </p>
+        </details>
+      </div>
+
+      <!-- Related Pillar Tools -->
+      <div class="pt-4 border-t border-slate-200 dark:border-zinc-800">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2.5">Related Asset & Utility Tools</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+          <a href="pet-age-calculator.html" class="p-3 rounded-lg border border-slate-200 dark:border-zinc-800 hover:border-blue-500 transition text-xs font-semibold block">
+            <span class="text-amber-600 dark:text-amber-400">Pet Age Calculator</span>
+            <p class="text-[11px] text-slate-500 font-normal mt-0.5">Dog & cat human age</p>
+          </a>
+          <a href="bulk-age-calculator.html" class="p-3 rounded-lg border border-slate-200 dark:border-zinc-800 hover:border-blue-500 transition text-xs font-semibold block">
+            <span class="text-blue-600 dark:text-blue-400">Bulk Age Calculator</span>
+            <p class="text-[11px] text-slate-500 font-normal mt-0.5">Batch CSV date processing</p>
+          </a>
+          <a href="calculate-age-in-excel.html" class="p-3 rounded-lg border border-slate-200 dark:border-zinc-800 hover:border-blue-500 transition text-xs font-semibold block">
+            <span class="text-emerald-600 dark:text-emerald-400">Age in Excel</span>
+            <p class="text-[11px] text-slate-500 font-normal mt-0.5">DATEDIF formula builder</p>
+          </a>
+        </div>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-auto border-t border-[#E5E7EB] dark:border-[#27272A] py-8 text-xs text-slate-500 dark:text-zinc-400">
+    <div class="max-w-5xl mx-auto px-4 text-center space-y-2">
+      <p>&copy; 2026 Dobcal. 100% Client-Side Privacy.</p>
+      <div class="flex justify-center space-x-4 font-medium">
+        <a href="index.html" class="hover:underline">Home</a>
+        <a href="pet-age-calculator.html" class="hover:underline">Pet Age</a>
+        <a href="bulk-age-calculator.html" class="hover:underline">Bulk Tool</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/calculator.js"></script>
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+    });
+
+    const purchaseDate = document.getElementById('purchase-date');
+    const selectWarranty = document.getElementById('select-warranty');
+
+    const prodYears = document.getElementById('prod-years');
+    const prodMonths = document.getElementById('prod-months');
+    const prodDays = document.getElementById('prod-days');
+    const warrantyStatusDesc = document.getElementById('warranty-status-desc');
+    const warrantyProgressBar = document.getElementById('warranty-progress-bar');
+    const warrantyPct = document.getElementById('warranty-pct');
+    const expDateText = document.getElementById('exp-date-text');
+    const remWindowText = document.getElementById('rem-window-text');
+    const totalDaysOwned = document.getElementById('total-days-owned');
+
+    // Default to 10 months ago
+    const defPurchase = new Date();
+    defPurchase.setMonth(defPurchase.getMonth() - 10);
+    purchaseDate.value = defPurchase.toISOString().split('T')[0];
+
+    function calculate() {
+      if (!purchaseDate.value) return;
+      try {
+        const res = AgeCalculator.calcWarranty(purchaseDate.value, selectWarranty.value);
+        prodYears.textContent = res.productAgeYears;
+        prodMonths.textContent = res.productAgeMonths;
+        prodDays.textContent = res.productAgeDays;
+
+        expDateText.textContent = res.expirationDateFormatted;
+        totalDaysOwned.textContent = `${res.elapsedDays.toLocaleString()} Days`;
+
+        warrantyProgressBar.style.width = `${res.percentElapsed}%`;
+        warrantyPct.textContent = `${res.percentElapsed}%`;
+
+        if (res.isExpired) {
+          warrantyStatusDesc.innerHTML = `<span class="text-red-500 font-bold">● Warranty Expired</span> ${res.daysRemaining} days ago on ${res.expirationDateFormatted}.`;
+          remWindowText.textContent = `Expired (${res.daysRemaining}d ago)`;
+          warrantyProgressBar.className = 'bg-red-500 h-2 rounded-full transition-all duration-500';
+        } else {
+          warrantyStatusDesc.innerHTML = `<span class="text-emerald-500 font-bold">● Warranty Active</span> — ${res.daysRemaining} days remaining until expiration.`;
+          remWindowText.textContent = `${res.daysRemaining} Days`;
+          warrantyProgressBar.className = 'bg-blue-600 h-2 rounded-full transition-all duration-500';
+        }
+      } catch (err) {
+        warrantyStatusDesc.textContent = err.message;
+      }
+    }
+
+    purchaseDate.addEventListener('input', calculate);
+    selectWarranty.addEventListener('change', calculate);
+    calculate();
+  </script>
+</body>
+</html>
+

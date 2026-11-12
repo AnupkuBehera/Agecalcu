@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How Old Will I Be in 2040? – Future Age Calculator</title>
+  <meta name="description" content="Find out exactly how old you will be in 2030, 2040, 2050, or any future year. Calculate your future age with milestone projections and countdown.">
+  <link rel="canonical" href="https://dobcal.pages.dev/how-old-will-i-be-in-2040.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dobcal.pages.dev/how-old-will-i-be-in-2040.html">
+  <meta property="og:title" content="How Old Will I Be in 2040? – Future Age & Milestone Calculator">
+  <meta property="og:description" content="Calculate your exact age in 2030, 2040, 2050, or any milestone year. Includes life stage insights, decadal timelines, and countdown.">
+  <meta property="og:image" content="https://dobcal.pages.dev/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How Old Will I Be in 2040?">
+  <meta name="twitter:description" content="Calculate your future age across 2030, 2040, 2050 with life stage projections.">
+  <meta name="twitter:image" content="https://dobcal.pages.dev/assets/og-image.png">
+
+  <!-- Favicon & Touch Icon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="assets/logo-mark.svg">
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    };
+  </script>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Schema.org WebApplication Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "How Old Will I Be in 2040 Calculator",
+    "url": "https://dobcal.pages.dev/how-old-will-i-be-in-2040.html",
+    "description": "Calculate exact future age and retirement timelines for any future calendar year including 2030, 2040, and 2050.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript. Requires HTML5.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- Schema.org FAQPage Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do you calculate what age you will be in 2040?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Subtract the year you were born from 2040. For example, if you were born in 1995, you will turn 45 years old on your birthday in 2040 (2040 - 1995 = 45)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many days are left until the year 2040?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The year 2040 begins on Sunday, January 1, 2040. You can track the exact remaining countdown in days and hours using our live calculator."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is 2040 a leap year?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, 2040 is divisible by 4, making it a leap year with 366 days and a February 29th."
+        }
+      }
+    ]
+  }
+  </script>
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://dobcal.pages.dev/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "How Old Will I Be in 2040?",
+        "item": "https://dobcal.pages.dev/how-old-will-i-be-in-2040.html"
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="min-h-screen flex flex-col font-sans antialiased relative transition-colors duration-150">
+
+  <!-- Sticky Minimal Navbar -->
+  <header class="w-full sticky top-0 z-40 backdrop-blur-md bg-white/80 dark:bg-[#09090B]/80 border-b border-[#E5E7EB] dark:border-[#27272A] transition-colors duration-150">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-2.5 group">
+        <img src="assets/logo-mark.svg" alt="Age Calculator Logo" width="32" height="32" class="w-8 h-8 rounded-lg shadow-sm group-hover:scale-105 transition-transform duration-150">
+        <div class="flex flex-col">
+          <span class="text-base font-extrabold tracking-tight text-[#111827] dark:text-[#F9FAFB]">
+            Age Calculator
+          </span>
+          <span class="text-[10px] uppercase font-semibold tracking-wider text-[#2563EB] dark:text-[#3B82F6]">
+            Future Milestone
+          </span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600 dark:text-zinc-400">
+        <a href="index.html" class="hover:text-black dark:hover:text-white transition">Home</a>
+          <a href="about.html" class="hover:text-black dark:hover:text-white transition">About</a>
+          <a href="privacy.html" class="hover:text-black dark:hover:text-white transition">Privacy Policy</a>
+          <a href="terms.html" class="hover:text-black dark:hover:text-white transition">Terms</a>
+        <a href="how-old-will-i-be-in-2040.html" class="text-black dark:text-white font-semibold">Future Age</a>
+        <a href="calculate-age-in-excel.html" class="hover:text-black dark:hover:text-white transition">Excel Guide</a>
+        <a href="age-calculator-for-government-exams.html" class="hover:text-black dark:hover:text-white transition">Govt Exams</a>
+        <a href="age-difference-calculator.html" class="hover:text-black dark:hover:text-white transition">Age Gap</a>
+      </nav>
+
+      <!-- Theme Toggle -->
+      <div class="flex items-center space-x-3">
+        <button id="theme-toggle" type="button" aria-label="Toggle dark mode" class="w-10 h-10 rounded-lg flex items-center justify-center text-slate-600 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-zinc-800 border border-slate-200 dark:border-zinc-800 transition-colors">
+          <svg id="theme-sun" class="w-4 h-4 hidden text-amber-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+          </svg>
+          <svg id="theme-moon" class="w-4 h-4 hidden text-zinc-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-16 w-full">
+
+    <!-- Hero Section -->
+    <div class="text-center mb-8">
+      <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-950/60 border border-amber-300 dark:border-amber-800/60 text-xs font-semibold text-amber-800 dark:text-amber-300 mb-3">
+        <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+        <span>Future Milestone Projections</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-[#111827] dark:text-[#F9FAFB] tracking-tight leading-tight mb-3">
+        How Old Will I Be in 2040?
+      </h1>
+      <p class="text-base sm:text-lg text-slate-600 dark:text-zinc-400 max-w-xl mx-auto font-normal">
+        Select a milestone year to calculate your future age, life stage, and countdown.
+      </p>
+    </div>
+
+    <!-- Future Year Selector Pills -->
+    <div class="flex flex-wrap items-center justify-center gap-2 mb-6">
+      <span class="text-xs font-semibold text-slate-500 dark:text-zinc-400 mr-1">Target Year:</span>
+      <button type="button" class="year-pill px-3.5 py-1.5 rounded-full text-xs font-bold border border-slate-200 dark:border-zinc-800 hover:border-black dark:hover:border-white transition" data-year="2030">
+        2030
+      </button>
+      <button type="button" class="year-pill px-3.5 py-1.5 rounded-full text-xs font-bold border border-slate-200 dark:border-zinc-800 hover:border-black dark:hover:border-white transition" data-year="2035">
+        2035
+      </button>
+      <button type="button" class="year-pill active px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#111827] text-white dark:bg-white dark:text-black transition" data-year="2040">
+        2040 ⭐
+      </button>
+      <button type="button" class="year-pill px-3.5 py-1.5 rounded-full text-xs font-bold border border-slate-200 dark:border-zinc-800 hover:border-black dark:hover:border-white transition" data-year="2045">
+        2045
+      </button>
+      <button type="button" class="year-pill px-3.5 py-1.5 rounded-full text-xs font-bold border border-slate-200 dark:border-zinc-800 hover:border-black dark:hover:border-white transition" data-year="2050">
+        2050
+      </button>
+      <button type="button" class="year-pill px-3.5 py-1.5 rounded-full text-xs font-bold border border-slate-200 dark:border-zinc-800 hover:border-black dark:hover:border-white transition" data-year="2060">
+        2060
+      </button>
+    </div>
+
+    <!-- Calculator Card -->
+    <div class="cal-card p-6 sm:p-8 mb-8 shadow-sm">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-6">
+        <div>
+          <label for="input-dob" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300 mb-2">
+            Your Date of Birth
+          </label>
+          <input type="date" id="input-dob" value="1998-05-15" class="cal-input w-full font-mono text-base font-semibold">
+        </div>
+
+        <div>
+          <label for="input-target-year" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300 mb-2">
+            Target Year
+          </label>
+          <input type="number" id="input-target-year" value="2040" min="2025" max="2100" class="cal-input w-full font-mono text-base font-bold">
+        </div>
+      </div>
+
+      <!-- Calculation Mode: On Birthday vs On Jan 1st -->
+      <div class="flex items-center space-x-6 text-xs text-slate-600 dark:text-zinc-400 mb-6">
+        <label class="flex items-center space-x-2 cursor-pointer">
+          <input type="radio" name="target-mode" value="birthday" checked class="text-black dark:text-white">
+          <span class="font-medium">On your birthday in that year</span>
+        </label>
+        <label class="flex items-center space-x-2 cursor-pointer">
+          <input type="radio" name="target-mode" value="jan1" class="text-black dark:text-white">
+          <span class="font-medium">On January 1st</span>
+        </label>
+      </div>
+
+      <!-- Hero Output Banner -->
+      <div class="rounded-2xl p-6 sm:p-8 bg-gradient-to-br from-amber-50 to-orange-50/50 dark:from-zinc-900 dark:to-zinc-900/80 border border-amber-200/80 dark:border-zinc-800 text-center relative overflow-hidden mb-6">
+        <span class="text-xs uppercase font-extrabold tracking-widest text-amber-600 dark:text-amber-400 block mb-2">
+          Your Future Age in <span id="display-year">2040</span>
+        </span>
+        
+        <div class="text-4xl sm:text-6xl font-black text-[#111827] dark:text-[#F9FAFB] tracking-tight font-mono mb-2">
+          <span id="hero-age">42</span> <span class="text-2xl sm:text-3xl font-bold font-sans text-slate-600 dark:text-zinc-400">Years Old</span>
+        </div>
+
+        <p id="hero-date-desc" class="text-xs sm:text-sm font-medium text-slate-600 dark:text-zinc-400">
+          On May 15, 2040
+        </p>
+      </div>
+
+      <!-- Life Stage & Stats Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div class="cal-card p-4">
+          <span class="text-[11px] font-semibold text-slate-500 dark:text-zinc-400 block uppercase">Projected Life Stage</span>
+          <span id="stage-title" class="text-base font-bold text-[#111827] dark:text-[#F9FAFB] mt-1 block">Mid-Career Mastery</span>
+          <p id="stage-desc" class="text-xs text-slate-500 dark:text-zinc-400 mt-1">Peak leadership, family maturity, and long-term financial consolidation.</p>
+        </div>
+
+        <div class="cal-card p-4">
+          <span class="text-[11px] font-semibold text-slate-500 dark:text-zinc-400 block uppercase">Countdown to Year <span id="cd-year">2040</span></span>
+          <span id="stat-countdown-days" class="text-xl font-bold font-mono text-[#111827] dark:text-[#F9FAFB] mt-1 block">0</span>
+          <span class="text-xs text-slate-500 dark:text-zinc-400">Days remaining until Jan 1st</span>
+        </div>
+
+        <div class="cal-card p-4">
+          <span class="text-[11px] font-semibold text-slate-500 dark:text-zinc-400 block uppercase">Leap Year Status</span>
+          <span id="stat-leap-status" class="text-xl font-bold text-emerald-600 dark:text-emerald-400 mt-1 block">Leap Year (366 Days)</span>
+          <span class="text-xs text-slate-500 dark:text-zinc-400">Includes Feb 29th</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Decadal Progression Timeline Table -->
+    <div class="cal-card p-6 sm:p-8 mb-10">
+      <h2 class="text-lg font-bold text-[#111827] dark:text-[#F9FAFB] mb-3">
+        Your Age Across the Decades
+      </h2>
+      <p class="text-xs text-slate-600 dark:text-zinc-400 mb-6">
+        Here is how old you will turn in each major upcoming milestone year:
+      </p>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs border border-slate-200 dark:border-zinc-800 rounded-lg">
+          <thead class="bg-slate-100 dark:bg-zinc-800/80 font-bold text-slate-800 dark:text-zinc-200">
+            <tr>
+              <th class="p-3 border-b border-slate-200 dark:border-zinc-800">Milestone Year</th>
+              <th class="p-3 border-b border-slate-200 dark:border-zinc-800">Your Age</th>
+              <th class="p-3 border-b border-slate-200 dark:border-zinc-800">Years from Today</th>
+              <th class="p-3 border-b border-slate-200 dark:border-zinc-800">Typical Life Phase</th>
+            </tr>
+          </thead>
+          <tbody id="decades-tbody" class="divide-y divide-slate-200 dark:divide-zinc-800 text-slate-700 dark:text-zinc-300">
+            <!-- Dynamically populated -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="mb-12">
+      <h2 class="text-xl font-bold text-[#111827] dark:text-[#F9FAFB] mb-4">
+        Frequently Asked Questions
+      </h2>
+      <div class="space-y-3">
+        <details class="cal-card p-4">
+          <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-[#111827] dark:text-[#F9FAFB]">
+            <span>Will 2040 be a leap year?</span>
+            <span class="text-slate-400">+</span>
+          </summary>
+          <p class="mt-2.5 text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            Yes. 2040 is divisible by 4 and not a century year, meaning it has 366 days and a February 29th.
+          </p>
+        </details>
+
+        <details class="cal-card p-4">
+          <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-[#111827] dark:text-[#F9FAFB]">
+            <span>How do you calculate retirement age in 2040?</span>
+            <span class="text-slate-400">+</span>
+          </summary>
+          <p class="mt-2.5 text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            Standard retirement ages in most pension and social security programs range from 60 to 67. If your age in 2040 is between 60 and 67, you will be in your active retirement transition window.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Related Tools Grid -->
+    <section class="border-t border-slate-200 dark:border-zinc-800 pt-8">
+      <h2 class="text-base font-bold text-[#111827] dark:text-[#F9FAFB] mb-3">
+        Other Specialized Calculators
+      </h2>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <a href="index.html" class="cal-card p-4 group block">
+          <span class="text-xs font-semibold text-[#2563EB] dark:text-[#3B82F6]">Live Tool</span>
+          <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] mt-1 transition">
+            Age Calculator
+          </div>
+          <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+            Full years/months/days
+          </div>
+        </a>
+
+        <a href="calculate-age-in-excel.html" class="cal-card p-4 group block">
+          <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">Formulas</span>
+          <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] mt-1 transition">
+            Age in Excel
+          </div>
+          <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+            DATEDIF generator
+          </div>
+        </a>
+
+        <a href="age-calculator-for-government-exams.html" class="cal-card p-4 group block">
+          <span class="text-xs font-semibold text-blue-600 dark:text-blue-400">Exams</span>
+          <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] mt-1 transition">
+            Govt Exam Cutoff
+          </div>
+          <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+            UPSC, SSC, Banking
+          </div>
+        </a>
+
+        <a href="age-difference-calculator.html" class="cal-card p-4 group block">
+          <span class="text-xs font-semibold text-purple-600 dark:text-purple-400">Comparison</span>
+          <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] mt-1 transition">
+            Age Difference
+          </div>
+          <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+            Compare 2 people
+          </div>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-16 border-t border-[#E5E7EB] dark:border-[#27272A] py-10 text-xs text-slate-500 dark:text-zinc-400">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center space-x-2">
+          <img src="assets/logo-mark.svg" alt="Age Calculator Logo" width="20" height="20" class="w-5 h-5 rounded shadow-sm">
+          <span class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB]">Dobcal Chronometer</span>
+          <span>&copy; <span id="current-year">2026</span> All rights reserved.</span>
+        </div>
+        <div class="flex flex-wrap items-center gap-4 font-medium">
+          <a href="index.html" class="hover:text-black dark:hover:text-white transition">Home</a>
+          <a href="how-old-will-i-be-in-2040.html" class="hover:text-black dark:hover:text-white transition">Future Age</a>
+          <a href="calculate-age-in-excel.html" class="hover:text-black dark:hover:text-white transition">Excel Guide</a>
+          <a href="age-calculator-for-government-exams.html" class="hover:text-black dark:hover:text-white transition">Govt Exams</a>
+          <a href="age-in-months-and-days.html" class="hover:text-black dark:hover:text-white transition">Months & Days</a>
+        </div>
+      </div>
+      <p class="text-center text-slate-400 dark:text-zinc-500 text-[11px]">
+        Future calendar milestone engine. Accounting for future leap years and Gregorian variations.
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/calculator.js"></script>
+  <script>
+    // Theme setup
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const sunIcon = document.getElementById('theme-sun');
+    const moonIcon = document.getElementById('theme-moon');
+
+    function initTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        sunIcon?.classList.remove('hidden');
+        moonIcon?.classList.add('hidden');
+      } else {
+        document.documentElement.classList.remove('dark');
+        sunIcon?.classList.add('hidden');
+        moonIcon?.classList.remove('hidden');
+      }
+    }
+
+    themeToggleBtn?.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      if (isDark) {
+        sunIcon?.classList.remove('hidden');
+        moonIcon?.classList.add('hidden');
+      } else {
+        sunIcon?.classList.add('hidden');
+        moonIcon?.classList.remove('hidden');
+      }
+    });
+    initTheme();
+
+    // DOM Elements
+    const inputDob = document.getElementById('input-dob');
+    const inputTargetYear = document.getElementById('input-target-year');
+    const displayYear = document.getElementById('display-year');
+    const cdYear = document.getElementById('cd-year');
+    const heroAge = document.getElementById('hero-age');
+    const heroDateDesc = document.getElementById('hero-date-desc');
+    const stageTitle = document.getElementById('stage-title');
+    const stageDesc = document.getElementById('stage-desc');
+    const statCountdownDays = document.getElementById('stat-countdown-days');
+    const statLeapStatus = document.getElementById('stat-leap-status');
+    const decadesTbody = document.getElementById('decades-tbody');
+    const yearPills = document.querySelectorAll('.year-pill');
+
+    function getLifeStage(age) {
+      if (age < 13) return { title: 'Childhood & Growth', desc: 'Formative developmental learning, discovery, and foundational schooling.' };
+      if (age < 20) return { title: 'Youth & Adolescence', desc: 'Higher education, identity formation, and emerging independence.' };
+      if (age < 30) return { title: 'Early Career & Exploration', desc: 'Entering workforce, skill building, and laying personal foundations.' };
+      if (age < 40) return { title: 'Peak Productivity', desc: 'Career acceleration, family growth, and professional establishment.' };
+      if (age < 50) return { title: 'Mid-Career Mastery', desc: 'Leadership roles, strategic consolidation, and peak contribution.' };
+      if (age < 60) return { title: 'Senior Leadership & Planning', desc: 'Mentorship, retirement roadmap preparation, and financial peak.' };
+      if (age < 70) return { title: 'Retirement Transition', desc: 'Pension eligibility, travel, lifestyle realignment, and personal passions.' };
+      return { title: 'Golden Years & Legacy', desc: 'Wisdom, community contribution, family heritage, and health stewardship.' };
+    }
+
+    function calculate() {
+      if (!inputDob.value || !inputTargetYear.value) return;
+      const dobParts = inputDob.value.split('-');
+      const birthYear = parseInt(dobParts[0], 10);
+      const birthMonth = parseInt(dobParts[1], 10);
+      const birthDay = parseInt(dobParts[2], 10);
+
+      const targetYear = parseInt(inputTargetYear.value, 10);
+      displayYear.textContent = targetYear;
+      cdYear.textContent = targetYear;
+
+      const mode = document.querySelector('input[name="target-mode"]:checked').value;
+
+      let targetDateStr;
+      let dateDesc;
+
+      if (mode === 'birthday') {
+        const mm = String(birthMonth).padStart(2, '0');
+        const dd = String(birthDay).padStart(2, '0');
+        targetDateStr = `${targetYear}-${mm}-${dd}`;
+        dateDesc = `On your birthday (${targetDateStr})`;
+      } else {
+        targetDateStr = `${targetYear}-01-01`;
+        dateDesc = `On January 1, ${targetYear}`;
+      }
+
+      heroDateDesc.textContent = dateDesc;
+
+      try {
+        const res = AgeCalculator.calculateAge(inputDob.value, targetDateStr);
+        heroAge.textContent = res.years;
+
+        const stage = getLifeStage(res.years);
+        stageTitle.textContent = stage.title;
+        stageDesc.textContent = stage.desc;
+
+        // Days to Jan 1st of target year
+        const now = new Date();
+        const jan1Target = new Date(Date.UTC(targetYear, 0, 1));
+        const daysLeft = Math.round((jan1Target - now) / 86400000);
+        statCountdownDays.textContent = daysLeft > 0 ? daysLeft.toLocaleString() : 'Past';
+
+        // Leap year check
+        const isLeap = AgeCalculator.isLeapYear(targetYear);
+        statLeapStatus.textContent = isLeap ? 'Leap Year (366 Days)' : 'Common Year (365 Days)';
+        statLeapStatus.className = isLeap ? 'text-xl font-bold text-emerald-600 dark:text-emerald-400 mt-1 block' : 'text-xl font-bold text-slate-700 dark:text-zinc-300 mt-1 block';
+
+        // Populate Decades table
+        const milestoneYears = [2025, 2030, 2035, 2040, 2045, 2050, 2055, 2060];
+        const currentYear = new Date().getFullYear();
+        decadesTbody.innerHTML = '';
+
+        milestoneYears.forEach(y => {
+          const ageInY = y - birthYear;
+          const diffY = y - currentYear;
+          const tr = document.createElement('tr');
+          const isSelected = y === targetYear;
+          if (isSelected) tr.className = 'bg-blue-50/50 dark:bg-blue-950/20 font-bold';
+
+          tr.innerHTML = `
+            <td class="p-3 font-mono ${isSelected ? 'text-blue-600 dark:text-blue-400' : ''}">${y} ${isSelected ? '⭐' : ''}</td>
+            <td class="p-3 font-mono font-bold">${ageInY > 0 ? ageInY + ' Yrs' : '-'}</td>
+            <td class="p-3 font-mono text-slate-500">${diffY > 0 ? `+${diffY} Yrs` : diffY === 0 ? 'This year' : `${diffY} Yrs`}</td>
+            <td class="p-3 text-slate-600 dark:text-zinc-400">${getLifeStage(ageInY).title}</td>
+          `;
+          decadesTbody.appendChild(tr);
+        });
+
+      } catch (err) {
+        heroAge.textContent = '-';
+      }
+    }
+
+    inputDob.addEventListener('change', calculate);
+    inputTargetYear.addEventListener('input', calculate);
+    document.querySelectorAll('input[name="target-mode"]').forEach(r => r.addEventListener('change', calculate));
+
+    yearPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        yearPills.forEach(p => {
+          p.classList.remove('active', 'bg-[#111827]', 'text-white', 'dark:bg-white', 'dark:text-black');
+          p.classList.add('border-slate-200', 'dark:border-zinc-800');
+        });
+        pill.classList.add('active', 'bg-[#111827]', 'text-white', 'dark:bg-white', 'dark:text-black');
+        pill.classList.remove('border-slate-200', 'dark:border-zinc-800');
+        inputTargetYear.value = pill.getAttribute('data-year');
+        calculate();
+      });
+    });
+
+    calculate();
+  </script>
+</body>
+</html>
+

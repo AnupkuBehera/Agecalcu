@@ -1,0 +1,355 @@
+/* 
+ * Age Calculator - Cal.com / OpenDesignMD Design System
+ * Clean, calendar-native, high-contrast monochrome with subtle signal blue accents
+ * Typography: Inter (UI & Display) + JetBrains Mono (Tabular Numbers)
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg-canvas: #F9F9FA;
+  --bg-canvas-subtle: #F3F3F5;
+  --bg-surface: #FFFFFF;
+  --bg-surface-elevated: #F9F9FA;
+  --border: rgba(0, 0, 0, 0.08);
+  --border-subtle: rgba(0, 0, 0, 0.04);
+  --border-strong: rgba(0, 0, 0, 0.16);
+  --text-primary: #0A0A0C;
+  --text-secondary: #52525B;
+  --text-muted: #A1A1AA;
+  --accent: #0A0A0C;
+  --accent-contrast: #FFFFFF;
+  --accent-hover: #18181B;
+  --brand-blue: #2563EB;
+  --brand-blue-subtle: rgba(37, 99, 235, 0.06);
+  --focus-ring: #2563EB;
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px -2px rgba(0, 0, 0, 0.06), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 12px 24px -4px rgba(0, 0, 0, 0.08);
+
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+[data-theme="dark"], .dark {
+  --bg-canvas: #08080A;
+  --bg-canvas-subtle: #0E0F12;
+  --bg-surface: #111115;
+  --bg-surface-elevated: #16171D;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-subtle: rgba(255, 255, 255, 0.04);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --text-primary: #F4F4F6;
+  --text-secondary: #A1A1AA;
+  --text-muted: #71717A;
+  --accent: #F4F4F6;
+  --accent-contrast: #08080A;
+  --accent-hover: #FFFFFF;
+  --brand-blue: #3B82F6;
+  --brand-blue-subtle: rgba(59, 130, 246, 0.10);
+  --focus-ring: #3B82F6;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 16px -2px rgba(0, 0, 0, 0.6), 0 2px 6px -2px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 16px 32px -4px rgba(0, 0, 0, 0.7);
+}
+
+body {
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Utilities */
+.font-display {
+  font-family: var(--font-sans);
+  letter-spacing: -0.025em;
+  font-weight: 800;
+}
+
+.font-mono-numbers {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+/* Card Surfaces (Cal.com Clean Floating Cards) */
+.cal-card, .luxury-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  border-radius: 14px;
+  position: relative;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.cal-card:hover, .luxury-card:hover {
+  border-color: var(--border-strong);
+}
+
+/* Stat Tile Cards */
+.stat-tile {
+  background-color: var(--bg-surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.stat-tile:hover {
+  border-color: var(--border-strong);
+}
+
+/* Primary Button (Cal.com High-Contrast Stark CTA) */
+.btn-primary-cal, .btn-primary-gold, .btn-primary-luxury {
+  background-color: var(--accent);
+  color: var(--accent-contrast);
+  font-weight: 600;
+  font-size: 0.875rem;
+  height: 44px;
+  border-radius: 8px;
+  padding: 0 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid transparent;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.btn-primary-cal:hover, .btn-primary-gold:hover, .btn-primary-luxury:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary-cal:active, .btn-primary-gold:active, .btn-primary-luxury:active {
+  transform: translateY(0);
+}
+
+/* Secondary Button (Cal.com Subtle Outline) */
+.btn-secondary-cal, .btn-secondary-luxury {
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 0.875rem;
+  height: 44px;
+  border-radius: 8px;
+  padding: 0 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.btn-secondary-cal:hover, .btn-secondary-luxury:hover {
+  background-color: var(--bg-surface-elevated);
+  border-color: var(--border-strong);
+}
+
+/* Input Fields (Clean 44px Cal.com Form Inputs) */
+.cal-input, .luxury-input {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  border-radius: 8px;
+  height: 44px;
+  padding: 0 0.875rem;
+  font-size: 0.875rem;
+  font-family: var(--font-sans);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  width: 100%;
+}
+
+.cal-input:focus, .luxury-input:focus {
+  outline: none;
+  border-color: var(--brand-blue);
+  box-shadow: 0 0 0 3px var(--brand-blue-subtle);
+}
+
+/* Custom Select Dropdowns */
+.luxury-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236B7280' stroke-width='1.75'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  padding-right: 2.25rem;
+  cursor: pointer;
+}
+
+/* Segmented Tab Controls (Cal.com Pill-in-Pill Style) */
+.tab-container {
+  background-color: var(--bg-surface-elevated);
+  border: 1px solid var(--border);
+  padding: 3px;
+  border-radius: 10px;
+  display: inline-flex;
+}
+
+.tab-btn {
+  padding: 8px 16px;
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.tab-btn.active {
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
+  font-weight: 600;
+}
+
+/* Preset Cutoff Chips */
+.preset-chip {
+  padding: 5px 11px;
+  min-height: 30px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 6px;
+  background-color: var(--bg-surface);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.preset-chip:hover {
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+}
+
+.preset-chip.active {
+  background-color: var(--accent);
+  color: var(--accent-contrast);
+  border-color: var(--accent);
+}
+
+/* Sub-Tab Navigation inside Result Cards */
+.res-subtab-btn {
+  border-bottom: 2px solid transparent;
+  color: var(--text-secondary);
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 6px 6px 0 0;
+  transition: all 0.15s ease;
+}
+
+.res-subtab-btn:hover {
+  color: var(--text-primary);
+}
+
+.res-subtab-btn.active {
+  color: var(--brand-blue);
+  border-bottom-color: var(--brand-blue);
+  font-weight: 600;
+}
+
+/* Toast Notifications */
+#toast {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#toast.hide {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  pointer-events: none;
+}
+
+/* Smooth Accordions */
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+details[open] summary svg.chevron {
+  transform: rotate(180deg);
+}
+
+summary svg.chevron {
+  transition: transform 0.2s ease;
+}
+
+/* Number Count-Up Display */
+.count-up-val {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Birthday Celebration Starlight Banner */
+#bday-celebration-banner {
+  background-color: var(--brand-blue-subtle);
+  border: 1px solid var(--brand-blue);
+}
+
+/* Accessibility & Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print Certificate View */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #111827 !important;
+  }
+  header, footer, #tab-nav, .no-print, button, form, details, article, section:not(#section-age) {
+    display: none !important;
+  }
+  #section-age {
+    display: block !important;
+  }
+  #age-results-card {
+    display: block !important;
+    border: 1px solid #111827 !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    color: #111827 !important;
+    padding: 32px !important;
+  }
+  .print-certificate-header {
+    display: block !important;
+    text-align: center;
+    border-bottom: 2px solid #111827;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+  }
+  .print-certificate-header h2 {
+    font-size: 20pt;
+    font-weight: 800;
+    margin: 0;
+  }
+  #result-hero {
+    color: #111827 !important;
+  }
+}
+
+.print-certificate-header {
+  display: none;
+}

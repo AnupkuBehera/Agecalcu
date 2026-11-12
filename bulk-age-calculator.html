@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bulk Age Calculator – Calculate Multiple Dates (CSV)</title>
+  <meta name="description" content="Calculate exact age in years, months, and days for multiple birth dates simultaneously. Upload CSV or paste dates with 1-click export. 100% private.">
+  <link rel="canonical" href="https://dobcal.pages.dev/bulk-age-calculator.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dobcal.pages.dev/bulk-age-calculator.html">
+  <meta property="og:title" content="Bulk Age Calculator – Calculate Multiple Dates Online">
+  <meta property="og:description" content="Calculate age in years, months, and days for up to 500 dates of birth at once. 100% private client-side processing with CSV export.">
+  <meta property="og:image" content="https://dobcal.pages.dev/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bulk Age Calculator">
+  <meta name="twitter:description" content="Process multiple dates of birth in bulk. 1-click CSV export.">
+  <meta name="twitter:image" content="https://dobcal.pages.dev/assets/og-image.png">
+
+  <!-- Favicon & Touch Icon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="assets/logo-mark.svg">
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    };
+  </script>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Schema.org WebApplication Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Bulk Age Calculator",
+    "url": "https://dobcal.pages.dev/bulk-age-calculator.html",
+    "description": "Calculate exact age for multiple dates of birth simultaneously with CSV file upload and export capabilities.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript. Requires HTML5.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- Schema.org FAQPage Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is my data secure when uploading a list of birth dates?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, 100%. All processing occurs entirely in your browser using client-side JavaScript. No dates, names, or file contents are ever uploaded to any server or cloud database."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What date formats are supported in the bulk age calculator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The tool accepts standard ISO dates (YYYY-MM-DD), common calendar dates (YYYY/MM/DD, DD-MM-YYYY, or MM/DD/YYYY), or raw single-column text lists."
+        }
+      }
+    ]
+  }
+  </script>
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://dobcal.pages.dev/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Bulk Age Calculator",
+        "item": "https://dobcal.pages.dev/bulk-age-calculator.html"
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="min-h-screen flex flex-col font-sans antialiased relative transition-colors duration-150">
+
+  <!-- Sticky Minimal Navbar -->
+  <header class="w-full sticky top-0 z-40 backdrop-blur-md bg-white/80 dark:bg-[#09090B]/80 border-b border-[#E5E7EB] dark:border-[#27272A] transition-colors duration-150">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-2.5 group">
+        <img src="assets/logo-mark.svg" alt="Age Calculator Logo" width="32" height="32" class="w-8 h-8 rounded-lg shadow-sm group-hover:scale-105 transition-transform duration-150">
+        <div class="flex flex-col">
+          <span class="text-base font-extrabold tracking-tight text-[#111827] dark:text-[#F9FAFB]">
+            Age Calculator
+          </span>
+          <span class="text-[10px] uppercase font-semibold tracking-wider text-[#2563EB] dark:text-[#3B82F6]">
+            Bulk Processor
+          </span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600 dark:text-zinc-400">
+        <a href="index.html" class="hover:text-black dark:hover:text-white transition">Home</a>
+          <a href="about.html" class="hover:text-black dark:hover:text-white transition">About</a>
+          <a href="privacy.html" class="hover:text-black dark:hover:text-white transition">Privacy Policy</a>
+          <a href="terms.html" class="hover:text-black dark:hover:text-white transition">Terms</a>
+        <a href="bulk-age-calculator.html" class="text-black dark:text-white font-semibold">Bulk Calculator</a>
+        <a href="calculate-age-in-excel.html" class="hover:text-black dark:hover:text-white transition">Excel Guide</a>
+        <a href="age-calculator-for-government-exams.html" class="hover:text-black dark:hover:text-white transition">Govt Exams</a>
+        <a href="school-admission-age-calculator.html" class="hover:text-black dark:hover:text-white transition">Schools</a>
+      </nav>
+
+      <!-- Theme Toggle -->
+      <div class="flex items-center space-x-3">
+        <button id="theme-toggle" type="button" aria-label="Toggle dark mode" class="w-10 h-10 rounded-lg flex items-center justify-center text-slate-600 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-zinc-800 border border-slate-200 dark:border-zinc-800 transition-colors">
+          <svg id="theme-sun" class="w-4 h-4 hidden text-amber-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+          </svg>
+          <svg id="theme-moon" class="w-4 h-4 hidden text-zinc-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-16 w-full">
+
+    <!-- Hero Section -->
+    <div class="text-center mb-8">
+      <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-950/60 border border-blue-300 dark:border-blue-800/60 text-xs font-semibold text-blue-800 dark:text-blue-300 mb-3">
+        <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+        <span>Process Hundreds of Dates in Milliseconds</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-[#111827] dark:text-[#F9FAFB] tracking-tight leading-tight mb-3">
+        Bulk Age Calculator
+      </h1>
+      <p class="text-base sm:text-lg text-slate-600 dark:text-zinc-400 max-w-xl mx-auto font-normal">
+        Paste a list of birth dates or upload a CSV file to calculate ages simultaneously. 100% private in-browser.
+      </p>
+    </div>
+
+    <!-- Processor Card -->
+    <div class="cal-card p-6 sm:p-8 mb-8 shadow-sm">
+      
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+        <div>
+          <label for="bulk-asof" class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300 mr-2">
+            Calculate Age as on Date:
+          </label>
+          <input type="date" id="bulk-asof" class="cal-input font-mono text-xs py-1.5 px-3">
+        </div>
+        <div class="flex items-center space-x-2">
+          <button id="btn-sample" type="button" class="cal-btn-secondary text-xs py-1.5 px-3">
+            Load Sample Data
+          </button>
+          <label class="cal-btn-secondary text-xs py-1.5 px-3 cursor-pointer">
+            <span>Upload CSV</span>
+            <input type="file" id="file-csv" accept=".csv,.txt" class="hidden">
+          </label>
+        </div>
+      </div>
+
+      <!-- Paste Box -->
+      <div class="mb-5">
+        <label for="text-dates" class="block text-xs font-semibold text-slate-700 dark:text-zinc-300 mb-1.5">
+          Paste Dates of Birth (One per line or comma-separated, e.g. YYYY-MM-DD):
+        </label>
+        <textarea id="text-dates" rows="6" placeholder="2000-01-15&#10;1995-07-22&#10;1988-11-04&#10;2010-03-30&#10;2016-12-05" class="cal-input w-full font-mono text-xs leading-relaxed"></textarea>
+      </div>
+
+      <!-- Process Buttons -->
+      <div class="flex items-center justify-between gap-3">
+        <button id="btn-process" type="button" class="cal-btn-primary py-2.5 px-6 text-xs font-bold tracking-tight">
+          Calculate All Ages
+        </button>
+        <button id="btn-clear" type="button" class="cal-btn-secondary py-2.5 px-4 text-xs font-medium">
+          Clear
+        </button>
+      </div>
+    </div>
+
+    <!-- Results Table Container -->
+    <div id="results-container" class="cal-card p-6 sm:p-8 mb-10 hidden">
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-200 dark:border-zinc-800">
+        <div>
+          <h2 class="text-base font-bold text-[#111827] dark:text-[#F9FAFB]">Processed Results</h2>
+          <span id="stat-count" class="text-xs text-slate-500 dark:text-zinc-400">0 records calculated</span>
+        </div>
+        <button id="btn-export-csv" type="button" class="cal-btn-primary py-2 px-4 text-xs flex items-center space-x-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+          </svg>
+          <span>Export Results as CSV</span>
+        </button>
+      </div>
+
+      <div class="overflow-x-auto max-h-96">
+        <table class="w-full text-left text-xs border border-slate-200 dark:border-zinc-800 rounded-lg">
+          <thead class="bg-slate-100 dark:bg-zinc-800/80 font-bold text-slate-800 dark:text-zinc-200 sticky top-0">
+            <tr>
+              <th class="p-3 border-b border-slate-200 dark:border-zinc-800">#</th>
+              <th class="p-3 border-b border-slate-200 dark:border-zinc-800">Birth Date</th>
+              <th class="p-3 border-b border-slate-200 dark:border-zinc-800">Exact Age</th>
+              <th class="p-3 border-b border-slate-200 dark:border-zinc-800">Total Months</th>
+              <th class="p-3 border-b border-slate-200 dark:border-zinc-800">Total Days</th>
+              <th class="p-3 border-b border-slate-200 dark:border-zinc-800">Zodiac Sign</th>
+            </tr>
+          </thead>
+          <tbody id="table-body" class="divide-y divide-slate-200 dark:divide-zinc-800 font-mono text-slate-700 dark:text-zinc-300">
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="mb-12">
+      <h2 class="text-xl font-bold text-[#111827] dark:text-[#F9FAFB] mb-4">
+        Frequently Asked Questions
+      </h2>
+      <div class="space-y-3">
+        <details class="cal-card p-4">
+          <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-[#111827] dark:text-[#F9FAFB]">
+            <span>Is there a limit on how many birth dates I can process?</span>
+            <span class="text-slate-400">+</span>
+          </summary>
+          <p class="mt-2.5 text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            You can process up to 500 dates per run smoothly in memory. Since computation runs entirely on your local device CPU, processing takes only a fraction of a second.
+          </p>
+        </details>
+
+        <details class="cal-card p-4">
+          <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-[#111827] dark:text-[#F9FAFB]">
+            <span>Can I export the calculated age data back into Microsoft Excel?</span>
+            <span class="text-slate-400">+</span>
+          </summary>
+          <p class="mt-2.5 text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            Yes. Clicking "Export Results as CSV" downloads a structured comma-separated file containing the original DOB, years, months, days, total elapsed days, and zodiac signs that opens directly in Excel, Google Sheets, or Numbers.
+          </p>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Dynamic Toast -->
+  <div id="toast" role="status" aria-live="polite" class="fixed bottom-6 right-6 z-50 hide cal-card px-4 py-3 shadow-lg flex items-center space-x-2.5 text-xs font-semibold">
+    <div class="w-4 h-4 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center flex-shrink-0 text-[10px]">
+      ✓
+    </div>
+    <span id="toast-text" class="text-[#111827] dark:text-[#F9FAFB]">Action completed!</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="mt-16 border-t border-[#E5E7EB] dark:border-[#27272A] py-10 text-xs text-slate-500 dark:text-zinc-400">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center space-x-2">
+          <img src="assets/logo-mark.svg" alt="Age Calculator Logo" width="20" height="20" class="w-5 h-5 rounded shadow-sm">
+          <span class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB]">Dobcal Chronometer</span>
+          <span>&copy; <span id="current-year">2026</span> All rights reserved.</span>
+        </div>
+        <div class="flex flex-wrap items-center gap-4 font-medium">
+          <a href="index.html" class="hover:text-black dark:hover:text-white transition">Home</a>
+          <a href="bulk-age-calculator.html" class="hover:text-black dark:hover:text-white transition">Bulk Calculator</a>
+          <a href="calculate-age-in-excel.html" class="hover:text-black dark:hover:text-white transition">Excel Guide</a>
+          <a href="school-admission-age-calculator.html" class="hover:text-black dark:hover:text-white transition">Schools</a>
+          <a href="age-calculator-for-government-exams.html" class="hover:text-black dark:hover:text-white transition">Govt Exams</a>
+        </div>
+      </div>
+      <p class="text-center text-slate-400 dark:text-zinc-500 text-[11px]">
+        100% Client-Side. No personal data or uploaded dates leave your device.
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/calculator.js"></script>
+  <script>
+    // Theme setup
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const sunIcon = document.getElementById('theme-sun');
+    const moonIcon = document.getElementById('theme-moon');
+
+    function initTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        sunIcon?.classList.remove('hidden');
+        moonIcon?.classList.add('hidden');
+      } else {
+        document.documentElement.classList.remove('dark');
+        sunIcon?.classList.add('hidden');
+        moonIcon?.classList.remove('hidden');
+      }
+    }
+
+    themeToggleBtn?.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      if (isDark) {
+        sunIcon?.classList.remove('hidden');
+        moonIcon?.classList.add('hidden');
+      } else {
+        sunIcon?.classList.add('hidden');
+        moonIcon?.classList.remove('hidden');
+      }
+    });
+    initTheme();
+
+    // DOM Elements
+    const bulkAsof = document.getElementById('bulk-asof');
+    const textDates = document.getElementById('text-dates');
+    const btnProcess = document.getElementById('btn-process');
+    const btnClear = document.getElementById('btn-clear');
+    const btnSample = document.getElementById('btn-sample');
+    const fileCsv = document.getElementById('file-csv');
+    const resultsContainer = document.getElementById('results-container');
+    const tableBody = document.getElementById('table-body');
+    const statCount = document.getElementById('stat-count');
+    const btnExportCsv = document.getElementById('btn-export-csv');
+
+    const today = new Date().toISOString().split('T')[0];
+    bulkAsof.value = today;
+
+    let processedData = [];
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastText = document.getElementById('toast-text');
+      if (!toast) return;
+      if (toastText) toastText.textContent = msg;
+      toast.classList.remove('hide');
+      setTimeout(() => toast.classList.add('hide'), 2500);
+    }
+
+    function processDates() {
+      const rawText = textDates.value.trim();
+      if (!rawText) {
+        showToast('Please enter or paste at least one birth date');
+        return;
+      }
+
+      const lines = rawText.split(/[\r\n,]+/).map(s => s.trim()).filter(Boolean);
+      const asOf = bulkAsof.value || today;
+
+      processedData = [];
+      tableBody.innerHTML = '';
+
+      let validCount = 0;
+      lines.forEach((line, idx) => {
+        try {
+          const res = AgeCalculator.calculateAge(line, asOf);
+          validCount++;
+          const record = {
+            index: validCount,
+            dob: res.dobFormatted,
+            years: res.years,
+            months: res.months,
+            days: res.days,
+            ageString: `${res.years}y ${res.months}m ${res.days}d`,
+            totalMonths: res.totalMonths,
+            totalDays: res.totalDays,
+            zodiac: `${res.westernZodiac.symbol} ${res.westernZodiac.name}`,
+          };
+          processedData.push(record);
+
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td class="p-3 text-slate-400 font-medium">${validCount}</td>
+            <td class="p-3 font-semibold text-[#111827] dark:text-[#F9FAFB]">${record.dob}</td>
+            <td class="p-3 font-bold text-blue-600 dark:text-blue-400">${record.ageString}</td>
+            <td class="p-3">${record.totalMonths.toLocaleString()}</td>
+            <td class="p-3">${record.totalDays.toLocaleString()}</td>
+            <td class="p-3 font-sans">${record.zodiac}</td>
+          `;
+          tableBody.appendChild(tr);
+        } catch (e) {
+          // ignore invalid lines
+        }
+      });
+
+      if (validCount > 0) {
+        resultsContainer.classList.remove('hidden');
+        statCount.textContent = `${validCount} date${validCount === 1 ? '' : 's'} calculated successfully`;
+        showToast(`Calculated ${validCount} dates!`);
+      } else {
+        showToast('No valid dates found. Use YYYY-MM-DD format.');
+      }
+    }
+
+    btnProcess.addEventListener('click', processDates);
+
+    btnSample.addEventListener('click', () => {
+      textDates.value = "2000-01-15\n1995-06-22\n1988-11-04\n2010-03-30\n2016-12-05\n2022-08-14";
+      processDates();
+    });
+
+    btnClear.addEventListener('click', () => {
+      textDates.value = '';
+      tableBody.innerHTML = '';
+      resultsContainer.classList.add('hidden');
+      processedData = [];
+    });
+
+    fileCsv.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (evt) => {
+        textDates.value = evt.target.result;
+        processDates();
+      };
+      reader.readAsText(file);
+    });
+
+    btnExportCsv.addEventListener('click', () => {
+      if (processedData.length === 0) return;
+      let csv = 'Index,Date of Birth,Years,Months,Days,Total Months,Total Days,Zodiac Sign\n';
+      processedData.forEach(r => {
+        csv += `${r.index},"${r.dob}",${r.years},${r.months},${r.days},${r.totalMonths},${r.totalDays},"${r.zodiac}"\n`;
+      });
+
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `dobcal_bulk_ages_${today}.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('CSV exported successfully!');
+    });
+  </script>
+</body>
+</html>
+

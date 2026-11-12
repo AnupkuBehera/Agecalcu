@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age Calculator Embed Widget – Free Website Plugin</title>
+  <meta name="description" content="Embeddable Age Calculator widget for blogs, websites, and school portals. 100% private, free, lightweight, and responsive iframe widget.">
+  <link rel="canonical" href="https://dobcal.pages.dev/embed-widget.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Age Calculator Embed Widget",
+    "url": "https://dobcal.pages.dev/embed-widget.html",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://dobcal.pages.dev/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Embed Widget",
+        "item": "https://dobcal.pages.dev/embed-widget.html"
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', '-apple-system', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body { padding: 12px; margin: 0; background: transparent; }
+  </style>
+</head>
+<body class="antialiased">
+
+  <div class="cal-card p-4 sm:p-5 shadow-sm max-w-md mx-auto border border-slate-200 dark:border-zinc-800 bg-white dark:bg-[#121215]">
+    
+    <!-- Header -->
+    <div class="flex items-center justify-between border-b border-slate-100 dark:border-zinc-800 pb-3 mb-4">
+      <div class="flex items-center space-x-2">
+        <img src="assets/logo-mark.svg" alt="Dobcal" width="20" height="20" class="w-5 h-5 rounded">
+        <span class="font-extrabold text-sm text-[#111827] dark:text-[#F9FAFB] tracking-tight">Age Calculator</span>
+      </div>
+      <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 font-bold">
+        WIDGET
+      </span>
+    </div>
+
+    <!-- Inputs -->
+    <div class="space-y-3 mb-4">
+      <div>
+        <label for="widget-dob" class="block text-[11px] font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300 mb-1">
+          Date of Birth
+        </label>
+        <input type="date" id="widget-dob" value="2000-01-01" class="cal-input w-full font-mono text-xs py-2">
+      </div>
+
+      <div>
+        <label for="widget-asof" class="block text-[11px] font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300 mb-1">
+          Age as on Date
+        </label>
+        <input type="date" id="widget-asof" class="cal-input w-full font-mono text-xs py-2">
+      </div>
+    </div>
+
+    <!-- Results Display -->
+    <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-center mb-3">
+      <span class="text-[10px] font-extrabold tracking-wider uppercase text-blue-600 dark:text-blue-400 block mb-1">
+        Exact Chronological Age
+      </span>
+      <div id="widget-result" class="text-base sm:text-lg font-black font-mono text-[#111827] dark:text-[#F9FAFB]">
+        Calculating...
+      </div>
+      <div id="widget-sub" class="text-[11px] font-medium text-slate-500 dark:text-zinc-400 mt-1">
+        -
+      </div>
+    </div>
+
+    <!-- Attribution Footer (Organic Backlink Engine) -->
+    <div class="pt-2 text-center text-[10px] text-slate-400 dark:text-zinc-500 border-t border-slate-100 dark:border-zinc-800/80">
+      Powered by <a href="https://dobcal.pages.dev/" target="_blank" rel="noopener" class="font-bold text-[#2563EB] dark:text-[#3B82F6] hover:underline">Dobcal Age Calculator</a>
+    </div>
+
+  </div>
+
+  <script src="js/calculator.js"></script>
+  <script>
+    // URL param theme check
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('theme') === 'dark') {
+      document.documentElement.classList.add('dark');
+    }
+
+    const widgetDob = document.getElementById('widget-dob');
+    const widgetAsof = document.getElementById('widget-asof');
+    const widgetResult = document.getElementById('widget-result');
+    const widgetSub = document.getElementById('widget-sub');
+
+    const today = new Date().toISOString().split('T')[0];
+    widgetAsof.value = today;
+
+    function calculate() {
+      if (!widgetDob.value || !widgetAsof.value) return;
+      try {
+        const res = AgeCalculator.calculateAge(widgetDob.value, widgetAsof.value);
+        widgetResult.textContent = `${res.years} Years · ${res.months} Mos · ${res.days} Days`;
+        widgetSub.textContent = `Total Days: ${res.totalDays.toLocaleString()} | Next Bday in ${res.nextBirthday.daysUntil} days`;
+      } catch (err) {
+        widgetResult.textContent = 'Invalid Date Range';
+        widgetSub.textContent = err.message;
+      }
+    }
+
+    widgetDob.addEventListener('input', calculate);
+    widgetAsof.addEventListener('input', calculate);
+    calculate();
+  </script>
+</body>
+</html>

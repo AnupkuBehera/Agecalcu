@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet Age Calculator – Dog & Cat Years to Human Years</title>
+  <meta name="description" content="Calculate your dog or cat's exact age in human years using breed-specific veterinary models and epigenetic curves. 100% private and science-backed.">
+  <link rel="canonical" href="https://dobcal.pages.dev/pet-age-calculator.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dobcal.pages.dev/pet-age-calculator.html">
+  <meta property="og:title" content="Pet Age Calculator (Dog & Cat Years in Human Years)">
+  <meta property="og:description" content="Convert pet age to human years accurately based on breed size (small, medium, large, giant) and feline growth curves.">
+  <meta property="og:image" content="https://dobcal.pages.dev/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pet Age Calculator – Dog & Cat Years">
+  <meta name="twitter:description" content="Accurate science-based pet age converter for dogs and cats.">
+  <meta name="twitter:image" content="https://dobcal.pages.dev/assets/og-image.png">
+
+  <!-- Favicon & Touch Icon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="assets/logo-mark.svg">
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    };
+  </script>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Schema.org WebApplication Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Pet Age Calculator",
+    "url": "https://dobcal.pages.dev/pet-age-calculator.html",
+    "description": "Veterinary science-based calculator converting canine and feline chronological age into human equivalent years based on breed size.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript. Requires HTML5.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- Schema.org FAQPage Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why is multiplying a dog's age by 7 inaccurate?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The 7-to-1 ratio was a simple rule of thumb based on average human lifespan (70 years) vs dog lifespan (10 years). However, dogs age rapidly in their first two years—reaching the equivalent of a 24-year-old human by age 2—and subsequent aging varies dramatically by breed size."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do small dogs live longer than large dogs?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Small dog breeds (under 20 lbs) age at approximately 4 human years per year after age 2, often living 14 to 17 years. Giant breeds (over 90 lbs) age at approximately 7.5 to 8 human years per year and experience senior health changes much earlier."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does cat age compare to human years?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The American Association of Feline Practitioners (AAFP) calculates that the first year of a cat's life equals 15 human years, the second year equals 24 human years, and each subsequent year adds approximately 4 human years."
+        }
+      }
+    ]
+  }
+  </script>
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://dobcal.pages.dev/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Pet Age Calculator",
+        "item": "https://dobcal.pages.dev/pet-age-calculator.html"
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="min-h-screen flex flex-col font-sans antialiased relative transition-colors duration-150">
+
+  <!-- Sticky Minimal Navbar -->
+  <header class="w-full sticky top-0 z-40 backdrop-blur-md bg-white/80 dark:bg-[#09090B]/80 border-b border-[#E5E7EB] dark:border-[#27272A] transition-colors duration-150">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-2.5 group">
+        <img src="assets/logo-mark.svg" alt="Age Calculator Logo" width="32" height="32" class="w-8 h-8 rounded-lg shadow-sm group-hover:scale-105 transition-transform duration-150">
+        <div class="flex flex-col">
+          <span class="text-base font-extrabold tracking-tight text-[#111827] dark:text-[#F9FAFB]">
+            Age Calculator
+          </span>
+          <span class="text-[10px] uppercase font-semibold tracking-wider text-[#2563EB] dark:text-[#3B82F6]">
+            Pet Age Tool
+          </span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600 dark:text-zinc-400">
+        <a href="index.html" class="hover:text-black dark:hover:text-white transition">Home</a>
+          <a href="about.html" class="hover:text-black dark:hover:text-white transition">About</a>
+          <a href="privacy.html" class="hover:text-black dark:hover:text-white transition">Privacy Policy</a>
+          <a href="terms.html" class="hover:text-black dark:hover:text-white transition">Terms</a>
+        <a href="pet-age-calculator.html" class="text-black dark:text-white font-semibold">Pet Age</a>
+        <a href="voting-and-driving-eligibility-calculator.html" class="hover:text-black dark:hover:text-white transition">Vote & Drive</a>
+        <a href="school-admission-age-calculator.html" class="hover:text-black dark:hover:text-white transition">School Admission</a>
+        <a href="age-calculator-for-government-exams.html" class="hover:text-black dark:hover:text-white transition">Govt Exams</a>
+      </nav>
+
+      <!-- Theme Toggle -->
+      <div class="flex items-center space-x-3">
+        <button id="theme-toggle" type="button" aria-label="Toggle dark mode" class="w-10 h-10 rounded-lg flex items-center justify-center text-slate-600 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-zinc-800 border border-slate-200 dark:border-zinc-800 transition-colors">
+          <svg id="theme-sun" class="w-4 h-4 hidden text-amber-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+          </svg>
+          <svg id="theme-moon" class="w-4 h-4 hidden text-zinc-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-16 w-full">
+
+    <!-- Hero Section -->
+    <div class="text-center mb-8">
+      <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-950/60 border border-amber-300 dark:border-amber-800/60 text-xs font-semibold text-amber-800 dark:text-amber-300 mb-3">
+        <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+        <span>Veterinary Science-Based Aging Curves</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-[#111827] dark:text-[#F9FAFB] tracking-tight leading-tight mb-3">
+        Pet Age Calculator
+      </h1>
+      <p class="text-base sm:text-lg text-slate-600 dark:text-zinc-400 max-w-xl mx-auto font-normal">
+        Convert your dog or cat's age into human years using breed size curves instead of the old 7x myth.
+      </p>
+    </div>
+
+    <!-- Calculator Card -->
+    <div class="cal-card p-6 sm:p-8 mb-8 shadow-sm">
+      
+      <!-- Species Toggle -->
+      <div class="flex justify-center mb-6">
+        <div class="tab-container">
+          <button id="btn-species-dog" class="tab-btn active" type="button">
+            🐕 Dog Years
+          </button>
+          <button id="btn-species-cat" class="tab-btn" type="button">
+            🐈 Cat Years
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+        <!-- Dog Breed Size (Hidden for cats) -->
+        <div id="container-breed-size">
+          <label for="select-breed-size" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300 mb-1.5">
+            Dog Breed Weight
+          </label>
+          <select id="select-breed-size" class="cal-input w-full font-semibold text-sm">
+            <option value="small">Small (< 20 lbs / 9 kg)</option>
+            <option value="medium" selected>Medium (21 - 50 lbs / 10-23 kg)</option>
+            <option value="large">Large (51 - 90 lbs / 24-40 kg)</option>
+            <option value="giant">Giant (> 90 lbs / 41+ kg)</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="pet-years" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300 mb-1.5">
+            Pet Age (Years)
+          </label>
+          <input type="number" id="pet-years" value="4" min="0" max="30" class="cal-input w-full font-mono font-bold text-center text-base">
+        </div>
+
+        <div>
+          <label for="pet-months" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300 mb-1.5">
+            Additional Months
+          </label>
+          <input type="number" id="pet-months" value="0" min="0" max="11" class="cal-input w-full font-mono font-bold text-center text-base">
+        </div>
+      </div>
+
+      <!-- Hero Output Banner -->
+      <div class="rounded-2xl p-6 sm:p-8 bg-gradient-to-br from-amber-50 to-orange-50/50 dark:from-zinc-900 dark:to-zinc-900/80 border border-amber-200/80 dark:border-zinc-800 text-center relative overflow-hidden mb-6">
+        <span class="text-xs uppercase font-extrabold tracking-widest text-amber-600 dark:text-amber-400 block mb-2">
+          Human Equivalent Age
+        </span>
+
+        <div class="text-4xl sm:text-6xl font-black text-[#111827] dark:text-[#F9FAFB] tracking-tight font-mono mb-2">
+          <span id="hero-human-years">34</span> <span class="text-2xl sm:text-3xl font-bold font-sans text-slate-500 dark:text-zinc-400">Human Years</span>
+        </div>
+
+        <p id="hero-sentence" class="text-xs sm:text-sm font-semibold text-slate-600 dark:text-zinc-400">
+          Your 4-year-old Medium Dog is in the Adult life stage.
+        </p>
+      </div>
+
+      <!-- Life Stage & Wellness Care Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div class="cal-card p-4">
+          <span class="text-[11px] font-semibold text-slate-500 dark:text-zinc-400 block uppercase">Life Stage</span>
+          <span id="stage-badge" class="text-base font-bold text-[#111827] dark:text-[#F9FAFB] mt-1 block">Adult</span>
+          <p id="stage-summary" class="text-xs text-slate-500 dark:text-zinc-400 mt-1">Full physical maturity and peak cognitive ability.</p>
+        </div>
+
+        <div class="cal-card p-4">
+          <span class="text-[11px] font-semibold text-slate-500 dark:text-zinc-400 block uppercase">Veterinary Checkup</span>
+          <span id="vet-freq" class="text-base font-bold text-[#111827] dark:text-[#F9FAFB] mt-1 block">Annual Wellness Exam</span>
+          <p class="text-xs text-slate-500 dark:text-zinc-400 mt-1">Vaccine updates, heartworm testing, and dental scaling.</p>
+        </div>
+
+        <div class="cal-card p-4">
+          <span class="text-[11px] font-semibold text-slate-500 dark:text-zinc-400 block uppercase">Nutrition Focus</span>
+          <span id="nutrition-focus" class="text-base font-bold text-[#111827] dark:text-[#F9FAFB] mt-1 block">Maintenance Diet</span>
+          <p class="text-xs text-slate-500 dark:text-zinc-400 mt-1">Weight control, omega-3 fatty acids, and joint health support.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Canine & Feline Age Chart Table -->
+    <div class="cal-card p-6 sm:p-8 mb-10">
+      <h2 class="text-lg font-bold text-[#111827] dark:text-[#F9FAFB] mb-3">
+        Pet Years to Human Years Conversion Chart
+      </h2>
+      <p class="text-xs text-slate-600 dark:text-zinc-400 mb-6">
+        Comparison across cat and dog sizes by chronological pet age:
+      </p>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs border border-slate-200 dark:border-zinc-800 rounded-lg">
+          <thead class="bg-slate-100 dark:bg-zinc-800/80 font-bold text-slate-800 dark:text-zinc-200">
+            <tr>
+              <th class="p-3 border-b border-slate-200 dark:border-zinc-800">Pet Age</th>
+              <th class="p-3 border-b border-slate-200 dark:border-zinc-800">Small Dog (&lt;20 lbs)</th>
+              <th class="p-3 border-b border-slate-200 dark:border-zinc-800">Medium Dog (21-50 lbs)</th>
+              <th class="p-3 border-b border-slate-200 dark:border-zinc-800">Large Dog (51-90 lbs)</th>
+              <th class="p-3 border-b border-slate-200 dark:border-zinc-800">Giant Dog (&gt;90 lbs)</th>
+              <th class="p-3 border-b border-slate-200 dark:border-zinc-800">Cat</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200 dark:divide-zinc-800 font-mono text-slate-700 dark:text-zinc-300">
+            <tr><td class="p-3 font-bold text-slate-900 dark:text-white">1 Year</td><td>15</td><td>15</td><td>15</td><td>15</td><td>15</td></tr>
+            <tr><td class="p-3 font-bold text-slate-900 dark:text-white">2 Years</td><td>24</td><td>24</td><td>24</td><td>24</td><td>24</td></tr>
+            <tr><td class="p-3 font-bold text-slate-900 dark:text-white">3 Years</td><td>28</td><td>29</td><td>30</td><td>31.5</td><td>28</td></tr>
+            <tr><td class="p-3 font-bold text-slate-900 dark:text-white">4 Years</td><td>32</td><td>34</td><td>36</td><td>39</td><td>32</td></tr>
+            <tr><td class="p-3 font-bold text-slate-900 dark:text-white">5 Years</td><td>36</td><td>39</td><td>42</td><td>46.5</td><td>36</td></tr>
+            <tr><td class="p-3 font-bold text-slate-900 dark:text-white">6 Years</td><td>40</td><td>44</td><td>48</td><td>54</td><td>40</td></tr>
+            <tr><td class="p-3 font-bold text-slate-900 dark:text-white">8 Years</td><td>48</td><td>54</td><td>60</td><td>69</td><td>48</td></tr>
+            <tr><td class="p-3 font-bold text-slate-900 dark:text-white">10 Years</td><td>56</td><td>64</td><td>72</td><td>84</td><td>56</td></tr>
+            <tr><td class="p-3 font-bold text-slate-900 dark:text-white">12 Years</td><td>64</td><td>74</td><td>84</td><td>99</td><td>64</td></tr>
+            <tr><td class="p-3 font-bold text-slate-900 dark:text-white">14 Years</td><td>72</td><td>84</td><td>96</td><td>114</td><td>72</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="mb-12">
+      <h2 class="text-xl font-bold text-[#111827] dark:text-[#F9FAFB] mb-4">
+        Frequently Asked Questions
+      </h2>
+      <div class="space-y-3">
+        <details class="cal-card p-4">
+          <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-[#111827] dark:text-[#F9FAFB]">
+            <span>At what age is a dog or cat considered a senior pet?</span>
+            <span class="text-slate-400">+</span>
+          </summary>
+          <p class="mt-2.5 text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            Giant dogs become seniors as early as 5-6 years old. Medium dogs reach senior status around 7-8 years. Small dogs and cats are generally considered seniors at 10-11 years of age.
+          </p>
+        </details>
+
+        <details class="cal-card p-4">
+          <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-[#111827] dark:text-[#F9FAFB]">
+            <span>What is the UC San Diego epigenetic clock for dogs?</span>
+            <span class="text-slate-400">+</span>
+          </summary>
+          <p class="mt-2.5 text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            In 2020, researchers at UC San Diego published a DNA methylation formula: Human Age = 16 * ln(Dog Age) + 31. This showed that young dogs age very rapidly at the cellular level compared to humans.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Related Tools Grid -->
+    <section class="border-t border-slate-200 dark:border-zinc-800 pt-8">
+      <h2 class="text-base font-bold text-[#111827] dark:text-[#F9FAFB] mb-3">
+        Other Specialized Calculators
+      </h2>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <a href="index.html" class="cal-card p-4 group block">
+          <span class="text-xs font-semibold text-[#2563EB] dark:text-[#3B82F6]">Live Tool</span>
+          <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] mt-1 transition">
+            Age Calculator
+          </div>
+          <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+            Full years/months/days
+          </div>
+        </a>
+
+        <a href="school-admission-age-calculator.html" class="cal-card p-4 group block">
+          <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">Schools</span>
+          <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] mt-1 transition">
+            School Admission
+          </div>
+          <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+            NEP 2020 6+ rule
+          </div>
+        </a>
+
+        <a href="voting-and-driving-eligibility-calculator.html" class="cal-card p-4 group block">
+          <span class="text-xs font-semibold text-purple-600 dark:text-purple-400">Legal</span>
+          <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] mt-1 transition">
+            Vote & Drive Age
+          </div>
+          <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+            18th birthday milestones
+          </div>
+        </a>
+
+        <a href="age-calculator-for-government-exams.html" class="cal-card p-4 group block">
+          <span class="text-xs font-semibold text-blue-600 dark:text-blue-400">Govt Exams</span>
+          <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] mt-1 transition">
+            Govt Exam Cutoff
+          </div>
+          <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+            UPSC & SSC Cutoff
+          </div>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-16 border-t border-[#E5E7EB] dark:border-[#27272A] py-10 text-xs text-slate-500 dark:text-zinc-400">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center space-x-2">
+          <img src="assets/logo-mark.svg" alt="Age Calculator Logo" width="20" height="20" class="w-5 h-5 rounded shadow-sm">
+          <span class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB]">Dobcal Chronometer</span>
+          <span>&copy; <span id="current-year">2026</span> All rights reserved.</span>
+        </div>
+        <div class="flex flex-wrap items-center gap-4 font-medium">
+          <a href="index.html" class="hover:text-black dark:hover:text-white transition">Home</a>
+          <a href="pet-age-calculator.html" class="hover:text-black dark:hover:text-white transition">Pet Age</a>
+          <a href="voting-and-driving-eligibility-calculator.html" class="hover:text-black dark:hover:text-white transition">Vote & Drive</a>
+          <a href="school-admission-age-calculator.html" class="hover:text-black dark:hover:text-white transition">School Admission</a>
+          <a href="age-calculator-for-government-exams.html" class="hover:text-black dark:hover:text-white transition">Govt Exams</a>
+        </div>
+      </div>
+      <p class="text-center text-slate-400 dark:text-zinc-500 text-[11px]">
+        Veterinary guidelines developed in accordance with the American Animal Hospital Association (AAHA) and AAFP standards.
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/calculator.js"></script>
+  <script>
+    // Theme setup
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const sunIcon = document.getElementById('theme-sun');
+    const moonIcon = document.getElementById('theme-moon');
+
+    function initTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        sunIcon?.classList.remove('hidden');
+        moonIcon?.classList.add('hidden');
+      } else {
+        document.documentElement.classList.remove('dark');
+        sunIcon?.classList.add('hidden');
+        moonIcon?.classList.remove('hidden');
+      }
+    }
+
+    themeToggleBtn?.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      if (isDark) {
+        sunIcon?.classList.remove('hidden');
+        moonIcon?.classList.add('hidden');
+      } else {
+        sunIcon?.classList.add('hidden');
+        moonIcon?.classList.remove('hidden');
+      }
+    });
+    initTheme();
+
+    // DOM Elements
+    let currentSpecies = 'dog';
+    const btnSpeciesDog = document.getElementById('btn-species-dog');
+    const btnSpeciesCat = document.getElementById('btn-species-cat');
+    const containerBreedSize = document.getElementById('container-breed-size');
+    const selectBreedSize = document.getElementById('select-breed-size');
+    const petYears = document.getElementById('pet-years');
+    const petMonths = document.getElementById('pet-months');
+    const heroHumanYears = document.getElementById('hero-human-years');
+    const heroSentence = document.getElementById('hero-sentence');
+    const stageBadge = document.getElementById('stage-badge');
+    const stageSummary = document.getElementById('stage-summary');
+    const vetFreq = document.getElementById('vet-freq');
+    const nutritionFocus = document.getElementById('nutrition-focus');
+
+    function calculate() {
+      const y = parseInt(petYears.value || '0', 10);
+      const m = parseInt(petMonths.value || '0', 10);
+      const breed = selectBreedSize.value;
+
+      const res = AgeCalculator.calcPetAge(y, m, currentSpecies, breed);
+      heroHumanYears.textContent = res.humanEquivalentYears;
+
+      const breedLabel = currentSpecies === 'dog' ? `${selectBreedSize.options[selectBreedSize.selectedIndex].text.split('(')[0].trim()} Dog` : 'Cat';
+      heroSentence.textContent = `Your ${y} yr ${m > 0 ? m + ' mo ' : ''}${breedLabel} is in the ${res.lifeStage} life stage.`;
+      stageBadge.textContent = res.lifeStage;
+
+      if (res.lifeStage === 'Puppy' || res.lifeStage === 'Kitten') {
+        stageSummary.textContent = 'Rapid bone growth, socialization, and initial vaccination series.';
+        vetFreq.textContent = 'Every 3-4 Weeks (Until 16 Weeks)';
+        nutritionFocus.textContent = 'Growth & DHA Formulation';
+      } else if (res.lifeStage === 'Young Adult' || res.lifeStage === 'Junior') {
+        stageSummary.textContent = 'Physical prime, boundless energy, and behavioral training.';
+        vetFreq.textContent = 'Annual Preventive Checkup';
+        nutritionFocus.textContent = 'Active Adult Nutrition';
+      } else if (res.lifeStage === 'Adult' || res.lifeStage === 'Prime Adult') {
+        stageSummary.textContent = 'Full physical maturity and peak cognitive ability.';
+        vetFreq.textContent = 'Annual Wellness Exam';
+        nutritionFocus.textContent = 'Balanced Maintenance Diet';
+      } else {
+        stageSummary.textContent = 'Senior health phase requiring proactive kidney, joint, and vision care.';
+        vetFreq.textContent = 'Twice-Yearly Geriatric Exam';
+        nutritionFocus.textContent = 'Senior Joint & Renal Support';
+      }
+    }
+
+    btnSpeciesDog.addEventListener('click', () => {
+      currentSpecies = 'dog';
+      btnSpeciesDog.classList.add('active');
+      btnSpeciesCat.classList.remove('active');
+      containerBreedSize.classList.remove('hidden');
+      calculate();
+    });
+
+    btnSpeciesCat.addEventListener('click', () => {
+      currentSpecies = 'cat';
+      btnSpeciesCat.classList.add('active');
+      btnSpeciesDog.classList.remove('active');
+      containerBreedSize.classList.add('hidden');
+      calculate();
+    });
+
+    selectBreedSize.addEventListener('change', calculate);
+    petYears.addEventListener('input', calculate);
+    petMonths.addEventListener('input', calculate);
+
+    calculate();
+  </script>
+</body>
+</html>
+

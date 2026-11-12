@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age Calculator in Months and Days – Total Months Old</title>
+  <meta name="description" content="Calculate your exact age expressed in total months and days. Perfect for baby growth milestones, pediatric health records, and official forms. 100% private.">
+  <link rel="canonical" href="https://dobcal.pages.dev/age-in-months-and-days.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dobcal.pages.dev/age-in-months-and-days.html">
+  <meta property="og:title" content="Age Calculator in Months and Days – Exact Total Months & Days Old">
+  <meta property="og:description" content="Find out exactly how many months and days old you or your child are. Includes pediatric milestones and leap-year precise calendar arithmetic.">
+  <meta property="og:image" content="https://dobcal.pages.dev/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Age Calculator in Months and Days">
+  <meta name="twitter:description" content="Exact age in total completed months and remaining days.">
+  <meta name="twitter:image" content="https://dobcal.pages.dev/assets/og-image.png">
+
+  <!-- Favicon & Touch Icon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="assets/logo-mark.svg">
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    };
+  </script>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Schema.org WebApplication Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Age Calculator in Months and Days",
+    "url": "https://dobcal.pages.dev/age-in-months-and-days.html",
+    "description": "Calculate exact age expressed in completed months and remaining days. Optimized for infants, toddlers, pediatric growth charts, and legal documentation.",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript. Requires HTML5.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- Schema.org FAQPage Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why is baby age measured in months rather than years?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "During the first two years of life, infant development and growth milestones occur rapidly on a month-to-month basis. Pediatricians, vaccination schedules, and feeding guidelines rely on completed months (e.g. 6 months, 9 months, 18 months) to accurately assess developmental progress."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is exact age in months and days calculated?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Exact age in months and days is determined by multiplying completed years by 12, adding the remaining calendar months, and calculating the exact days remaining according to the length of the preceding calendar month."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many months old is someone who is 25 years old?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A person who is exactly 25 years old has completed 300 months (25 × 12 = 300 months)."
+        }
+      }
+    ]
+  }
+  </script>
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://dobcal.pages.dev/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Age in Months and Days",
+        "item": "https://dobcal.pages.dev/age-in-months-and-days.html"
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="min-h-screen flex flex-col font-sans antialiased relative transition-colors duration-150">
+
+  <!-- Sticky Minimal Navbar -->
+  <header class="w-full sticky top-0 z-40 backdrop-blur-md bg-white/80 dark:bg-[#09090B]/80 border-b border-[#E5E7EB] dark:border-[#27272A] transition-colors duration-150">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-2.5 group">
+        <img src="assets/logo-mark.svg" alt="Age Calculator Logo" width="32" height="32" class="w-8 h-8 rounded-lg shadow-sm group-hover:scale-105 transition-transform duration-150">
+        <div class="flex flex-col">
+          <span class="text-base font-extrabold tracking-tight text-[#111827] dark:text-[#F9FAFB]">
+            Age Calculator
+          </span>
+          <span class="text-[10px] uppercase font-semibold tracking-wider text-[#2563EB] dark:text-[#3B82F6]">
+            Months & Days
+          </span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600 dark:text-zinc-400">
+        <a href="index.html" class="hover:text-black dark:hover:text-white transition">Home</a>
+          <a href="about.html" class="hover:text-black dark:hover:text-white transition">About</a>
+          <a href="privacy.html" class="hover:text-black dark:hover:text-white transition">Privacy Policy</a>
+          <a href="terms.html" class="hover:text-black dark:hover:text-white transition">Terms</a>
+        <a href="age-in-months-and-days.html" class="text-black dark:text-white font-semibold">Months & Days</a>
+        <a href="calculate-age-in-excel.html" class="hover:text-black dark:hover:text-white transition">Excel Guide</a>
+        <a href="age-calculator-for-government-exams.html" class="hover:text-black dark:hover:text-white transition">Govt Exams</a>
+        <a href="how-old-will-i-be-in-2040.html" class="hover:text-black dark:hover:text-white transition">Future Age</a>
+      </nav>
+
+      <!-- Theme Toggle -->
+      <div class="flex items-center space-x-3">
+        <button id="theme-toggle" type="button" aria-label="Toggle dark mode" class="w-10 h-10 rounded-lg flex items-center justify-center text-slate-600 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-zinc-800 border border-slate-200 dark:border-zinc-800 transition-colors">
+          <svg id="theme-sun" class="w-4 h-4 hidden text-amber-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+          </svg>
+          <svg id="theme-moon" class="w-4 h-4 hidden text-zinc-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-16 w-full">
+
+    <!-- Hero Section -->
+    <div class="text-center mb-8">
+      <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-950/60 border border-blue-300 dark:border-blue-800/60 text-xs font-semibold text-blue-800 dark:text-blue-300 mb-3">
+        <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+        <span>Pediatric & Duration Precision</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-[#111827] dark:text-[#F9FAFB] tracking-tight leading-tight mb-3">
+        Age Calculator in Months and Days
+      </h1>
+      <p class="text-base sm:text-lg text-slate-600 dark:text-zinc-400 max-w-xl mx-auto font-normal">
+        Determine your exact age expressed in completed calendar months and remaining days.
+      </p>
+    </div>
+
+    <!-- Quick Baby Milestone Presets -->
+    <div class="flex flex-wrap items-center justify-center gap-2 mb-6">
+      <span class="text-xs font-semibold text-slate-500 dark:text-zinc-400 mr-1">Quick Presets:</span>
+      <button type="button" class="preset-pill px-3 py-1 rounded-full text-xs font-medium border border-slate-200 dark:border-zinc-800 hover:bg-slate-100 dark:hover:bg-zinc-800 transition" data-months="6">
+        6 Months Ago
+      </button>
+      <button type="button" class="preset-pill px-3 py-1 rounded-full text-xs font-medium border border-slate-200 dark:border-zinc-800 hover:bg-slate-100 dark:hover:bg-zinc-800 transition" data-months="12">
+        12 Months (1 Yr)
+      </button>
+      <button type="button" class="preset-pill px-3 py-1 rounded-full text-xs font-medium border border-slate-200 dark:border-zinc-800 hover:bg-slate-100 dark:hover:bg-zinc-800 transition" data-months="18">
+        18 Months
+      </button>
+      <button type="button" class="preset-pill px-3 py-1 rounded-full text-xs font-medium border border-slate-200 dark:border-zinc-800 hover:bg-slate-100 dark:hover:bg-zinc-800 transition" data-months="24">
+        24 Months (2 Yrs)
+      </button>
+      <button type="button" class="preset-pill px-3 py-1 rounded-full text-xs font-medium border border-slate-200 dark:border-zinc-800 hover:bg-slate-100 dark:hover:bg-zinc-800 transition" data-dob="2000-01-01">
+        Adult (2000)
+      </button>
+    </div>
+
+    <!-- Calculator Card -->
+    <div class="cal-card p-6 sm:p-8 mb-8 shadow-sm">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-6">
+        <div>
+          <label for="input-dob" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300 mb-2">
+            Date of Birth
+          </label>
+          <input type="date" id="input-dob" value="2024-05-15" class="cal-input w-full font-mono text-base font-semibold">
+        </div>
+
+        <div>
+          <label for="input-asof" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300 mb-2">
+            Age as on Date
+          </label>
+          <input type="date" id="input-asof" class="cal-input w-full font-mono text-base font-semibold">
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center space-x-3 mb-8">
+        <button id="btn-calc" type="button" class="cal-btn-primary flex-1 py-3 text-sm font-bold tracking-tight">
+          Calculate Exact Months & Days
+        </button>
+        <button id="btn-today" type="button" class="cal-btn-secondary px-4 py-3 text-sm font-medium">
+          Set Today
+        </button>
+      </div>
+
+      <!-- Hero Results Banner -->
+      <div id="results-banner" class="rounded-2xl p-6 sm:p-8 bg-gradient-to-br from-blue-50 to-indigo-50/50 dark:from-zinc-900 dark:to-zinc-900/80 border border-blue-200/80 dark:border-zinc-800 text-center relative overflow-hidden">
+        <span class="text-xs uppercase font-extrabold tracking-widest text-blue-600 dark:text-blue-400 block mb-2">
+          Total Completed Months & Days
+        </span>
+        
+        <!-- Large Primary Stat -->
+        <div class="text-3xl sm:text-5xl font-black text-[#111827] dark:text-[#F9FAFB] tracking-tight font-mono mb-2">
+          <span id="hero-months">0</span> <span class="text-lg sm:text-2xl font-bold font-sans text-slate-600 dark:text-zinc-400">Months</span>
+          <span class="text-slate-300 dark:text-zinc-700 mx-1">·</span>
+          <span id="hero-days">0</span> <span class="text-lg sm:text-2xl font-bold font-sans text-slate-600 dark:text-zinc-400">Days</span>
+        </div>
+
+        <!-- Equivalent Standard Age -->
+        <p class="text-sm font-medium text-slate-600 dark:text-zinc-400">
+          Equivalent to: <span id="std-years" class="font-bold text-[#111827] dark:text-[#F9FAFB]">0</span> Years, 
+          <span id="std-months" class="font-bold text-[#111827] dark:text-[#F9FAFB]">0</span> Months, 
+          <span id="std-days" class="font-bold text-[#111827] dark:text-[#F9FAFB]">0</span> Days
+        </p>
+      </div>
+
+      <!-- Secondary Metric Tiles -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6">
+        <div class="cal-card p-4 text-center">
+          <span class="text-[11px] font-semibold text-slate-500 dark:text-zinc-400 block uppercase">Total Weeks</span>
+          <span id="tile-weeks" class="text-xl font-bold font-mono text-[#111827] dark:text-[#F9FAFB] mt-1 block">0</span>
+        </div>
+        <div class="cal-card p-4 text-center">
+          <span class="text-[11px] font-semibold text-slate-500 dark:text-zinc-400 block uppercase">Total Days</span>
+          <span id="tile-days" class="text-xl font-bold font-mono text-[#111827] dark:text-[#F9FAFB] mt-1 block">0</span>
+        </div>
+        <div class="cal-card p-4 text-center">
+          <span class="text-[11px] font-semibold text-slate-500 dark:text-zinc-400 block uppercase">Total Hours</span>
+          <span id="tile-hours" class="text-xl font-bold font-mono text-[#111827] dark:text-[#F9FAFB] mt-1 block">0</span>
+        </div>
+        <div class="cal-card p-4 text-center">
+          <span class="text-[11px] font-semibold text-slate-500 dark:text-zinc-400 block uppercase">Next Monthday</span>
+          <span id="tile-next-monthday" class="text-xs font-bold text-blue-600 dark:text-blue-400 mt-2 block">Calculating</span>
+        </div>
+      </div>
+
+      <!-- Copy Action -->
+      <div class="mt-6 flex justify-end">
+        <button id="btn-copy" type="button" class="cal-btn-secondary text-xs flex items-center space-x-1.5 py-2 px-3">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          <span>Copy Summary</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Infant & Pediatric Milestone Reference -->
+    <div class="cal-card p-6 sm:p-8 mb-10">
+      <h2 class="text-lg font-bold text-[#111827] dark:text-[#F9FAFB] mb-3">
+        Key Developmental Milestones by Completed Month
+      </h2>
+      <p class="text-xs text-slate-600 dark:text-zinc-400 mb-6">
+        Standard pediatric milestones commonly monitored during the first 24 completed calendar months:
+      </p>
+
+      <div class="space-y-4">
+        <div class="flex items-start space-x-3 p-3 rounded-lg bg-slate-50 dark:bg-zinc-800/60 border border-slate-200 dark:border-zinc-700/60">
+          <span class="px-2.5 py-1 rounded bg-blue-100 dark:bg-blue-950 font-mono text-xs font-bold text-blue-700 dark:text-blue-300">2 Months</span>
+          <div class="text-xs">
+            <span class="font-bold text-[#111827] dark:text-[#F9FAFB]">Social Smile & Visual Tracking</span>
+            <p class="text-slate-600 dark:text-zinc-400 mt-0.5">Calms when spoken to or picked up; tracks moving objects with eyes across midline.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-3 p-3 rounded-lg bg-slate-50 dark:bg-zinc-800/60 border border-slate-200 dark:border-zinc-700/60">
+          <span class="px-2.5 py-1 rounded bg-blue-100 dark:bg-blue-950 font-mono text-xs font-bold text-blue-700 dark:text-blue-300">6 Months</span>
+          <div class="text-xs">
+            <span class="font-bold text-[#111827] dark:text-[#F9FAFB]">Sitting & Solid Food Introduction</span>
+            <p class="text-slate-600 dark:text-zinc-400 mt-0.5">Rolls from tummy to back; sits without support; starts babbling with consonants (da-da, ba-ba).</p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-3 p-3 rounded-lg bg-slate-50 dark:bg-zinc-800/60 border border-slate-200 dark:border-zinc-700/60">
+          <span class="px-2.5 py-1 rounded bg-blue-100 dark:bg-blue-950 font-mono text-xs font-bold text-blue-700 dark:text-blue-300">12 Months</span>
+          <div class="text-xs">
+            <span class="font-bold text-[#111827] dark:text-[#F9FAFB]">First Steps & Words</span>
+            <p class="text-slate-600 dark:text-zinc-400 mt-0.5">Pulls to stand; waves bye-bye; calls parents mama/dada; pincer grasp fully developed.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-3 p-3 rounded-lg bg-slate-50 dark:bg-zinc-800/60 border border-slate-200 dark:border-zinc-700/60">
+          <span class="px-2.5 py-1 rounded bg-blue-100 dark:bg-blue-950 font-mono text-xs font-bold text-blue-700 dark:text-blue-300">18 Months</span>
+          <div class="text-xs">
+            <span class="font-bold text-[#111827] dark:text-[#F9FAFB]">Language Explosion & Running</span>
+            <p class="text-slate-600 dark:text-zinc-400 mt-0.5">Speaks 10+ words; walks independently; drinks from an open cup; points to show interest.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-3 p-3 rounded-lg bg-slate-50 dark:bg-zinc-800/60 border border-slate-200 dark:border-zinc-700/60">
+          <span class="px-2.5 py-1 rounded bg-blue-100 dark:bg-blue-950 font-mono text-xs font-bold text-blue-700 dark:text-blue-300">24 Months</span>
+          <div class="text-xs">
+            <span class="font-bold text-[#111827] dark:text-[#F9FAFB]">Two-Word Phrases & Running</span>
+            <p class="text-slate-600 dark:text-zinc-400 mt-0.5">Combines two words (e.g. 'more milk'); kicks a ball; runs with steady balance.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="mb-12">
+      <h2 class="text-xl font-bold text-[#111827] dark:text-[#F9FAFB] mb-4">
+        Frequently Asked Questions
+      </h2>
+      <div class="space-y-3">
+        <details class="cal-card p-4">
+          <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-[#111827] dark:text-[#F9FAFB]">
+            <span>How do you calculate age in months and days without dividing by 30?</span>
+            <span class="text-slate-400">+</span>
+          </summary>
+          <p class="mt-2.5 text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            Our engine tracks actual calendar months. For instance, moving from January 15 to February 15 counts as exactly 1 month, regardless of whether January has 31 days. Remaining days are calculated from the previous completed month boundary.
+          </p>
+        </details>
+
+        <details class="cal-card p-4">
+          <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-[#111827] dark:text-[#F9FAFB]">
+            <span>When does a baby turn 1 month old?</span>
+            <span class="text-slate-400">+</span>
+          </summary>
+          <p class="mt-2.5 text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            A baby born on March 14th reaches exactly 1 month old on April 14th. If born on January 31st, they reach 1 month old on February 28th (or Feb 29th in a leap year).
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Related Tools Grid -->
+    <section class="border-t border-slate-200 dark:border-zinc-800 pt-8">
+      <h2 class="text-base font-bold text-[#111827] dark:text-[#F9FAFB] mb-3">
+        Other Specialized Calculators
+      </h2>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <a href="index.html" class="cal-card p-4 group block">
+          <span class="text-xs font-semibold text-[#2563EB] dark:text-[#3B82F6]">Live Tool</span>
+          <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] mt-1 transition">
+            Age Calculator
+          </div>
+          <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+            Full years/months/days
+          </div>
+        </a>
+
+        <a href="calculate-age-in-excel.html" class="cal-card p-4 group block">
+          <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">Formulas</span>
+          <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] mt-1 transition">
+            Age in Excel
+          </div>
+          <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+            DATEDIF generator
+          </div>
+        </a>
+
+        <a href="how-old-will-i-be-in-2040.html" class="cal-card p-4 group block">
+          <span class="text-xs font-semibold text-amber-600 dark:text-amber-400">Milestones</span>
+          <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] mt-1 transition">
+            Age in 2040
+          </div>
+          <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+            Future milestones
+          </div>
+        </a>
+
+        <a href="age-difference-calculator.html" class="cal-card p-4 group block">
+          <span class="text-xs font-semibold text-purple-600 dark:text-purple-400">Comparison</span>
+          <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] mt-1 transition">
+            Age Difference
+          </div>
+          <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+            Compare 2 birthdates
+          </div>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Dynamic Toast -->
+  <div id="toast" role="status" aria-live="polite" class="fixed bottom-6 right-6 z-50 hide cal-card px-4 py-3 shadow-lg flex items-center space-x-2.5 text-xs font-semibold">
+    <div class="w-4 h-4 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center flex-shrink-0 text-[10px]">
+      ✓
+    </div>
+    <span id="toast-text" class="text-[#111827] dark:text-[#F9FAFB]">Summary copied to clipboard!</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="mt-16 border-t border-[#E5E7EB] dark:border-[#27272A] py-10 text-xs text-slate-500 dark:text-zinc-400">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center space-x-2">
+          <img src="assets/logo-mark.svg" alt="Age Calculator Logo" width="20" height="20" class="w-5 h-5 rounded shadow-sm">
+          <span class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB]">Dobcal Chronometer</span>
+          <span>&copy; <span id="current-year">2026</span> All rights reserved.</span>
+        </div>
+        <div class="flex flex-wrap items-center gap-4 font-medium">
+          <a href="index.html" class="hover:text-black dark:hover:text-white transition">Home</a>
+          <a href="age-in-months-and-days.html" class="hover:text-black dark:hover:text-white transition">Months & Days</a>
+          <a href="calculate-age-in-excel.html" class="hover:text-black dark:hover:text-white transition">Excel Guide</a>
+          <a href="age-calculator-for-government-exams.html" class="hover:text-black dark:hover:text-white transition">Govt Exams</a>
+          <a href="age-difference-calculator.html" class="hover:text-black dark:hover:text-white transition">Age Difference</a>
+        </div>
+      </div>
+      <p class="text-center text-slate-400 dark:text-zinc-500 text-[11px]">
+        Designed for pediatric health records, infant growth tracking, and duration documentation.
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/calculator.js"></script>
+  <script>
+    // Theme setup
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const sunIcon = document.getElementById('theme-sun');
+    const moonIcon = document.getElementById('theme-moon');
+
+    function initTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        sunIcon?.classList.remove('hidden');
+        moonIcon?.classList.add('hidden');
+      } else {
+        document.documentElement.classList.remove('dark');
+        sunIcon?.classList.add('hidden');
+        moonIcon?.classList.remove('hidden');
+      }
+    }
+
+    themeToggleBtn?.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      if (isDark) {
+        sunIcon?.classList.remove('hidden');
+        moonIcon?.classList.add('hidden');
+      } else {
+        sunIcon?.classList.add('hidden');
+        moonIcon?.classList.remove('hidden');
+      }
+    });
+    initTheme();
+
+    // DOM Elements
+    const inputDob = document.getElementById('input-dob');
+    const inputAsof = document.getElementById('input-asof');
+    const btnCalc = document.getElementById('btn-calc');
+    const btnToday = document.getElementById('btn-today');
+    const heroMonths = document.getElementById('hero-months');
+    const heroDays = document.getElementById('hero-days');
+    const stdYears = document.getElementById('std-years');
+    const stdMonths = document.getElementById('std-months');
+    const stdDays = document.getElementById('std-days');
+    const tileWeeks = document.getElementById('tile-weeks');
+    const tileDays = document.getElementById('tile-days');
+    const tileHours = document.getElementById('tile-hours');
+    const tileNextMonthday = document.getElementById('tile-next-monthday');
+    const btnCopy = document.getElementById('btn-copy');
+
+    // Default today
+    const now = new Date();
+    const todayISO = now.toISOString().split('T')[0];
+    if (inputAsof) inputAsof.value = todayISO;
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastText = document.getElementById('toast-text');
+      if (!toast) return;
+      if (toastText) toastText.textContent = msg;
+      toast.classList.remove('hide');
+      setTimeout(() => toast.classList.add('hide'), 2500);
+    }
+
+    function calculate() {
+      if (!window.AgeCalculator || !inputDob.value || !inputAsof.value) return;
+      try {
+        const res = AgeCalculator.calculateAge(inputDob.value, inputAsof.value);
+        heroMonths.textContent = res.totalMonths.toLocaleString();
+        heroDays.textContent = res.days;
+        stdYears.textContent = res.years;
+        stdMonths.textContent = res.months;
+        stdDays.textContent = res.days;
+        tileWeeks.textContent = res.totalWeeks.toLocaleString();
+        tileDays.textContent = res.totalDays.toLocaleString();
+        tileHours.textContent = res.totalHours.toLocaleString();
+
+        // Calculate days to next monthday
+        const asOfDate = new Date(inputAsof.value + 'T00:00:00Z');
+        const dobDate = new Date(inputDob.value + 'T00:00:00Z');
+        const dobDay = dobDate.getUTCDate();
+        let nextMonth = asOfDate.getUTCMonth();
+        let nextYear = asOfDate.getUTCFullYear();
+        if (asOfDate.getUTCDate() >= dobDay) {
+          nextMonth += 1;
+          if (nextMonth > 11) {
+            nextMonth = 0;
+            nextYear += 1;
+          }
+        }
+        const nextMonthDate = new Date(Date.UTC(nextYear, nextMonth, dobDay));
+        const diffDays = Math.round((nextMonthDate - asOfDate) / 86400000);
+        tileNextMonthday.textContent = diffDays === 0 ? 'Today!' : `In ${diffDays} day${diffDays === 1 ? '' : 's'}`;
+      } catch (err) {
+        showToast(err.message);
+      }
+    }
+
+    btnCalc?.addEventListener('click', calculate);
+    inputDob?.addEventListener('change', calculate);
+    inputAsof?.addEventListener('change', calculate);
+
+    btnToday?.addEventListener('click', () => {
+      inputAsof.value = todayISO;
+      calculate();
+    });
+
+    // Preset pills
+    document.querySelectorAll('.preset-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const m = btn.getAttribute('data-months');
+        const d = btn.getAttribute('data-dob');
+        if (m) {
+          const past = new Date();
+          past.setMonth(past.getMonth() - parseInt(m, 10));
+          inputDob.value = past.toISOString().split('T')[0];
+        } else if (d) {
+          inputDob.value = d;
+        }
+        calculate();
+      });
+    });
+
+    btnCopy?.addEventListener('click', () => {
+      const summary = `${heroMonths.textContent} Months and ${heroDays.textContent} Days old (${stdYears.textContent} Years, ${stdMonths.textContent} Months, ${stdDays.textContent} Days). Total Days: ${tileDays.textContent}.`;
+      navigator.clipboard.writeText(summary).then(() => {
+        showToast('Months & Days summary copied!');
+      }).catch(() => {
+        showToast('Failed to copy');
+      });
+    });
+
+    // Initialize
+    calculate();
+  </script>
+</body>
+</html>
+

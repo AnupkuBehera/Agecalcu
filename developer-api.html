@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developer API & SDK – Embeddable Precision Engine</title>
+  <meta name="description" content="Integrate high-precision chronological age, date difference, retirement, and planetary calculations into your web or mobile applications using the Dobcal JavaScript SDK.">
+  <link rel="canonical" href="https://dobcal.pages.dev/developer-api.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dobcal.pages.dev/developer-api.html">
+  <meta property="og:title" content="Dobcal Developer API & JavaScript SDK">
+  <meta property="og:description" content="Embeddable, zero-dependency client SDK for chronological age, retirement, and calendar calculations.">
+  <meta property="og:image" content="https://dobcal.pages.dev/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="assets/logo-mark.svg">
+  <link rel="manifest" href="manifest.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', '-apple-system', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Developer API & SDK",
+    "url": "https://dobcal.pages.dev/developer-api.html",
+    "description": "Developer API and JavaScript SDK documentation for chronological date calculations.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "All"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://dobcal.pages.dev/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Developer API & SDK",
+        "item": "https://dobcal.pages.dev/developer-api.html"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is the Dobcal calculation SDK free to use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, the Dobcal calculation engine is completely free and open-source under the MIT license. You can embed it directly into your own frontend websites or backend Node.js applications."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are API calls rate-limited or require an API key?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Because the SDK runs 100% client-side inside your user's browser, there are zero network calls, zero rate limits, and no API keys required."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I embed the calculator widget into my WordPress or HTML site?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can embed our lightweight iframe widget by adding <iframe src='https://dobcal.pages.dev/embed-widget.html' width='100%' height='380' frameborder='0'></iframe> to your site."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="min-h-screen flex flex-col font-sans antialiased relative transition-colors duration-150">
+
+  <!-- Header -->
+  <header class="w-full sticky top-0 z-40 backdrop-blur-md bg-white/80 dark:bg-[#09090B]/80 border-b border-[#E5E7EB] dark:border-[#27272A]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-2.5">
+        <img src="assets/logo-mark.svg" alt="Dobcal Logo" width="32" height="32" class="w-8 h-8 rounded-lg shadow-sm">
+        <div class="flex flex-col">
+          <span class="text-base font-extrabold tracking-tight text-[#111827] dark:text-[#F9FAFB]">Dobcal</span>
+          <span class="text-[10px] font-mono font-bold tracking-wider text-blue-600 dark:text-blue-400">SDK & API</span>
+        </div>
+      </a>
+
+      <div class="flex items-center space-x-2 sm:space-x-4">
+        <a href="index.html" class="text-xs font-semibold text-slate-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition">Home</a>
+        <a href="embed-widget.html" class="hidden sm:inline text-xs font-semibold text-slate-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition">Embed Widget</a>
+        <button id="theme-toggle" type="button" aria-label="Toggle theme" class="w-9 h-9 rounded-lg flex items-center justify-center text-slate-600 dark:text-zinc-300 border border-slate-200 dark:border-zinc-800">
+          <span id="theme-icon">◐</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 w-full">
+    
+    <div class="text-center max-w-2xl mx-auto mb-8">
+      <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-wider mb-3">
+        <span>Open Source Client-Side SDK</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-[#111827] dark:text-[#F9FAFB] tracking-tight">
+        Dobcal Developer API
+      </h1>
+      <p class="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 mt-2">
+        Zero dependencies, zero network requests, 100% client-side precision calendar calculation.
+      </p>
+    </div>
+
+    <!-- Quick Start Script Tag Card -->
+    <div class="cal-card p-6 sm:p-8 mb-8 space-y-4">
+      <h2 class="text-base font-bold text-[#111827] dark:text-[#F9FAFB]">1. Installation & Import</h2>
+      <p class="text-xs text-slate-600 dark:text-zinc-400">
+        Import the standalone calculation engine into your web application via script tag or ES module:
+      </p>
+
+      <div class="rounded-xl bg-[#09090b] border border-zinc-800 p-4 font-mono text-xs text-blue-400 overflow-x-auto">
+        &lt;script src="https://dobcal.pages.dev/js/calculator.js"&gt;&lt;/script&gt;
+      </div>
+    </div>
+
+    <!-- Methods Reference -->
+    <div class="cal-card p-6 sm:p-8 mb-8 space-y-6">
+      <h2 class="text-base font-bold text-[#111827] dark:text-[#F9FAFB]">2. Core Methods Reference</h2>
+
+      <!-- Method 1 -->
+      <div class="border-b border-slate-100 dark:border-zinc-800 pb-4">
+        <div class="flex items-center space-x-2">
+          <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300">METHOD</span>
+          <code class="text-sm font-bold text-[#111827] dark:text-[#F9FAFB]">AgeCalculator.calcAge(dob, asOf)</code>
+        </div>
+        <p class="text-xs text-slate-600 dark:text-zinc-400 mt-1.5">
+          Calculates chronological years, months, and days using month-end borrowing with leap-year handling.
+        </p>
+        <pre class="mt-2.5 p-3 rounded-lg bg-[#09090b] text-slate-300 font-mono text-xs overflow-x-auto">const result = AgeCalculator.calcAge('2000-01-01', '2026-01-01');
+console.log(result.years, result.months, result.days); // 26, 0, 0
+console.log(result.totals.days); // 9497
+console.log(result.westernZodiac.name); // Capricorn</pre>
+      </div>
+
+      <!-- Method 2 -->
+      <div class="border-b border-slate-100 dark:border-zinc-800 pb-4">
+        <div class="flex items-center space-x-2">
+          <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300">METHOD</span>
+          <code class="text-sm font-bold text-[#111827] dark:text-[#F9FAFB]">AgeCalculator.calcRetirementAndPension(dob, doj, retAge)</code>
+        </div>
+        <p class="text-xs text-slate-600 dark:text-zinc-400 mt-1.5">
+          Computes exact retirement date, remaining service, and qualifying pension years.
+        </p>
+      </div>
+
+      <!-- Method 3 -->
+      <div class="border-b border-slate-100 dark:border-zinc-800 pb-4">
+        <div class="flex items-center space-x-2">
+          <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300">METHOD</span>
+          <code class="text-sm font-bold text-[#111827] dark:text-[#F9FAFB]">AgeCalculator.calcPlanetaryAges(dob)</code>
+        </div>
+        <p class="text-xs text-slate-600 dark:text-zinc-400 mt-1.5">
+          Computes chronological age on Mercury, Venus, Mars, Jupiter, Saturn, Uranus, and Neptune.
+        </p>
+      </div>
+
+      <!-- Method 4 -->
+      <div>
+        <div class="flex items-center space-x-2">
+          <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300">METHOD</span>
+          <code class="text-sm font-bold text-[#111827] dark:text-[#F9FAFB]">AgeCalculator.generateIcsCalendar(options)</code>
+        </div>
+        <p class="text-xs text-slate-600 dark:text-zinc-400 mt-1.5">
+          Generates valid RFC 5545 iCalendar (`.ics`) file strings with annual recurrence.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Live Interactive Sandbox -->
+    <div class="cal-card p-6 sm:p-8 mb-8 space-y-4">
+      <h2 class="text-base font-bold text-[#111827] dark:text-[#F9FAFB]">3. Live SDK Sandbox</h2>
+      <p class="text-xs text-slate-600 dark:text-zinc-400">
+        Test the calculation engine in real-time below:
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-3">
+        <input type="date" id="api-test-dob" value="2000-01-01" class="cal-input font-mono text-xs py-2 sm:w-48">
+        <button id="btn-run-api" type="button" class="cal-btn-primary text-xs py-2 px-4 whitespace-nowrap">
+          Execute calcAge()
+        </button>
+      </div>
+
+      <pre id="api-json-output" class="p-4 rounded-xl bg-[#09090b] text-emerald-400 font-mono text-xs overflow-x-auto max-h-64"></pre>
+    </div>
+
+    <!-- FAQ Accordion & Related Tools -->
+    <article class="cal-card p-6 sm:p-8 space-y-4 mb-8">
+      <h2 class="text-lg font-bold text-[#111827] dark:text-[#F9FAFB]">Frequently Asked Questions</h2>
+      <div class="space-y-3">
+        <details class="group p-3.5 rounded-xl border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-900/60 transition">
+          <summary class="flex justify-between items-center font-semibold text-xs text-[#111827] dark:text-[#F9FAFB] cursor-pointer list-none">
+            <span>Is the Dobcal calculation SDK free to use?</span>
+            <span class="text-slate-400 group-hover:text-blue-600 transition">↓</span>
+          </summary>
+          <p class="mt-2 text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            Yes, the Dobcal calculation engine is completely free and open-source under the MIT license. You can embed it directly into your own frontend websites or backend Node.js applications.
+          </p>
+        </details>
+
+        <details class="group p-3.5 rounded-xl border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-900/60 transition">
+          <summary class="flex justify-between items-center font-semibold text-xs text-[#111827] dark:text-[#F9FAFB] cursor-pointer list-none">
+            <span>Are API calls rate-limited or require an API key?</span>
+            <span class="text-slate-400 group-hover:text-blue-600 transition">↓</span>
+          </summary>
+          <p class="mt-2 text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            Because the SDK runs 100% client-side inside your user's browser, there are zero network calls, zero rate limits, and no API keys required.
+          </p>
+        </details>
+
+        <details class="group p-3.5 rounded-xl border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-900/60 transition">
+          <summary class="flex justify-between items-center font-semibold text-xs text-[#111827] dark:text-[#F9FAFB] cursor-pointer list-none">
+            <span>How do I embed the calculator widget into my WordPress or HTML site?</span>
+            <span class="text-slate-400 group-hover:text-blue-600 transition">↓</span>
+          </summary>
+          <p class="mt-2 text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            You can embed our lightweight iframe widget by adding &lt;iframe src='https://dobcal.pages.dev/embed-widget.html' width='100%' height='380' frameborder='0'&gt;&lt;/iframe&gt; to your site.
+          </p>
+        </details>
+      </div>
+
+      <!-- Related Pillar Tools -->
+      <div class="pt-4 border-t border-slate-200 dark:border-zinc-800">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2.5">Related Developer & Batch Utilities</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+          <a href="bulk-age-calculator.html" class="p-3 rounded-lg border border-slate-200 dark:border-zinc-800 hover:border-blue-500 transition text-xs font-semibold block">
+            <span class="text-blue-600 dark:text-blue-400">Bulk Age Calculator</span>
+            <p class="text-[11px] text-slate-500 font-normal mt-0.5">CSV batch processing</p>
+          </a>
+          <a href="embed-widget.html" class="p-3 rounded-lg border border-slate-200 dark:border-zinc-800 hover:border-blue-500 transition text-xs font-semibold block">
+            <span class="text-emerald-600 dark:text-emerald-400">Embed Widget</span>
+            <p class="text-[11px] text-slate-500 font-normal mt-0.5">Standalone iframe embed</p>
+          </a>
+          <a href="calculate-age-in-excel.html" class="p-3 rounded-lg border border-slate-200 dark:border-zinc-800 hover:border-blue-500 transition text-xs font-semibold block">
+            <span class="text-purple-600 dark:text-purple-400">Age in Excel</span>
+            <p class="text-[11px] text-slate-500 font-normal mt-0.5">Formula generator</p>
+          </a>
+        </div>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-auto border-t border-[#E5E7EB] dark:border-[#27272A] py-8 text-xs text-slate-500 dark:text-zinc-400">
+    <div class="max-w-5xl mx-auto px-4 text-center space-y-2">
+      <p>&copy; 2026 Dobcal. Open Source Architecture.</p>
+      <div class="flex justify-center space-x-4 font-medium">
+        <a href="index.html" class="hover:underline">Home</a>
+        <a href="embed-widget.html" class="hover:underline">Widget</a>
+        <a href="bulk-age-calculator.html" class="hover:underline">Bulk Tool</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/calculator.js"></script>
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+    });
+
+    const testDob = document.getElementById('api-test-dob');
+    const btnRun = document.getElementById('btn-run-api');
+    const jsonOutput = document.getElementById('api-json-output');
+
+    function runTest() {
+      if (!testDob.value) return;
+      try {
+        const res = AgeCalculator.calcAge(testDob.value);
+        jsonOutput.textContent = JSON.stringify(res, null, 2);
+      } catch (e) {
+        jsonOutput.textContent = JSON.stringify({ error: e.message }, null, 2);
+      }
+    }
+
+    btnRun.addEventListener('click', runTest);
+    testDob.addEventListener('input', runTest);
+    runTest();
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,27 @@
+{
+  "name": "Dobcal – Age Calculator & Life Planning",
+  "short_name": "Dobcal",
+  "description": "Chronological age, retirement countdown, pregnancy due date, child vaccination schedule, and cosmic planet ages with 100% client-side privacy.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#08080A",
+  "theme_color": "#08080A",
+  "orientation": "portrait-primary",
+  "categories": ["utilities", "lifestyle", "productivity"],
+  "icons": [
+    {
+      "src": "assets/logo-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
+

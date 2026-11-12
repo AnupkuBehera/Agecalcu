@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voting & Driving License Age Eligibility Calculator</title>
+  <meta name="description" content="Check if you are eligible to vote or apply for a driving license. Exact 18th birthday countdown and quarterly electoral cutoff dates. 100% private.">
+  <link rel="canonical" href="https://dobcal.pages.dev/voting-and-driving-eligibility-calculator.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dobcal.pages.dev/voting-and-driving-eligibility-calculator.html">
+  <meta property="og:title" content="Voting & Driving License Age Eligibility Calculator">
+  <meta property="og:description" content="Calculate legal adulthood, voter registration cutoffs (1st Jan, 1st Apr, 1st Jul, 1st Oct), and driving license eligibility in years, months, and days.">
+  <meta property="og:image" content="https://dobcal.pages.dev/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Voting & Driving License Age Eligibility Calculator">
+  <meta name="twitter:description" content="Check eligibility for voting and driving license with exact countdown to 18.">
+  <meta name="twitter:image" content="https://dobcal.pages.dev/assets/og-image.png">
+
+  <!-- Favicon & Touch Icon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="assets/logo-mark.svg">
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    };
+  </script>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Schema.org WebApplication Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Voting and Driving Eligibility Calculator",
+    "url": "https://dobcal.pages.dev/voting-and-driving-eligibility-calculator.html",
+    "description": "Calculate legal adulthood milestones, voter registration qualifying dates, and driving license eligibility under the Motor Vehicles Act.",
+    "applicationCategory": "LegalApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript. Requires HTML5.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- Schema.org FAQPage Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What are the 4 qualifying dates for Voter ID registration in India?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Election Commission of India (ECI) allows young citizens turning 18 to enroll on four qualifying dates each year: 1st January, 1st April, 1st July, and 1st October."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can a 16-year-old drive a vehicle in India?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, under Section 4 of the Motor Vehicles Act, a person who has attained the age of 16 years is eligible to obtain a learner's license to drive a gearless motorcycle or scooter with engine capacity not exceeding 50cc (or specified electric equivalent), with parental consent."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the minimum age to get a private car driving license?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The minimum legal age to obtain a Light Motor Vehicle (LMV) driving license for driving private cars and gear motorcycles is 18 years."
+        }
+      }
+    ]
+  }
+  </script>
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://dobcal.pages.dev/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Voting & Driving Eligibility Calculator",
+        "item": "https://dobcal.pages.dev/voting-and-driving-eligibility-calculator.html"
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="min-h-screen flex flex-col font-sans antialiased relative transition-colors duration-150">
+
+  <!-- Sticky Minimal Navbar -->
+  <header class="w-full sticky top-0 z-40 backdrop-blur-md bg-white/80 dark:bg-[#09090B]/80 border-b border-[#E5E7EB] dark:border-[#27272A] transition-colors duration-150">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-2.5 group">
+        <img src="assets/logo-mark.svg" alt="Age Calculator Logo" width="32" height="32" class="w-8 h-8 rounded-lg shadow-sm group-hover:scale-105 transition-transform duration-150">
+        <div class="flex flex-col">
+          <span class="text-base font-extrabold tracking-tight text-[#111827] dark:text-[#F9FAFB]">
+            Age Calculator
+          </span>
+          <span class="text-[10px] uppercase font-semibold tracking-wider text-[#2563EB] dark:text-[#3B82F6]">
+            Legal Eligibility
+          </span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600 dark:text-zinc-400">
+        <a href="index.html" class="hover:text-black dark:hover:text-white transition">Home</a>
+          <a href="about.html" class="hover:text-black dark:hover:text-white transition">About</a>
+          <a href="privacy.html" class="hover:text-black dark:hover:text-white transition">Privacy Policy</a>
+          <a href="terms.html" class="hover:text-black dark:hover:text-white transition">Terms</a>
+        <a href="voting-and-driving-eligibility-calculator.html" class="text-black dark:text-white font-semibold">Vote & Drive</a>
+        <a href="school-admission-age-calculator.html" class="hover:text-black dark:hover:text-white transition">School Admission</a>
+        <a href="age-calculator-for-government-exams.html" class="hover:text-black dark:hover:text-white transition">Govt Exams</a>
+        <a href="pet-age-calculator.html" class="hover:text-black dark:hover:text-white transition">Pet Age</a>
+      </nav>
+
+      <!-- Theme Toggle -->
+      <div class="flex items-center space-x-3">
+        <button id="theme-toggle" type="button" aria-label="Toggle dark mode" class="w-10 h-10 rounded-lg flex items-center justify-center text-slate-600 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-zinc-800 border border-slate-200 dark:border-zinc-800 transition-colors">
+          <svg id="theme-sun" class="w-4 h-4 hidden text-amber-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+          </svg>
+          <svg id="theme-moon" class="w-4 h-4 hidden text-zinc-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-16 w-full">
+
+    <!-- Hero Section -->
+    <div class="text-center mb-8">
+      <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-purple-100 dark:bg-purple-950/60 border border-purple-300 dark:border-purple-800/60 text-xs font-semibold text-purple-800 dark:text-purple-300 mb-3">
+        <span class="w-2 h-2 rounded-full bg-purple-500"></span>
+        <span>Adulthood & Legal Milestones</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-[#111827] dark:text-[#F9FAFB] tracking-tight leading-tight mb-3">
+        Voting & Driving Eligibility Calculator
+      </h1>
+      <p class="text-base sm:text-lg text-slate-600 dark:text-zinc-400 max-w-xl mx-auto font-normal">
+        Check when you qualify to vote, drive a car or scooter, and track your countdown to legal adulthood.
+      </p>
+    </div>
+
+    <!-- Date Input Card -->
+    <div class="cal-card p-6 sm:p-8 mb-8 shadow-sm">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+        <div>
+          <label for="input-dob" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300 mb-1.5">
+            Your Date of Birth
+          </label>
+          <input type="date" id="input-dob" value="2009-08-20" class="cal-input w-full font-mono font-semibold text-sm">
+        </div>
+
+        <div>
+          <label for="input-asof" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300 mb-1.5">
+            Evaluation Date
+          </label>
+          <input type="date" id="input-asof" class="cal-input w-full font-mono font-semibold text-sm">
+        </div>
+      </div>
+
+      <!-- Hero Age Status Display -->
+      <div class="rounded-2xl p-6 sm:p-8 bg-gradient-to-br from-purple-50 to-indigo-50/50 dark:from-zinc-900 dark:to-zinc-900/80 border border-purple-200/80 dark:border-zinc-800 text-center relative overflow-hidden mb-6">
+        <span class="text-xs uppercase font-extrabold tracking-widest text-purple-600 dark:text-purple-400 block mb-2">
+          Your Current Exact Age
+        </span>
+
+        <div class="text-3xl sm:text-5xl font-black text-[#111827] dark:text-[#F9FAFB] tracking-tight font-mono mb-2">
+          <span id="hero-years">0</span> <span class="text-lg sm:text-2xl font-bold font-sans text-slate-500 dark:text-zinc-400">Years</span>
+          <span class="text-slate-300 dark:text-zinc-700 mx-1">·</span>
+          <span id="hero-months">0</span> <span class="text-lg sm:text-2xl font-bold font-sans text-slate-500 dark:text-zinc-400">Months</span>
+          <span class="text-slate-300 dark:text-zinc-700 mx-1">·</span>
+          <span id="hero-days">0</span> <span class="text-lg sm:text-2xl font-bold font-sans text-slate-500 dark:text-zinc-400">Days</span>
+        </div>
+
+        <p id="countdown-18-sentence" class="text-xs sm:text-sm font-semibold text-purple-700 dark:text-purple-300">
+          Calculating countdown to 18th birthday...
+        </p>
+      </div>
+
+      <!-- Legal Milestones Checklist Grid -->
+      <div class="space-y-3">
+        
+        <!-- 1. Voting Rights -->
+        <div id="card-voting" class="p-4 rounded-xl border flex items-center justify-between gap-4 transition-colors">
+          <div class="flex items-center space-x-3.5">
+            <div id="icon-voting" class="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-lg flex-shrink-0">
+              🗳️
+            </div>
+            <div>
+              <div class="flex items-center space-x-2">
+                <span class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB]">Voter ID & Election Voting</span>
+                <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-zinc-300">18+ Years</span>
+              </div>
+              <p id="desc-voting" class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">Eligible to enroll on next ECI qualifying date.</p>
+            </div>
+          </div>
+          <span id="badge-voting" class="text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">Checking</span>
+        </div>
+
+        <!-- 2. Car & Bike Driving License (LMV) -->
+        <div id="card-driving-lmv" class="p-4 rounded-xl border flex items-center justify-between gap-4 transition-colors">
+          <div class="flex items-center space-x-3.5">
+            <div id="icon-driving-lmv" class="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-lg flex-shrink-0">
+              🚗
+            </div>
+            <div>
+              <div class="flex items-center space-x-2">
+                <span class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB]">Light Motor Vehicle (Car & Gear Bike)</span>
+                <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-zinc-300">18+ Years</span>
+              </div>
+              <p id="desc-driving-lmv" class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">Private vehicle permanent and learner driving license.</p>
+            </div>
+          </div>
+          <span id="badge-driving-lmv" class="text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">Checking</span>
+        </div>
+
+        <!-- 3. Gearless Scooter (16 Yrs) -->
+        <div id="card-scooter" class="p-4 rounded-xl border flex items-center justify-between gap-4 transition-colors">
+          <div class="flex items-center space-x-3.5">
+            <div id="icon-scooter" class="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-lg flex-shrink-0">
+              🛵
+            </div>
+            <div>
+              <div class="flex items-center space-x-2">
+                <span class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB]">Gearless Two-Wheeler (up to 50cc)</span>
+                <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-zinc-300">16+ Years</span>
+              </div>
+              <p id="desc-scooter" class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">Learner license with parental/guardian consent.</p>
+            </div>
+          </div>
+          <span id="badge-scooter" class="text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">Checking</span>
+        </div>
+
+        <!-- 4. Commercial / Transport Vehicles (20 Yrs) -->
+        <div id="card-transport" class="p-4 rounded-xl border flex items-center justify-between gap-4 transition-colors">
+          <div class="flex items-center space-x-3.5">
+            <div id="icon-transport" class="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-lg flex-shrink-0">
+              🚛
+            </div>
+            <div>
+              <div class="flex items-center space-x-2">
+                <span class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB]">Commercial / Transport Vehicle License</span>
+                <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-zinc-300">20+ Years</span>
+              </div>
+              <p id="desc-transport" class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">Heavy vehicles, trucks, commercial buses, and taxis.</p>
+            </div>
+          </div>
+          <span id="badge-transport" class="text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">Checking</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ECI 4 Cutoffs Guide -->
+    <div class="cal-card p-6 sm:p-8 mb-10">
+      <h2 class="text-lg font-bold text-[#111827] dark:text-[#F9FAFB] mb-3">
+        Election Commission of India (ECI) Voter Enrollment Rules
+      </h2>
+      <p class="text-xs text-slate-600 dark:text-zinc-400 mb-6">
+        Under the amended Representation of the People Act, 17-year-olds can apply in advance for voter registration across 4 annual qualifying dates:
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+        <div class="p-3 rounded-lg border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-800/40">
+          <span class="font-bold text-[#111827] dark:text-[#F9FAFB] block">1st January Cutoff</span>
+          <p class="text-slate-500 dark:text-zinc-400 mt-1">If turning 18 between Oct 2 & Jan 1, eligible for enrollment in Q1 revisions.</p>
+        </div>
+        <div class="p-3 rounded-lg border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-800/40">
+          <span class="font-bold text-[#111827] dark:text-[#F9FAFB] block">1st April Cutoff</span>
+          <p class="text-slate-500 dark:text-zinc-400 mt-1">If turning 18 between Jan 2 & Apr 1, eligible for enrollment in Q2 revisions.</p>
+        </div>
+        <div class="p-3 rounded-lg border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-800/40">
+          <span class="font-bold text-[#111827] dark:text-[#F9FAFB] block">1st July Cutoff</span>
+          <p class="text-slate-500 dark:text-zinc-400 mt-1">If turning 18 between Apr 2 & Jul 1, eligible for enrollment in Q3 revisions.</p>
+        </div>
+        <div class="p-3 rounded-lg border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-800/40">
+          <span class="font-bold text-[#111827] dark:text-[#F9FAFB] block">1st October Cutoff</span>
+          <p class="text-slate-500 dark:text-zinc-400 mt-1">If turning 18 between Jul 2 & Oct 1, eligible for enrollment in Q4 revisions.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="mb-12">
+      <h2 class="text-xl font-bold text-[#111827] dark:text-[#F9FAFB] mb-4">
+        Frequently Asked Questions
+      </h2>
+      <div class="space-y-3">
+        <details class="cal-card p-4">
+          <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-[#111827] dark:text-[#F9FAFB]">
+            <span>Can I apply for a Voter ID card before turning 18?</span>
+            <span class="text-slate-400">+</span>
+          </summary>
+          <p class="mt-2.5 text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            Yes. Youth above 17 years can apply in advance using Form 6 on the NVSP / Voter Helpline App. Your application is automatically processed when you turn 18 on the nearest qualifying date.
+          </p>
+        </details>
+
+        <details class="cal-card p-4">
+          <summary class="font-semibold text-sm cursor-pointer list-none flex justify-between items-center text-[#111827] dark:text-[#F9FAFB]">
+            <span>What documents prove age for a driving license in India?</span>
+            <span class="text-slate-400">+</span>
+          </summary>
+          <p class="mt-2.5 text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            Acceptable proof of age documents include 10th standard mark sheet, Aadhaar Card, Passport, or Birth Certificate.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Related Tools Grid -->
+    <section class="border-t border-slate-200 dark:border-zinc-800 pt-8">
+      <h2 class="text-base font-bold text-[#111827] dark:text-[#F9FAFB] mb-3">
+        Other Specialized Calculators
+      </h2>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <a href="index.html" class="cal-card p-4 group block">
+          <span class="text-xs font-semibold text-[#2563EB] dark:text-[#3B82F6]">Live Tool</span>
+          <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] mt-1 transition">
+            Age Calculator
+          </div>
+          <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+            Full years/months/days
+          </div>
+        </a>
+
+        <a href="school-admission-age-calculator.html" class="cal-card p-4 group block">
+          <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">Schools</span>
+          <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] mt-1 transition">
+            School Admission
+          </div>
+          <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+            NEP 2020 6+ rule
+          </div>
+        </a>
+
+        <a href="age-calculator-for-government-exams.html" class="cal-card p-4 group block">
+          <span class="text-xs font-semibold text-blue-600 dark:text-blue-400">Govt Exams</span>
+          <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] mt-1 transition">
+            Govt Exam Cutoff
+          </div>
+          <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+            UPSC & SSC Cutoff
+          </div>
+        </a>
+
+        <a href="pet-age-calculator.html" class="cal-card p-4 group block">
+          <span class="text-xs font-semibold text-amber-600 dark:text-amber-400">Pets</span>
+          <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] mt-1 transition">
+            Pet Age Calculator
+          </div>
+          <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+            Dog & cat human years
+          </div>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-16 border-t border-[#E5E7EB] dark:border-[#27272A] py-10 text-xs text-slate-500 dark:text-zinc-400">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center space-x-2">
+          <img src="assets/logo-mark.svg" alt="Age Calculator Logo" width="20" height="20" class="w-5 h-5 rounded shadow-sm">
+          <span class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB]">Dobcal Chronometer</span>
+          <span>&copy; <span id="current-year">2026</span> All rights reserved.</span>
+        </div>
+        <div class="flex flex-wrap items-center gap-4 font-medium">
+          <a href="index.html" class="hover:text-black dark:hover:text-white transition">Home</a>
+          <a href="voting-and-driving-eligibility-calculator.html" class="hover:text-black dark:hover:text-white transition">Vote & Drive</a>
+          <a href="school-admission-age-calculator.html" class="hover:text-black dark:hover:text-white transition">School Admission</a>
+          <a href="age-calculator-for-government-exams.html" class="hover:text-black dark:hover:text-white transition">Govt Exams</a>
+          <a href="pet-age-calculator.html" class="hover:text-black dark:hover:text-white transition">Pet Age</a>
+        </div>
+      </div>
+      <p class="text-center text-slate-400 dark:text-zinc-500 text-[11px]">
+        Legal eligibility references based on the Representation of the People Act and the Motor Vehicles Act.
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/calculator.js"></script>
+  <script>
+    // Theme setup
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const sunIcon = document.getElementById('theme-sun');
+    const moonIcon = document.getElementById('theme-moon');
+
+    function initTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        sunIcon?.classList.remove('hidden');
+        moonIcon?.classList.add('hidden');
+      } else {
+        document.documentElement.classList.remove('dark');
+        sunIcon?.classList.add('hidden');
+        moonIcon?.classList.remove('hidden');
+      }
+    }
+
+    themeToggleBtn?.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      if (isDark) {
+        sunIcon?.classList.remove('hidden');
+        moonIcon?.classList.add('hidden');
+      } else {
+        sunIcon?.classList.add('hidden');
+        moonIcon?.classList.remove('hidden');
+      }
+    });
+    initTheme();
+
+    // DOM Elements
+    const inputDob = document.getElementById('input-dob');
+    const inputAsof = document.getElementById('input-asof');
+    const heroYears = document.getElementById('hero-years');
+    const heroMonths = document.getElementById('hero-months');
+    const heroDays = document.getElementById('hero-days');
+    const countdown18Sentence = document.getElementById('countdown-18-sentence');
+
+    // Milestones
+    const cardVoting = document.getElementById('card-voting');
+    const badgeVoting = document.getElementById('badge-voting');
+    const descVoting = document.getElementById('desc-voting');
+
+    const cardDrivingLmv = document.getElementById('card-driving-lmv');
+    const badgeDrivingLmv = document.getElementById('badge-driving-lmv');
+    const descDrivingLmv = document.getElementById('desc-driving-lmv');
+
+    const cardScooter = document.getElementById('card-scooter');
+    const badgeScooter = document.getElementById('badge-scooter');
+    const descScooter = document.getElementById('desc-scooter');
+
+    const cardTransport = document.getElementById('card-transport');
+    const badgeTransport = document.getElementById('badge-transport');
+    const descTransport = document.getElementById('desc-transport');
+
+    // Default today
+    const now = new Date();
+    const todayISO = now.toISOString().split('T')[0];
+    if (inputAsof) inputAsof.value = todayISO;
+
+    function applyStatus(card, badge, isEligible, eligibleText, ineligibleText) {
+      if (isEligible) {
+        card.className = 'p-4 rounded-xl border border-emerald-300 dark:border-emerald-800 bg-emerald-50/50 dark:bg-emerald-950/20 flex items-center justify-between gap-4 transition-colors';
+        badge.className = 'text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-300';
+        badge.textContent = eligibleText;
+      } else {
+        card.className = 'p-4 rounded-xl border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-900/40 flex items-center justify-between gap-4 transition-colors';
+        badge.className = 'text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap bg-slate-200 dark:bg-zinc-800 text-slate-700 dark:text-zinc-300';
+        badge.textContent = ineligibleText;
+      }
+    }
+
+    function calculate() {
+      if (!inputDob.value || !inputAsof.value) return;
+
+      try {
+        const res = AgeCalculator.calculateAge(inputDob.value, inputAsof.value);
+        heroYears.textContent = res.years;
+        heroMonths.textContent = res.months;
+        heroDays.textContent = res.days;
+
+        // 18th Birthday Countdown
+        const dobParts = inputDob.value.split('-');
+        const birthYear = parseInt(dobParts[0], 10);
+        const y18 = birthYear + 18;
+        const bday18Str = `${y18}-${dobParts[1]}-${dobParts[2]}`;
+        const bday18Date = new Date(bday18Str + 'T00:00:00Z');
+        const asOfDate = new Date(inputAsof.value + 'T00:00:00Z');
+        const daysTo18 = Math.round((bday18Date - asOfDate) / 86400000);
+
+        if (daysTo18 <= 0) {
+          const daysAgo = Math.abs(daysTo18);
+          countdown18Sentence.textContent = `🎉 You turned 18 on ${bday18Str} (${daysAgo.toLocaleString()} days of legal adulthood).`;
+        } else {
+          countdown18Sentence.textContent = `⏳ Only ${daysTo18.toLocaleString()} days until your 18th birthday on ${bday18Str}!`;
+        }
+
+        // Voting Status (18+)
+        const isVoteEligible = res.years >= 18;
+        applyStatus(cardVoting, badgeVoting, isVoteEligible, '✓ Eligible to Vote', res.years >= 17 ? 'Eligible to Pre-Register' : 'Under 18');
+        descVoting.textContent = isVoteEligible ? 'You meet the constitutional age criteria for voter ID and voting.' : (daysTo18 <= 365 ? '17+ years: You can pre-register on Voter Helpline App for the next quarterly revision.' : `Turns 18 in ${daysTo18.toLocaleString()} days.`);
+
+        // Driving LMV (18+)
+        const isLmvEligible = res.years >= 18;
+        applyStatus(cardDrivingLmv, badgeDrivingLmv, isLmvEligible, '✓ Eligible for License', `${daysTo18 > 0 ? daysTo18 + ' days left' : 'Not Eligible'}`);
+        descDrivingLmv.textContent = isLmvEligible ? 'Eligible for private car and motorcycle with gear driving license.' : `Eligible to apply once you reach 18 years on ${bday18Str}.`;
+
+        // Scooter (16+)
+        const isScooterEligible = res.years >= 16;
+        applyStatus(cardScooter, badgeScooter, isScooterEligible, '✓ Eligible (50cc)', 'Must be 16+');
+        descScooter.textContent = isScooterEligible ? 'Eligible for gearless 50cc two-wheeler learner license.' : 'Minimum 16 years required with parent/guardian consent.';
+
+        // Commercial / Transport (20+)
+        const isTransportEligible = res.years >= 20;
+        applyStatus(cardTransport, badgeTransport, isTransportEligible, '✓ Eligible (Transport)', 'Must be 20+');
+        descTransport.textContent = isTransportEligible ? 'Eligible to obtain commercial/heavy transport vehicle license.' : 'Requires minimum 20 years of age under Section 4(2) of MV Act.';
+
+      } catch (err) {
+        countdown18Sentence.textContent = err.message;
+      }
+    }
+
+    inputDob.addEventListener('input', calculate);
+    inputAsof.addEventListener('input', calculate);
+
+    calculate();
+  </script>
+</body>
+</html>
+

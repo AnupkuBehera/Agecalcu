@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculateur d'Âge Précis – Date de Naissance</title>
+  <meta name="description" content="Calculateur d'âge en ligne gratuit et précis. Calculez votre âge exact en années, mois, jours, semaines et heures selon votre date de naissance. 100% privé et sans publicité.">
+  <link rel="canonical" href="https://dobcal.pages.dev/calculateur-age.html">
+
+  <!-- International Hreflang Alternates -->
+  <link rel="alternate" hreflang="x-default" href="https://dobcal.pages.dev/">
+  <link rel="alternate" hreflang="en" href="https://dobcal.pages.dev/">
+  <link rel="alternate" hreflang="es" href="https://dobcal.pages.dev/calculadora-de-edad.html">
+  <link rel="alternate" hreflang="pt" href="https://dobcal.pages.dev/calculadora-de-idade.html">
+  <link rel="alternate" hreflang="id" href="https://dobcal.pages.dev/kalkulator-umur.html">
+  <link rel="alternate" hreflang="ar" href="https://dobcal.pages.dev/hasibat-al-umr.html">
+  <link rel="alternate" hreflang="fr" href="https://dobcal.pages.dev/calculateur-age.html">
+  <link rel="alternate" hreflang="de" href="https://dobcal.pages.dev/altersrechner.html">
+  <link rel="alternate" hreflang="hi" href="https://dobcal.pages.dev/aayu-calculator-hindi.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dobcal.pages.dev/calculateur-age.html">
+  <meta property="og:title" content="Calculateur d'Âge Précis – Années, Mois, Jours">
+  <meta property="og:description" content="Découvrez votre âge exact, le nombre de jours vécus, votre signe astrologique et le compte à rebours de votre anniversaire.">
+  <meta property="og:image" content="https://dobcal.pages.dev/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="assets/logo-mark.svg">
+  <link rel="manifest" href="manifest.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    };
+  </script>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Schema.org WebApplication Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculateur d'Âge Précis",
+    "url": "https://dobcal.pages.dev/calculateur-age.html",
+    "inLanguage": "fr",
+    "description": "Calculateur d'âge chronologique de haute précision calendaire. Calcul en années, mois, jours, heures.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- Schema.org FAQPage Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Comment calculer son âge exact à partir de sa date de naissance ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "L'âge exact se calcule en soustrayant la date de naissance de la date cible en empruntant les jours du mois précédent, ce qui respecte la longueur variable de chaque mois calendaire."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Mes données personnelles sont-elles conservées ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Non. Dobcal fonctionne à 100% dans votre navigateur sans aucune transmission ni stockage sur un serveur."
+        }
+      }
+    ]
+  }
+  </script>
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Accueil",
+        "item": "https://dobcal.pages.dev/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Calculateur d'Âge",
+        "item": "https://dobcal.pages.dev/calculateur-age.html"
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="min-h-screen flex flex-col font-sans antialiased bg-[#F8F9FA] dark:bg-[#09090B] text-slate-900 dark:text-zinc-100 transition-colors duration-150">
+
+  <!-- Minimal Header -->
+  <header class="w-full sticky top-0 z-40 backdrop-blur-md bg-white/80 dark:bg-[#09090B]/80 border-b border-[#E5E7EB] dark:border-[#27272A]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-2.5">
+        <img src="assets/logo-mark.svg" alt="Dobcal Logo" width="32" height="32" class="w-8 h-8 rounded-lg shadow-sm">
+        <div class="flex flex-col">
+          <span class="text-base font-extrabold tracking-tight text-[#111827] dark:text-[#F9FAFB]">
+            Dobcal
+          </span>
+          <span class="text-[10px] uppercase font-semibold tracking-wider text-[#2563EB] dark:text-[#3B82F6]">
+            Calculateur d'Âge
+          </span>
+        </div>
+      </a>
+
+      <!-- Right Controls -->
+      <div class="flex items-center space-x-2.5">
+        <a href="index.html" class="text-xs font-semibold text-slate-600 dark:text-zinc-400 hover:text-black dark:hover:text-white mr-2">
+          Global (EN)
+        </a>
+        <button id="theme-toggle" type="button" aria-label="Changer de thème" class="w-9 h-9 rounded-lg flex items-center justify-center text-slate-600 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-zinc-800 border border-slate-200 dark:border-zinc-800">
+          <span class="text-sm">🌓</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-3xl mx-auto px-4 py-8 sm:py-12 flex-grow w-full">
+
+    <div class="text-center mb-8">
+      <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/40 text-[#2563EB] dark:text-[#3B82F6] text-xs font-bold mb-3 border border-blue-200 dark:border-blue-900/60">
+        <span>🇫🇷 🇨🇦 🇧🇪 🇨🇭 Précision en Français</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-[#111827] dark:text-[#F9FAFB] tracking-tight">
+        Calculateur d'Âge Précis
+      </h1>
+      <p class="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 mt-2 max-w-lg mx-auto">
+        Connaissez instantanément votre âge exact en années, mois, jours, heures et minutes depuis votre naissance.
+      </p>
+    </div>
+
+    <!-- Calculator Card -->
+    <div class="cal-card p-6 sm:p-8 mb-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+        <div>
+          <label for="input-dob" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300 mb-1.5">
+            Date de Naissance
+          </label>
+          <input type="date" id="input-dob" value="2000-01-01" class="cal-input w-full font-mono text-sm">
+        </div>
+
+        <div>
+          <label for="input-asof" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300 mb-1.5">
+            Âge au Jour Précis
+          </label>
+          <input type="date" id="input-asof" class="cal-input w-full font-mono text-sm">
+        </div>
+      </div>
+
+      <!-- Presets -->
+      <div class="flex flex-wrap gap-2 mb-6">
+        <button type="button" id="btn-today" class="text-xs font-semibold px-2.5 py-1 rounded border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-slate-700 dark:text-zinc-300 hover:border-blue-500">
+          Aujourd'hui
+        </button>
+        <button type="button" id="btn-jan1" class="text-xs font-semibold px-2.5 py-1 rounded border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-slate-700 dark:text-zinc-300 hover:border-blue-500">
+          1er Janvier
+        </button>
+        <button type="button" id="btn-dec31" class="text-xs font-semibold px-2.5 py-1 rounded border border-slate-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-slate-700 dark:text-zinc-300 hover:border-blue-500">
+          31 Décembre
+        </button>
+      </div>
+
+      <!-- Result Banner -->
+      <div class="rounded-2xl p-6 sm:p-8 bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-center mb-6">
+        <span class="text-xs uppercase font-extrabold tracking-widest text-[#2563EB] dark:text-[#3B82F6] block mb-2">
+          Votre Âge Chronologique Exact
+        </span>
+
+        <div class="text-3xl sm:text-5xl font-black text-[#111827] dark:text-[#F9FAFB] tracking-tight font-mono mb-2">
+          <span id="res-years">0</span> <span class="text-lg sm:text-2xl font-bold font-sans text-slate-500">Ans</span>
+          <span class="text-slate-300 dark:text-zinc-700 mx-1">·</span>
+          <span id="res-months">0</span> <span class="text-lg sm:text-2xl font-bold font-sans text-slate-500">Mois</span>
+          <span class="text-slate-300 dark:text-zinc-700 mx-1">·</span>
+          <span id="res-days">0</span> <span class="text-lg sm:text-2xl font-bold font-sans text-slate-500">Jours</span>
+        </div>
+
+        <p id="res-sub" class="text-xs sm:text-sm font-semibold text-slate-600 dark:text-zinc-400">
+          Calcul en cours...
+        </p>
+      </div>
+
+      <!-- 4 Details Tiles -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6 text-center">
+        <div class="cal-card p-3.5">
+          <span class="text-[11px] font-semibold text-slate-500 dark:text-zinc-400 block uppercase">Jours Vécus</span>
+          <span id="stat-total-days" class="text-base font-bold text-[#111827] dark:text-[#F9FAFB] font-mono mt-0.5 block">--</span>
+        </div>
+        <div class="cal-card p-3.5">
+          <span class="text-[11px] font-semibold text-slate-500 dark:text-zinc-400 block uppercase">Semaines</span>
+          <span id="stat-total-weeks" class="text-base font-bold text-[#111827] dark:text-[#F9FAFB] font-mono mt-0.5 block">--</span>
+        </div>
+        <div class="cal-card p-3.5">
+          <span class="text-[11px] font-semibold text-slate-500 dark:text-zinc-400 block uppercase">Zodiaque</span>
+          <span id="stat-zodiac" class="text-base font-bold text-[#111827] dark:text-[#F9FAFB] mt-0.5 block">--</span>
+        </div>
+        <div class="cal-card p-3.5">
+          <span class="text-[11px] font-semibold text-slate-500 dark:text-zinc-400 block uppercase">Jour de Naissance</span>
+          <span id="stat-day-born" class="text-base font-bold text-[#111827] dark:text-[#F9FAFB] mt-0.5 block">--</span>
+        </div>
+      </div>
+
+      <!-- Action Button -->
+      <div class="flex justify-end">
+        <button id="btn-copy-result" type="button" class="cal-btn-primary py-2 px-4 text-xs font-bold flex items-center space-x-1.5">
+          <span>Copier le Résumé d'Âge</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Educational & FAQs -->
+    <article class="cal-card p-6 sm:p-8 space-y-4 mb-8">
+      <h2 class="text-lg font-bold text-[#111827] dark:text-[#F9FAFB]">Questions Fréquentes</h2>
+      <div class="space-y-3 text-xs leading-relaxed text-slate-600 dark:text-zinc-400">
+        <div>
+          <h3 class="font-bold text-slate-900 dark:text-zinc-100">Pourquoi la méthode calendaire est-elle plus précise ?</h3>
+          <p class="mt-1">Diviser par 365 ou 30 jours génère des erreurs d'arrondi car les mois font de 28 à 31 jours. Dobcal garantit une conformité légale parfaite pour les démarches administratives.</p>
+        </div>
+      </div>
+    </article>
+
+  </main>
+
+  <footer class="mt-auto border-t border-[#E5E7EB] dark:border-[#27272A] py-8 text-xs text-slate-500 dark:text-zinc-400 text-center">
+    <p>&copy; 2026 Dobcal. Calculateur d'Âge Privé et Sécurisé.</p>
+    <div class="mt-2 space-x-3">
+      <a href="index.html" class="hover:underline">Home</a>
+      <a href="about.html" class="hover:underline">About</a>
+      <a href="privacy.html" class="hover:underline">Privacy</a>
+      <a href="terms.html" class="hover:underline">Terms</a>
+      <a href="index.html" class="hover:underline">English</a>
+      <a href="calculadora-de-edad.html" class="hover:underline">Español</a>
+      <a href="calculadora-de-idade.html" class="hover:underline">Português</a>
+      <a href="kalkulator-umur.html" class="hover:underline">Indonesia</a>
+      <a href="altersrechner.html" class="hover:underline">Deutsch</a>
+      <a href="aayu-calculator-hindi.html" class="hover:underline">हिन्दी</a>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast">Résumé copié dans le presse-papier</div>
+
+  <script src="js/calculator.js"></script>
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+    });
+
+    const inputDob = document.getElementById('input-dob');
+    const inputAsof = document.getElementById('input-asof');
+    const resYears = document.getElementById('res-years');
+    const resMonths = document.getElementById('res-months');
+    const resDays = document.getElementById('res-days');
+    const resSub = document.getElementById('res-sub');
+    const statTotalDays = document.getElementById('stat-total-days');
+    const statTotalWeeks = document.getElementById('stat-total-weeks');
+    const statZodiac = document.getElementById('stat-zodiac');
+    const statDayBorn = document.getElementById('stat-day-born');
+    const btnToday = document.getElementById('btn-today');
+    const btnJan1 = document.getElementById('btn-jan1');
+    const btnDec31 = document.getElementById('btn-dec31');
+    const btnCopy = document.getElementById('btn-copy-result');
+    const toast = document.getElementById('toast');
+
+    function getTodayIso() {
+      const now = new Date();
+      return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    }
+
+    inputAsof.value = getTodayIso();
+
+    const joursFr = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+
+    function calcular() {
+      if (!inputDob.value || !inputAsof.value) return;
+      try {
+        const res = AgeCalculator.calcAge(inputDob.value, inputAsof.value);
+        resYears.textContent = res.years;
+        resMonths.textContent = res.months;
+        resDays.textContent = res.days;
+        resSub.textContent = `Âge décimal: ${res.decimalAge} ans • Prochain anniversaire dans ${res.nextBirthday.daysRemaining} jours`;
+        statTotalDays.textContent = res.totals.days.toLocaleString('fr-FR');
+        statTotalWeeks.textContent = `${res.totals.weeks.toLocaleString('fr-FR')} sem`;
+        statZodiac.textContent = `${res.westernZodiac.symbol} ${res.westernZodiac.name}`;
+
+        const dobDate = new Date(inputDob.value + 'T00:00:00');
+        statDayBorn.textContent = joursFr[dobDate.getDay()];
+      } catch (e) {
+        // Ignored
+      }
+    }
+
+    inputDob.addEventListener('input', calcular);
+    inputAsof.addEventListener('input', calcular);
+
+    btnToday.addEventListener('click', () => {
+      inputAsof.value = getTodayIso();
+      calcular();
+    });
+    btnJan1.addEventListener('click', () => {
+      inputAsof.value = `${new Date().getFullYear()}-01-01`;
+      calcular();
+    });
+    btnDec31.addEventListener('click', () => {
+      inputAsof.value = `${new Date().getFullYear()}-12-31`;
+      calcular();
+    });
+
+    btnCopy.addEventListener('click', () => {
+      const text = `🎂 Âge exact: ${resYears.textContent} ans, ${resMonths.textContent} mois et ${resDays.textContent} jours (${statTotalDays.textContent} jours vécus) - Calculé avec Dobcal (https://dobcal.pages.dev/calculateur-age.html)`;
+      navigator.clipboard.writeText(text).then(() => {
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 3000);
+      });
+    });
+
+    calcular();
+  </script>
+</body>
+</html>
+

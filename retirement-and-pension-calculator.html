@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retirement & Pension Calculator – Superannuation Date</title>
+  <meta name="description" content="Calculate exact retirement date and remaining years of service under Central Civil Services rules. Includes pension qualifying service and working days.">
+  <link rel="canonical" href="https://dobcal.pages.dev/retirement-and-pension-calculator.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dobcal.pages.dev/retirement-and-pension-calculator.html">
+  <meta property="og:title" content="Retirement & Pension Calculator – Superannuation Date">
+  <meta property="og:description" content="Calculate exact retirement date and remaining years of service under Central Civil Services rules. Includes pension qualifying service and working days.">
+  <meta property="og:image" content="https://dobcal.pages.dev/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Retirement & Pension Calculator – Superannuation Date">
+  <meta name="twitter:description" content="Calculate remaining years, months, days to retirement and qualifying service for pension.">
+  <meta name="twitter:image" content="https://dobcal.pages.dev/assets/og-image.png">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="assets/logo-mark.svg">
+  <link rel="manifest" href="manifest.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', '-apple-system', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Retirement & Pension Calculator",
+    "url": "https://dobcal.pages.dev/retirement-and-pension-calculator.html",
+    "description": "Calculate exact retirement date, remaining service countdown, and qualifying pension service years under CCS rules.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://dobcal.pages.dev/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Retirement & Pension Calculator",
+        "item": "https://dobcal.pages.dev/retirement-and-pension-calculator.html"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How is retirement date calculated for government employees?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Under Central Civil Services (CCS) rules, government employees retire on the afternoon of the last day of the month in which they attain the age of 60. However, if the birth date falls on the 1st of the month, retirement occurs on the afternoon of the last day of the preceding month."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is qualifying service for pension eligibility?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Qualifying service is the total period of continuous government service rendered after attaining the age of 18. A minimum of 10 years of qualifying service is required to receive regular monthly pension, and 20 years for maximum full pension under CCS Pension Rules."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is working days remaining until retirement calculated?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Working days remaining counts all future weekdays (Monday through Friday) between today and your superannuation date, excluding standard weekends."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="min-h-screen flex flex-col font-sans antialiased relative transition-colors duration-150">
+
+  <!-- Header -->
+  <header class="w-full sticky top-0 z-40 backdrop-blur-md bg-white/80 dark:bg-[#09090B]/80 border-b border-[#E5E7EB] dark:border-[#27272A]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-2.5">
+        <img src="assets/logo-mark.svg" alt="Dobcal Logo" width="32" height="32" class="w-8 h-8 rounded-lg shadow-sm">
+        <div class="flex flex-col">
+          <span class="text-base font-extrabold tracking-tight text-[#111827] dark:text-[#F9FAFB]">Dobcal</span>
+          <span class="text-[10px] uppercase font-semibold tracking-wider text-[#2563EB] dark:text-[#3B82F6]">Retirement Suite</span>
+        </div>
+      </a>
+
+      <div class="flex items-center space-x-2 sm:space-x-4">
+        <a href="index.html" class="text-xs font-semibold text-slate-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition">Home</a>
+        <a href="child-vaccination-schedule-calculator.html" class="hidden sm:inline text-xs font-semibold text-slate-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition">Vaccination</a>
+        <a href="planet-age-calculator.html" class="hidden sm:inline text-xs font-semibold text-slate-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition">Planets</a>
+        <button id="theme-toggle" type="button" aria-label="Toggle theme" class="w-9 h-9 rounded-lg flex items-center justify-center text-slate-600 dark:text-zinc-300 border border-slate-200 dark:border-zinc-800">
+          <span id="theme-icon">◐</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 w-full">
+    
+    <div class="text-center max-w-2xl mx-auto mb-8">
+      <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider mb-3">
+        <span>Civil Service & Corporate Edition</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-[#111827] dark:text-[#F9FAFB] tracking-tight">
+        Retirement & Pension Calculator
+      </h1>
+      <p class="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 mt-2">
+        Compute your exact superannuation date, remaining days in service, and qualifying pension years.
+      </p>
+    </div>
+
+    <!-- Interactive Card -->
+    <div class="cal-card p-6 sm:p-8 mb-8">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+        <div>
+          <label for="ret-dob" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300 mb-1.5">
+            Date of Birth
+          </label>
+          <input type="date" id="ret-dob" value="1975-06-15" class="cal-input w-full font-mono text-sm">
+        </div>
+
+        <div>
+          <label for="ret-doj" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300 mb-1.5">
+            Date of Joining Service (DOJ)
+          </label>
+          <input type="date" id="ret-doj" value="2002-08-01" class="cal-input w-full font-mono text-sm">
+        </div>
+
+        <div>
+          <label for="select-ret-age" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300 mb-1.5">
+            Retirement Age
+          </label>
+          <select id="select-ret-age" class="cal-input w-full font-semibold text-sm">
+            <option value="60" selected>60 Years (Central Govt / KVS / PSU)</option>
+            <option value="58">58 Years (Private Sector / State Boards)</option>
+            <option value="62">62 Years (University Faculty / Judicial)</option>
+            <option value="65">65 Years (Doctors / Higher Judiciary)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Result Banner -->
+      <div class="rounded-2xl p-6 sm:p-8 bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-center mb-6">
+        <span class="text-xs uppercase font-extrabold tracking-widest text-[#2563EB] dark:text-[#3B82F6] block mb-2">
+          Time Remaining Until Retirement
+        </span>
+
+        <div class="text-3xl sm:text-5xl font-black text-[#111827] dark:text-[#F9FAFB] tracking-tight font-mono mb-2">
+          <span id="ret-rem-years">0</span> <span class="text-lg sm:text-2xl font-bold font-sans text-slate-500">Years</span>
+          <span class="text-slate-300 dark:text-zinc-700 mx-1">·</span>
+          <span id="ret-rem-months">0</span> <span class="text-lg sm:text-2xl font-bold font-sans text-slate-500">Months</span>
+          <span class="text-slate-300 dark:text-zinc-700 mx-1">·</span>
+          <span id="ret-rem-days">0</span> <span class="text-lg sm:text-2xl font-bold font-sans text-slate-500">Days</span>
+        </div>
+
+        <p id="ret-date-text" class="text-xs sm:text-sm font-semibold text-slate-600 dark:text-zinc-400">
+          Superannuation Date: --
+        </p>
+      </div>
+
+      <!-- Service Details Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+        <div class="cal-card p-4">
+          <span class="text-[11px] font-semibold text-slate-500 dark:text-zinc-400 block uppercase">Total Service at Retirement</span>
+          <span id="ret-service-total" class="text-base font-bold text-[#111827] dark:text-[#F9FAFB] font-mono mt-1 block">--</span>
+          <span class="text-[11px] text-slate-400 mt-1 block">From DOJ to retirement date</span>
+        </div>
+
+        <div class="cal-card p-4">
+          <span class="text-[11px] font-semibold text-slate-500 dark:text-zinc-400 block uppercase">Qualifying Pension Service</span>
+          <span id="ret-qualifying-years" class="text-base font-bold text-[#111827] dark:text-[#F9FAFB] font-mono mt-1 block">-- Years</span>
+          <span id="ret-pension-badge" class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 inline-block mt-1">Full Pension</span>
+        </div>
+
+        <div class="cal-card p-4">
+          <span class="text-[11px] font-semibold text-slate-500 dark:text-zinc-400 block uppercase">Est. Working Days Left</span>
+          <span id="ret-working-days" class="text-base font-bold text-[#111827] dark:text-[#F9FAFB] font-mono mt-1 block">--</span>
+          <span class="text-[11px] text-slate-400 mt-1 block">Excluding 2-day weekends</span>
+        </div>
+      </div>
+
+      <!-- Action Row -->
+      <div class="p-4 rounded-xl border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-900/60 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div class="text-xs text-slate-600 dark:text-zinc-400">
+          <span class="font-bold text-[#111827] dark:text-[#F9FAFB]">Eligibility Note:</span>
+          <span id="ret-pension-desc" class="ml-1">Meets 20+ years qualifying service for maximum pension benefit.</span>
+        </div>
+        <button id="btn-copy-pension" type="button" class="cal-btn-primary py-2 px-4 text-xs whitespace-nowrap flex items-center space-x-1.5">
+          <span>Copy Service Summary</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Educational & FAQs -->
+    <article class="cal-card p-6 sm:p-8 space-y-4 mb-8">
+      <h2 class="text-lg font-bold text-[#111827] dark:text-[#F9FAFB]">Understanding Government Superannuation Rules</h2>
+      <p class="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 leading-relaxed">
+        Under Fundamental Rule 56 and the Central Civil Services (CCS) Pension Rules in India, government servants retire from service on the <strong>afternoon of the last day of the month</strong> in which they attain the retirement age (typically 60 years).
+      </p>
+      <div class="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-700 dark:text-amber-300">
+        <strong>The 1st of the Month Exception:</strong> An employee whose date of birth falls on the <em>1st day of a month</em> officially retires on the afternoon of the last day of the <strong>immediately preceding month</strong>.
+      </div>
+
+      <!-- FAQ Accordion -->
+      <div class="pt-4 space-y-3">
+        <h3 class="text-sm font-bold text-[#111827] dark:text-[#F9FAFB]">Frequently Asked Questions</h3>
+        <details class="group p-3.5 rounded-xl border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-900/60 transition">
+          <summary class="flex justify-between items-center font-semibold text-xs text-[#111827] dark:text-[#F9FAFB] cursor-pointer list-none">
+            <span>How is retirement date calculated for government employees?</span>
+            <span class="text-slate-400 group-hover:text-blue-600 transition">↓</span>
+          </summary>
+          <p class="mt-2 text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            Under Central Civil Services (CCS) rules, government employees retire on the afternoon of the last day of the month in which they attain the age of 60. However, if the birth date falls on the 1st of the month, retirement occurs on the afternoon of the last day of the preceding month.
+          </p>
+        </details>
+
+        <details class="group p-3.5 rounded-xl border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-900/60 transition">
+          <summary class="flex justify-between items-center font-semibold text-xs text-[#111827] dark:text-[#F9FAFB] cursor-pointer list-none">
+            <span>What is qualifying service for pension eligibility?</span>
+            <span class="text-slate-400 group-hover:text-blue-600 transition">↓</span>
+          </summary>
+          <p class="mt-2 text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            Qualifying service is the total period of continuous government service rendered after attaining the age of 18. A minimum of 10 years of qualifying service is required to receive regular monthly pension, and 20 years for maximum full pension under CCS Pension Rules.
+          </p>
+        </details>
+
+        <details class="group p-3.5 rounded-xl border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-900/60 transition">
+          <summary class="flex justify-between items-center font-semibold text-xs text-[#111827] dark:text-[#F9FAFB] cursor-pointer list-none">
+            <span>How is working days remaining until retirement calculated?</span>
+            <span class="text-slate-400 group-hover:text-blue-600 transition">↓</span>
+          </summary>
+          <p class="mt-2 text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            Working days remaining counts all future weekdays (Monday through Friday) between today and your superannuation date, excluding standard weekends.
+          </p>
+        </details>
+      </div>
+
+      <!-- Related Pillar Tools -->
+      <div class="pt-4 border-t border-slate-200 dark:border-zinc-800">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2.5">Related Career & Eligibility Tools</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+          <a href="age-calculator-for-government-exams.html" class="p-3 rounded-lg border border-slate-200 dark:border-zinc-800 hover:border-blue-500 transition text-xs font-semibold block">
+            <span class="text-blue-600 dark:text-blue-400">Govt Exams Cutoff</span>
+            <p class="text-[11px] text-slate-500 font-normal mt-0.5">UPSC, SSC & Banking age limits</p>
+          </a>
+          <a href="voting-and-driving-eligibility-calculator.html" class="p-3 rounded-lg border border-slate-200 dark:border-zinc-800 hover:border-blue-500 transition text-xs font-semibold block">
+            <span class="text-purple-600 dark:text-purple-400">Voting & Driving Age</span>
+            <p class="text-[11px] text-slate-500 font-normal mt-0.5">18th birthday milestones</p>
+          </a>
+          <a href="index.html" class="p-3 rounded-lg border border-slate-200 dark:border-zinc-800 hover:border-blue-500 transition text-xs font-semibold block">
+            <span class="text-emerald-600 dark:text-emerald-400">Exact Age Calculator</span>
+            <p class="text-[11px] text-slate-500 font-normal mt-0.5">Full calendar borrowing tool</p>
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <div id="toast" role="status" class="fixed bottom-6 right-6 z-50 hide cal-card px-4 py-3 shadow-lg flex items-center space-x-2 text-xs font-semibold">
+      <span>✓ Copied to clipboard!</span>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-auto border-t border-[#E5E7EB] dark:border-[#27272A] py-8 text-xs text-slate-500 dark:text-zinc-400">
+    <div class="max-w-5xl mx-auto px-4 text-center space-y-2">
+      <p>&copy; 2026 Dobcal. 100% Client-Side Privacy. No personal employment data is ever uploaded.</p>
+      <div class="flex justify-center space-x-4 font-medium">
+        <a href="index.html" class="hover:underline">Home</a>
+        <a href="school-admission-age-calculator.html" class="hover:underline">Schools</a>
+        <a href="child-vaccination-schedule-calculator.html" class="hover:underline">Vaccines</a>
+        <a href="planet-age-calculator.html" class="hover:underline">Planets</a>
+        <a href="family-birthday-manager.html" class="hover:underline">Family Birthdays</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/calculator.js"></script>
+  <script>
+    // Theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+    });
+
+    const retDob = document.getElementById('ret-dob');
+    const retDoj = document.getElementById('ret-doj');
+    const selectRetAge = document.getElementById('select-ret-age');
+
+    const remY = document.getElementById('ret-rem-years');
+    const remM = document.getElementById('ret-rem-months');
+    const remD = document.getElementById('ret-rem-days');
+    const retDateText = document.getElementById('ret-date-text');
+    const retServiceTotal = document.getElementById('ret-service-total');
+    const retQualifyingYears = document.getElementById('ret-qualifying-years');
+    const retWorkingDays = document.getElementById('ret-working-days');
+    const retPensionBadge = document.getElementById('ret-pension-badge');
+    const retPensionDesc = document.getElementById('ret-pension-desc');
+    const btnCopy = document.getElementById('btn-copy-pension');
+    const toast = document.getElementById('toast');
+
+    function calculate() {
+      if (!retDob.value || !retDoj.value) return;
+      try {
+        const res = AgeCalculator.calcRetirementAndPension(retDob.value, retDoj.value, selectRetAge.value);
+        remY.textContent = res.remainingYears;
+        remM.textContent = res.remainingMonths;
+        remD.textContent = res.remainingDays;
+
+        retDateText.textContent = `Superannuation Date: ${res.retirementDateFormatted} (${res.daysRemaining.toLocaleString()} days remaining)`;
+        retServiceTotal.textContent = `${res.totalServiceYears}y ${res.totalServiceMonths}m ${res.totalServiceDays}d`;
+        retQualifyingYears.textContent = `${res.qualifyingYears} Years`;
+        retWorkingDays.textContent = res.workingDaysRemaining.toLocaleString();
+
+        retPensionDesc.textContent = res.pensionEligibility;
+        if (res.qualifyingYears >= 20) {
+          retPensionBadge.textContent = 'Full 50% Pension';
+          retPensionBadge.className = 'text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 inline-block mt-1';
+        } else if (res.qualifyingYears >= 10) {
+          retPensionBadge.textContent = 'Proportionate Pension';
+          retPensionBadge.className = 'text-[10px] font-bold px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 inline-block mt-1';
+        } else {
+          retPensionBadge.textContent = 'Service Gratuity Only';
+          retPensionBadge.className = 'text-[10px] font-bold px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300 inline-block mt-1';
+        }
+      } catch (err) {
+        retDateText.textContent = err.message;
+      }
+    }
+
+    retDob.addEventListener('input', calculate);
+    retDoj.addEventListener('input', calculate);
+    selectRetAge.addEventListener('change', calculate);
+    calculate();
+
+    btnCopy.addEventListener('click', () => {
+      const summary = `Retirement Summary:\n• DOB: ${retDob.value}\n• DOJ: ${retDoj.value}\n• Superannuation Date: ${retDateText.textContent}\n• Total Service: ${retServiceTotal.textContent}\n• Qualifying Pension Years: ${retQualifyingYears.textContent}\nCalculated via Dobcal (https://dobcal.pages.dev/retirement-and-pension-calculator.html)`;
+      navigator.clipboard.writeText(summary).then(() => {
+        toast.classList.remove('hide');
+        setTimeout(() => toast.classList.add('hide'), 2500);
+      });
+    });
+  </script>
+</body>
+</html>
+

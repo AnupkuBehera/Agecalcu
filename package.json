@@ -1,0 +1,13 @@
+{
+  "name": "dobcal-age-calculator",
+  "version": "1.0.0",
+  "description": "High-performance, mobile-first age calculator and chronological precision suite",
+  "private": true,
+  "scripts": {
+    "test": "node test/test-calc.js && node test/validate-html.js",
+    "deploy": "wrangler pages deploy ."
+  },
+  "devDependencies": {
+    "wrangler": "^3.114.0"
+  }
+}

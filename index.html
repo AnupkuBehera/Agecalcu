@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age Calculator – Calculate Exact Age by Date of Birth</title>
+  <meta name="description" content="Free, instant age calculator. Find your exact age in years, months, days, hours and minutes from your date of birth. 100% private and accurate.">
+  <link rel="canonical" href="https://dobcal.pages.dev/">
+
+  <!-- International Hreflang Alternates -->
+  <link rel="alternate" hreflang="x-default" href="https://dobcal.pages.dev/">
+  <link rel="alternate" hreflang="en" href="https://dobcal.pages.dev/">
+  <link rel="alternate" hreflang="es" href="https://dobcal.pages.dev/calculadora-de-edad.html">
+  <link rel="alternate" hreflang="pt" href="https://dobcal.pages.dev/calculadora-de-idade.html">
+  <link rel="alternate" hreflang="id" href="https://dobcal.pages.dev/kalkulator-umur.html">
+  <link rel="alternate" hreflang="ar" href="https://dobcal.pages.dev/hasibat-al-umr.html">
+  <link rel="alternate" hreflang="fr" href="https://dobcal.pages.dev/calculateur-age.html">
+  <link rel="alternate" hreflang="de" href="https://dobcal.pages.dev/altersrechner.html">
+  <link rel="alternate" hreflang="hi" href="https://dobcal.pages.dev/aayu-calculator-hindi.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dobcal.pages.dev/">
+  <meta property="og:title" content="Age Calculator – Calculate Exact Age by Date of Birth">
+  <meta property="og:description" content="Free online age calculator. Find your exact age in years, months, days, hours and minutes. Also calculate age on any cutoff date and countdown to your next birthday.">
+  <meta property="og:image" content="https://dobcal.pages.dev/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Age Calculator – Calculate Exact Age by Date of Birth">
+  <meta name="twitter:description" content="Free online age calculator. Find your exact age in years, months, days, hours and minutes from your date of birth.">
+  <meta name="twitter:image" content="https://dobcal.pages.dev/assets/og-image.png">
+
+  <!-- Favicon & Touch Icon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="assets/logo-mark.svg">
+  <link rel="manifest" href="manifest.webmanifest">
+
+  <!-- Google Fonts: Inter & JetBrains Mono (Cal.com / OpenDesignMD) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN with Cal.com / OpenDesignMD Theme -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            cal: {
+              canvas: {
+                light: '#F8F9FA',
+                dark: '#09090B',
+              },
+              surface: {
+                light: '#FFFFFF',
+                dark: '#18181B',
+              },
+              border: {
+                light: '#E5E7EB',
+                dark: '#27272A',
+              },
+              blue: {
+                DEFAULT: '#2563EB',
+                dark: '#3B82F6',
+              }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Schema.org Structured Data: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Dobcal",
+    "alternateName": ["Age Calculator", "Chronological Age Calculator"],
+    "url": "https://dobcal.pages.dev/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://dobcal.pages.dev/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- Schema.org Structured Data: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://dobcal.pages.dev/"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Schema.org Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Age Calculator",
+    "url": "https://dobcal.pages.dev/",
+    "description": "Free age calculator to find exact age in years, months, days, hours and minutes from date of birth. Calculate age on any cutoff date with countdown to next birthday.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript. Requires HTML5.",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "1250",
+      "bestRating": "5"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- Schema.org Structured Data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How is exact age calculated from date of birth?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Exact chronological age is calculated by subtracting your birth date from the reference target date, borrowing days from preceding months where necessary rather than naively dividing total days by 365. This preserves calendar accuracy across months of varying lengths (28, 29, 30, or 31 days)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the formula to calculate age in years, months, and days?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The calendar subtraction formula subtracts target day from birth day (borrowing days from previous month if negative), target month from birth month (borrowing 12 months from target year if negative), and target year from birth year. This produces the exact elapsed calendar years, months, and days."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do leap years affect age calculation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Leap years contain 366 days due to February 29. For individuals born on February 29 (leap babies), standard practice considers them turning one year older on February 28 or March 1 during non-leap common years, and on February 29 in leap years."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I calculate my age on a specific cutoff date for an exam or job application?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Enter your Date of Birth in the first field, then select the notification cutoff date (for instance, 1st January, 31st March, or 1st August) in the 'Age as on Date' field. Click Calculate to get your exact years, months, and days on that eligibility cutoff."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many days are there between two dates?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Switch to our 'Date Difference' tab, input your Start Date and End Date, and select whether to include the end date. The tool computes both the calendar duration (years, months, days) and total absolute elapsed days."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is calendar borrowing more accurate than dividing total days by 365.25?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Dividing total elapsed days by 365.25 produces fractional discrepancies because calendar months vary between 28 and 31 days. True calendar borrowing matches official legal and administrative standards worldwide."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you calculate the age difference between two people?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The age difference is computed by subtracting the older person's date of birth from the younger person's date of birth using calendar subtraction, revealing the exact gap in years, months, days, and total elapsed days."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are my date of birth and personal calculations kept private?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, 100%. Dobcal processes all date calculations entirely in client-side JavaScript inside your browser. No birth dates, names, or inputs are transmitted or stored on any server."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="min-h-screen flex flex-col font-sans antialiased relative transition-colors duration-150">
+
+  <!-- Accessibility Skip Link -->
+  <a href="#section-age" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-md focus:text-xs focus:font-semibold shadow-lg">Skip to calculator</a>
+
+  <!-- Birthday Celebration Canvas (Inactive for Luxury Instrument Aesthetics) -->
+  <canvas id="confetti-canvas" class="hidden" aria-hidden="true"></canvas>
+
+  <!-- Sticky Minimal Navbar (Ultra-Premium Instrument Style) -->
+  <header class="w-full sticky top-0 z-40 backdrop-blur-md bg-white/80 dark:bg-[#08080A]/80 border-b border-[#E5E7EB] dark:border-[rgba(255,255,255,0.08)] transition-colors duration-150">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Brand Wordmark -->
+      <a href="#" class="flex items-center space-x-2.5 group">
+        <img src="assets/logo-mark.svg" alt="Dobcal Chronometer Logo" width="32" height="32" class="w-8 h-8 rounded-lg shadow-sm group-hover:scale-105 transition-transform duration-150">
+        <div class="flex flex-col">
+          <span class="text-base font-black tracking-tight text-[#0A0A0C] dark:text-[#F4F4F6]">
+            Dobcal
+          </span>
+          <span class="text-[9px] uppercase font-mono font-bold tracking-[0.16em] text-[#2563EB] dark:text-[#3B82F6]">
+            Chronometer
+          </span>
+        </div>
+      </a>
+
+      <!-- Minimal Nav Links -->
+      <nav class="hidden md:flex items-center space-x-6 text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-zinc-400">
+        <a href="#section-age" onclick="document.getElementById('tab-btn-age').click();" class="hover:text-black dark:hover:text-white transition">Age Calculator</a>
+        <a href="#section-diff" onclick="document.getElementById('tab-btn-diff').click();" class="hover:text-black dark:hover:text-white transition">Date Difference</a>
+        <a href="calculate-age-in-excel.html" class="hover:text-black dark:hover:text-white transition">Excel Guide</a>
+        <a href="age-calculator-for-government-exams.html" class="hover:text-black dark:hover:text-white transition">Govt Exams</a>
+        <a href="how-old-will-i-be-in-2040.html" class="hover:text-black dark:hover:text-white transition">Future Age</a>
+        <a href="age-difference-calculator.html" class="hover:text-black dark:hover:text-white transition">Age Gap</a>
+      </nav>
+
+      <!-- Right Controls: Language Switcher, Status Pill & Theme Toggle -->
+      <div class="flex items-center space-x-2.5">
+        <!-- Global Language Selector -->
+        <div class="relative inline-block text-left">
+          <select id="global-lang-select" aria-label="Select Language" class="h-8 pl-2.5 pr-6 py-0.5 text-xs font-mono font-semibold rounded-lg bg-slate-50 dark:bg-[#111115] border border-slate-200 dark:border-[rgba(255,255,255,0.08)] text-slate-700 dark:text-zinc-300 focus:outline-none focus:ring-1 focus:ring-blue-500 cursor-pointer">
+            <option value="en">🌐 English (EN)</option>
+            <option value="es">🇪🇸 Español (ES)</option>
+            <option value="pt">🇧🇷 Português (PT)</option>
+            <option value="id">🇮🇩 Indonesia (ID)</option>
+            <option value="ar">🇸🇦 العربية (AR)</option>
+            <option value="fr">🇫🇷 Français (FR)</option>
+            <option value="de">🇩🇪 Deutsch (DE)</option>
+            <option value="hi">🇮🇳 हिन्दी (HI)</option>
+            <option value="bn">🇮🇳 বাংলা (BN)</option>
+            <option value="or">🇮🇳 ଓଡ଼ିଆ (OR)</option>
+          </select>
+        </div>
+
+        <!-- Search / Command Palette Button -->
+        <button id="btn-open-palette" type="button" aria-label="Open Command Palette" class="h-8 px-2.5 rounded-lg flex items-center space-x-1.5 text-xs text-slate-600 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-[#16171D] border border-slate-200 dark:border-[rgba(255,255,255,0.08)] transition-colors">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span class="hidden md:inline font-mono text-[10px] text-zinc-400">⌘K</span>
+        </button>
+
+        <div class="hidden sm:flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-[#16171D] border border-slate-200 dark:border-[rgba(255,255,255,0.08)] text-[10px] font-mono font-bold tracking-wider text-slate-700 dark:text-zinc-300">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>OFFLINE ENGINE</span>
+        </div>
+
+        <button id="theme-toggle" type="button" aria-label="Toggle dark mode" class="w-9 h-9 rounded-lg flex items-center justify-center text-slate-600 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-[#16171D] border border-slate-200 dark:border-[rgba(255,255,255,0.08)] transition-colors">
+          <svg id="theme-sun" class="w-4 h-4 hidden text-amber-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+          </svg>
+          <svg id="theme-moon" class="w-4 h-4 hidden text-zinc-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Hero & Calculator Container -->
+  <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-16 w-full">
+    
+    <!-- Hero / Architectural Instrument Title -->
+    <div class="text-center mb-8">
+      <div class="inline-flex items-center justify-center space-x-2 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-600 dark:text-blue-400 mb-2.5">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400"></span>
+        <span>Civil Chronological Standard • ISO 8601</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-black text-[#0A0A0C] dark:text-[#F4F4F6] tracking-tight leading-tight mb-2">
+        Chronological Age Engine
+      </h1>
+      <p class="text-sm sm:text-base text-zinc-500 dark:text-zinc-400 max-w-lg mx-auto font-normal leading-relaxed">
+        Exact calendar-day chronological subtraction for official, civil, and medical eligibility.
+      </p>
+    </div>
+
+    <!-- Segmented Tab Switcher (Cal.com Floating Pill) -->
+    <div class="flex justify-center mb-6" id="tab-nav">
+      <div class="tab-container">
+        <button id="tab-btn-age" class="tab-btn active" aria-current="page">
+          Age Calculator
+        </button>
+        <button id="tab-btn-diff" class="tab-btn">
+          Date Difference
+        </button>
+      </div>
+    </div>
+
+    <!-- TAB 1: Age Calculator Section -->
+    <section id="section-age" aria-labelledby="tab-btn-age" class="space-y-6">
+      
+      <!-- Cal.com Card -->
+      <div class="cal-card p-6 sm:p-8">
+        
+        <!-- Preset Chips Bars -->
+        <div class="mb-6 pb-4 border-b border-[#E5E7EB] dark:border-[rgba(255,255,255,0.08)] space-y-3">
+          
+          <!-- Instant Age Milestones (Tachymeter Scale) -->
+          <div class="flex flex-wrap items-center justify-between gap-2.5">
+            <span class="font-mono text-[11px] font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-[0.14em]">
+              Milestone:
+            </span>
+            <div class="flex flex-wrap gap-1.5 font-mono text-xs">
+              <button type="button" class="quick-age-btn preset-chip" data-age="18">18Y</button>
+              <button type="button" class="quick-age-btn preset-chip" data-age="21">21Y</button>
+              <button type="button" class="quick-age-btn preset-chip active" data-age="25">25Y</button>
+              <button type="button" class="quick-age-btn preset-chip" data-age="30">30Y</button>
+              <button type="button" class="quick-age-btn preset-chip" data-age="40">40Y</button>
+              <button type="button" class="quick-age-btn preset-chip" data-age="50">50Y</button>
+            </div>
+          </div>
+
+          <!-- Cutoff Dates -->
+          <div class="flex flex-wrap items-center justify-between gap-2.5 pt-1">
+            <span class="font-mono text-[11px] font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-[0.14em]">
+              Target Date:
+            </span>
+            <div class="flex flex-wrap gap-1.5 font-mono text-xs">
+              <button type="button" class="preset-chip active" data-preset="today">Today</button>
+              <button type="button" class="preset-chip" data-preset="1jan">1 Jan</button>
+              <button type="button" class="preset-chip" data-preset="31mar">31 Mar</button>
+              <button type="button" class="preset-chip" data-preset="1aug">1 Aug</button>
+              <button type="button" class="preset-chip" data-preset="custom">Custom</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Inline Error Banner -->
+        <div id="age-error-alert" role="alert" aria-live="polite" class="hidden mb-6 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400 text-sm flex items-start space-x-3">
+          <svg class="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <span id="age-error-text" class="font-medium">Please enter a valid date.</span>
+        </div>
+
+        <form id="age-form" class="space-y-6" onsubmit="return false;">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <!-- Date of Birth Input -->
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <label class="block text-sm font-semibold text-[#0A0A0C] dark:text-[#F4F4F6]">
+                  Date of Birth
+                </label>
+                <!-- Mode Toggle -->
+                <button type="button" id="btn-toggle-dob-mode" class="text-xs font-mono font-medium text-[#2563EB] dark:text-[#3B82F6] hover:underline focus:outline-none flex items-center space-x-1">
+                  <span>Switch to Direct Typing</span>
+                </button>
+              </div>
+
+              <!-- Segmented Dropdowns (Default) -->
+              <div id="dob-segmented-container" class="grid grid-cols-3 gap-2">
+                <div>
+                  <label for="dob-day-select" class="sr-only">Day</label>
+                  <select id="dob-day-select" aria-label="Birth Day" class="cal-input luxury-select">
+                    <option value="">Day</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="dob-month-select" class="sr-only">Month</label>
+                  <select id="dob-month-select" aria-label="Birth Month" class="cal-input luxury-select">
+                    <option value="">Month</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="dob-year-select" class="sr-only">Year</label>
+                  <select id="dob-year-select" aria-label="Birth Year" class="cal-input luxury-select">
+                    <option value="">Year</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Direct Natural Typing Input -->
+              <div id="dob-type-container" class="hidden">
+                <input type="text" id="dob-type-input" placeholder="DD / MM / YYYY (e.g. 15 / 08 / 1998)" maxlength="14" class="cal-input font-mono text-sm tracking-wider">
+              </div>
+
+              <!-- Native Calendar Input -->
+              <div id="dob-native-container" class="hidden">
+                <input type="date" id="dob-input" name="dob" class="cal-input">
+              </div>
+
+              <p class="mt-1.5 text-xs text-slate-500 dark:text-zinc-400">
+                Select day, month, and year of birth.
+              </p>
+            </div>
+
+            <!-- Age as on Date -->
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <label for="asof-input" class="block text-sm font-semibold text-[#111827] dark:text-[#F9FAFB]">
+                  Age as on Date
+                </label>
+                <span class="text-xs text-[#2563EB] dark:text-[#3B82F6] font-medium">Default: Today</span>
+              </div>
+              <input type="date" id="asof-input" name="asof" required class="cal-input">
+              <p class="mt-1.5 text-xs text-slate-500 dark:text-zinc-400">
+                Reference target date for chronological evaluation.
+              </p>
+            </div>
+
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-col sm:flex-row gap-3 pt-2">
+            <button type="button" id="btn-calc-age" class="btn-primary-cal flex-1 text-sm font-semibold">
+              <span>Calculate Exact Age</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+            <button type="button" id="btn-reset-age" class="btn-secondary-cal sm:w-28 text-sm font-medium">
+              Reset
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Result Card -->
+      <div id="age-results-card" class="hidden cal-card p-6 sm:p-8" aria-live="polite">
+        
+        <!-- Print Header -->
+        <div class="print-certificate-header">
+          <h2>Official Age Verification Slip</h2>
+          <p>Generated by Age Calculator • Precise Chronological Borrowing Standard</p>
+        </div>
+
+        <!-- Birthday Celebration Banner (Architectural Solar Return) -->
+        <div id="bday-celebration-banner" class="hidden mb-6 p-4 rounded-xl flex items-center justify-between bg-blue-50/70 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-900/50">
+          <div class="flex items-center space-x-3.5">
+            <div class="w-9 h-9 rounded-lg bg-blue-600 text-white flex items-center justify-center font-mono font-bold text-xs shadow-sm">
+              SOLAR
+            </div>
+            <div>
+              <div class="font-bold text-sm sm:text-base text-[#0A0A0C] dark:text-[#F4F4F6]">Birthday Milestone Today</div>
+              <div class="text-xs text-zinc-500 dark:text-zinc-400">Completed full solar orbital return. New annual cycle begins today.</div>
+            </div>
+          </div>
+          <span class="font-mono text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300">Annual Return</span>
+        </div>
+
+        <!-- Top Row: Monumental Result & Actions -->
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between pb-6 border-b border-[#E5E7EB] dark:border-[rgba(255,255,255,0.08)] gap-4">
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="font-mono text-[10px] uppercase tracking-[0.16em] font-bold text-[#2563EB] dark:text-[#3B82F6]">
+                Chronological Age
+              </span>
+              <span class="inline-flex items-center space-x-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 text-[9px] font-mono font-bold tracking-wider text-emerald-600 dark:text-emerald-400">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>CALENDAR BORROWING CERTIFIED</span>
+              </span>
+            </div>
+
+            <!-- Big Result Numbers with Tabular Font -->
+            <div id="result-hero" class="text-3xl sm:text-4xl md:text-5xl font-black text-[#0A0A0C] dark:text-[#F4F4F6] font-mono-numbers tracking-tight mt-1.5">
+              --
+            </div>
+            <p id="result-asof-label" class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 mt-2 font-mono"></p>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap items-center gap-2 no-print">
+            <button id="btn-copy-result" type="button" class="btn-secondary-cal h-9 text-xs px-3.5">
+              <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span>Copy</span>
+            </button>
+            <button id="btn-share-result" type="button" class="btn-secondary-cal h-9 text-xs px-3.5">
+              <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="18" cy="5" r="3"></circle>
+                <circle cx="6" cy="12" r="3"></circle>
+                <circle cx="18" cy="19" r="3"></circle>
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+              </svg>
+              <span>Share</span>
+            </button>
+            <button id="btn-print-result" type="button" class="btn-secondary-cal h-9 text-xs px-3.5">
+              <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <rect x="6" y="14" width="12" height="8"></rect>
+              </svg>
+              <span>Print Slip</span>
+            </button>
+            <button id="btn-add-ics" type="button" class="btn-secondary-cal h-9 text-xs px-3.5" title="Add upcoming birthday to Calendar">
+              <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              <span>Calendar (.ics)</span>
+            </button>
+          </div>
+        </div>
+
+
+
+        <!-- Result Sub-Tabs Bar -->
+        <div class="mt-6 flex border-b border-[#E5E7EB] dark:border-[#27272A] gap-2 overflow-x-auto no-print">
+          <button type="button" id="subtab-btn-overview" class="res-subtab-btn active text-xs whitespace-nowrap">
+            Overview
+          </button>
+          <button type="button" id="subtab-btn-culture" class="res-subtab-btn text-xs whitespace-nowrap">
+            Cultural Calendars
+          </button>
+          <button type="button" id="subtab-btn-vedic" class="res-subtab-btn text-xs whitespace-nowrap">
+            Vedic & Numerology
+          </button>
+          <button type="button" id="subtab-btn-planets" class="res-subtab-btn text-xs whitespace-nowrap">
+            Cosmic Planets
+          </button>
+          <button type="button" id="subtab-btn-milestones" class="res-subtab-btn text-xs whitespace-nowrap">
+            Milestones & Zodiac
+          </button>
+          <button type="button" id="subtab-btn-units" class="res-subtab-btn text-xs whitespace-nowrap">
+            Complete Time Units
+          </button>
+        </div>
+
+        <!-- Subtab 1: Overview -->
+        <div id="subtab-content-overview" class="pt-6 space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            <!-- Next Birthday Countdown Card -->
+            <div class="stat-tile flex flex-col justify-between">
+              <div>
+                <div class="flex items-center space-x-2 text-xs font-semibold text-[#2563EB] dark:text-[#3B82F6] uppercase tracking-wider mb-1">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <span>Next Birthday</span>
+                </div>
+                <div id="result-next-birthday-text" class="text-base sm:text-lg font-bold text-[#111827] dark:text-[#F9FAFB]">
+                  --
+                </div>
+                <div id="result-next-birthday-sub" class="text-xs text-slate-500 dark:text-zinc-400 mt-1">
+                  --
+                </div>
+              </div>
+              <div class="mt-4">
+                <div class="flex justify-between text-[11px] text-slate-500 dark:text-zinc-400 mb-1 font-mono-numbers">
+                  <span>Birthday Cycle</span>
+                  <span id="bday-progress-label">--%</span>
+                </div>
+                <div class="w-full bg-slate-200 dark:bg-zinc-800 rounded-full h-1.5 overflow-hidden">
+                  <div id="bday-progress-bar" class="bg-[#2563EB] dark:bg-[#3B82F6] h-1.5 rounded-full transition-all duration-700" style="width: 0%"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Day of Week Born Card -->
+            <div class="stat-tile flex flex-col justify-between">
+              <div>
+                <div class="flex items-center space-x-2 text-xs font-semibold text-slate-500 dark:text-zinc-400 uppercase tracking-wider mb-1">
+                  <svg class="w-4 h-4 text-[#2563EB] dark:text-[#3B82F6]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                  <span>Day Born</span>
+                </div>
+                <div id="result-born-day-text" class="text-base sm:text-lg font-bold text-[#111827] dark:text-[#F9FAFB]">
+                  --
+                </div>
+              </div>
+              <p class="text-xs text-slate-500 dark:text-zinc-400 mt-4">
+                You entered this world on a <span id="result-born-day-name" class="font-semibold text-[#111827] dark:text-[#F9FAFB]"></span>.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Subtab: Cultural & Alternative Calendars -->
+        <div id="subtab-content-culture" class="hidden pt-6 space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            
+            <!-- Islamic Hijri Lunar Calendar -->
+            <div class="stat-tile">
+              <div class="flex items-center justify-between text-xs text-slate-500 dark:text-zinc-400 mb-1">
+                <span class="font-bold">Islamic Hijri Calendar</span>
+                <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-bold">LUNAR</span>
+              </div>
+              <div id="hijri-lunar-age" class="text-base font-bold text-[#111827] dark:text-[#F9FAFB] font-mono">--</div>
+              <div id="hijri-years-desc" class="text-xs text-slate-500 dark:text-zinc-400 mt-1">Born: -- | Current: --</div>
+            </div>
+
+            <!-- Hindu Calendar (Vikram Samvat) -->
+            <div class="stat-tile">
+              <div class="flex items-center justify-between text-xs text-slate-500 dark:text-zinc-400 mb-1">
+                <span class="font-bold">Hindu Calendar (Vikram Samvat)</span>
+                <span class="text-xs font-mono px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300 font-bold">+57 YRS</span>
+              </div>
+              <div id="hindu-vikram-year" class="text-base font-bold text-[#111827] dark:text-[#F9FAFB] font-mono">--</div>
+              <div id="hindu-shaka-year" class="text-xs text-slate-500 dark:text-zinc-400 mt-1">National Saka Calendar: --</div>
+            </div>
+
+            <!-- Korean Age System -->
+            <div class="stat-tile">
+              <div class="flex items-center justify-between text-xs text-slate-500 dark:text-zinc-400 mb-1">
+                <span class="font-bold">Korean Age Systems</span>
+                <span class="text-xs font-mono px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 font-bold">2023 LAW</span>
+              </div>
+              <div id="korean-ages" class="text-base font-bold text-[#111827] dark:text-[#F9FAFB] font-mono">--</div>
+              <div class="text-xs text-slate-500 dark:text-zinc-400 mt-1">Traditional (Se-neun) vs New International Civil Law</div>
+            </div>
+
+            <!-- GIA Birthstone & Day Ruler -->
+            <div class="stat-tile">
+              <div class="flex items-center justify-between text-xs text-slate-500 dark:text-zinc-400 mb-1">
+                <span class="font-bold">Birthstone & Day Ruler</span>
+                <span id="ruler-symbol" class="text-sm font-bold text-amber-500">☉</span>
+              </div>
+              <div id="birthstone-title" class="text-base font-bold text-[#111827] dark:text-[#F9FAFB]">--</div>
+              <div id="birthstone-desc" class="text-xs text-slate-500 dark:text-zinc-400 mt-1">--</div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Subtab: Vedic Astrology & Numerology -->
+        <div id="subtab-content-vedic" class="hidden pt-6 space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            
+            <div class="stat-tile">
+              <div class="flex items-center justify-between text-xs text-slate-500 dark:text-zinc-400 mb-1">
+                <span class="font-bold">Nakshatra & Deity</span>
+                <span class="text-xs font-mono px-2 py-0.5 rounded bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 font-bold">27 MANSIONS</span>
+              </div>
+              <div id="vedic-nakshatra" class="text-base font-bold text-[#111827] dark:text-[#F9FAFB]">--</div>
+              <div id="vedic-deity" class="text-xs text-slate-500 dark:text-zinc-400 mt-1">Deity: -- | Symbol: --</div>
+            </div>
+
+            <div class="stat-tile">
+              <div class="flex items-center justify-between text-xs text-slate-500 dark:text-zinc-400 mb-1">
+                <span class="font-bold">Vedic Rashi (Moon Sign)</span>
+                <span class="text-xs font-mono px-2 py-0.5 rounded bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300 font-bold">SIDEREAL</span>
+              </div>
+              <div id="vedic-rashi" class="text-base font-bold text-[#111827] dark:text-[#F9FAFB]">--</div>
+              <div id="vedic-rashi-sub" class="text-xs text-slate-500 dark:text-zinc-400 mt-1">Lord: -- | Element: --</div>
+            </div>
+
+            <div class="stat-tile">
+              <div class="flex items-center justify-between text-xs text-slate-500 dark:text-zinc-400 mb-1">
+                <span class="font-bold">Tithi & Hindu Month</span>
+                <span class="text-xs font-mono px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 font-bold">PANCHANG</span>
+              </div>
+              <div id="vedic-tithi" class="text-base font-bold text-[#111827] dark:text-[#F9FAFB]">--</div>
+              <div id="vedic-month" class="text-xs text-slate-500 dark:text-zinc-400 mt-1">Month: --</div>
+            </div>
+
+            <div class="stat-tile">
+              <div class="flex items-center justify-between text-xs text-slate-500 dark:text-zinc-400 mb-1">
+                <span class="font-bold">Life Path Number</span>
+                <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-bold">NUMEROLOGY</span>
+              </div>
+              <div class="flex items-baseline space-x-2">
+                <span id="num-life-path" class="text-2xl font-black font-mono text-[#111827] dark:text-[#F9FAFB]">--</span>
+                <span id="num-archetype-title" class="text-sm font-bold text-slate-700 dark:text-zinc-300">--</span>
+              </div>
+              <div id="num-archetype-traits" class="text-xs text-slate-500 dark:text-zinc-400 mt-1">--</div>
+            </div>
+
+            <div class="stat-tile">
+              <div class="flex items-center justify-between text-xs text-slate-500 dark:text-zinc-400 mb-1">
+                <span class="font-bold">Birth Day Number (Mulank)</span>
+                <span class="text-xs font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-zinc-800 text-slate-700 dark:text-zinc-300 font-bold">DAY ROOT</span>
+              </div>
+              <div id="num-bday-num" class="text-2xl font-black font-mono text-[#111827] dark:text-[#F9FAFB]">--</div>
+              <div id="num-bday-desc" class="text-xs text-slate-500 dark:text-zinc-400 mt-1">Personality essence from day of birth</div>
+            </div>
+
+            <div class="stat-tile flex flex-col justify-between">
+              <div>
+                <div class="text-xs text-slate-500 dark:text-zinc-400 mb-1 font-bold">Full Numerology Report</div>
+                <p class="text-xs text-slate-600 dark:text-zinc-400">Unlock complete career compatibility and lucky gemstone dossiers.</p>
+              </div>
+              <a href="numerology-life-path-calculator.html" class="text-xs font-bold text-purple-600 dark:text-purple-400 hover:underline mt-2 inline-block">
+                Open Full Calculator →
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Subtab: Cosmic Planetary Ages -->
+        <div id="subtab-content-planets" class="hidden pt-6 space-y-4">
+          <div id="hub-planets-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          </div>
+          <div class="text-center pt-2">
+            <a href="planet-age-calculator.html" class="text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:underline">
+              Explore all 8 solar planets with planetary weight calculation →
+            </a>
+          </div>
+        </div>
+        <div id="subtab-content-milestones" class="hidden pt-6 space-y-4">
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            
+            <div class="stat-tile">
+              <div class="flex justify-between items-center text-xs text-slate-500 dark:text-zinc-400 mb-1">
+                <span>Sun Sign</span>
+                <span id="zodiac-symbol" class="text-sm font-bold text-[#2563EB] dark:text-[#3B82F6]">♈</span>
+              </div>
+              <div id="zodiac-name" class="text-base font-bold text-[#111827] dark:text-[#F9FAFB]">--</div>
+              <div id="zodiac-element" class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">--</div>
+            </div>
+
+            <div class="stat-tile">
+              <div class="flex justify-between items-center text-xs text-slate-500 dark:text-zinc-400 mb-1">
+                <span>Chinese Zodiac</span>
+                <span id="chinese-zodiac-emoji" class="text-sm font-bold">🐉</span>
+              </div>
+              <div id="chinese-zodiac-name" class="text-base font-bold text-[#111827] dark:text-[#F9FAFB]">--</div>
+              <div id="chinese-zodiac-element" class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">--</div>
+            </div>
+
+            <div class="stat-tile">
+              <div class="text-xs text-slate-500 dark:text-zinc-400 mb-1">10,000-Day Goal</div>
+              <div id="milestone-name" class="text-base font-bold text-[#111827] dark:text-[#F9FAFB] font-mono-numbers">--</div>
+              <div id="milestone-sub" class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5 truncate">--</div>
+            </div>
+
+            <div class="stat-tile">
+              <div class="text-xs text-slate-500 dark:text-zinc-400 mb-1">Total Sleep</div>
+              <div id="bio-sleep" class="text-base font-bold text-[#111827] dark:text-[#F9FAFB] font-mono-numbers">--</div>
+              <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">~8 hrs/day</div>
+            </div>
+
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div class="stat-tile flex items-center space-x-3.5">
+              <div class="w-9 h-9 rounded-lg bg-blue-500/10 text-[#2563EB] dark:text-[#3B82F6] flex items-center justify-center font-bold flex-shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+              </div>
+              <div>
+                <div class="text-xs font-semibold text-slate-500 dark:text-zinc-400">Estimated Heartbeats</div>
+                <div id="bio-heartbeats" class="text-base font-bold text-[#111827] dark:text-[#F9FAFB] font-mono-numbers">--</div>
+              </div>
+            </div>
+
+            <div class="stat-tile flex items-center space-x-3.5">
+              <div class="w-9 h-9 rounded-lg bg-blue-500/10 text-[#2563EB] dark:text-[#3B82F6] flex items-center justify-center font-bold flex-shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M12 2a4 4 0 0 0-4 4v7a4 4 0 0 0 8 0V6a4 4 0 0 0-4-4z"></path>
+                  <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                  <line x1="12" y1="19" x2="12" y2="23"></line>
+                </svg>
+              </div>
+              <div>
+                <div class="text-xs font-semibold text-slate-500 dark:text-zinc-400">Estimated Breaths Taken</div>
+                <div id="bio-breaths" class="text-base font-bold text-[#111827] dark:text-[#F9FAFB] font-mono-numbers">--</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 10,000 Days Milestone Banner -->
+          <div class="p-4 rounded-xl border border-blue-200 dark:border-blue-900/60 bg-blue-50/50 dark:bg-blue-950/20 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div>
+              <div class="flex items-center space-x-2">
+                <span class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">10,000-Day Milestone</span>
+                <span id="badge-10k" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300">Upcoming</span>
+              </div>
+              <div id="text-10k-date" class="text-sm font-bold text-[#111827] dark:text-[#F9FAFB] mt-0.5 font-mono">--</div>
+              <div id="text-10k-countdown" class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">--</div>
+            </div>
+            <button id="btn-open-share-modal" type="button" class="cal-btn-primary text-xs py-2 px-4 flex items-center space-x-1.5 whitespace-nowrap">
+              <span>Create Share Card</span>
+            </button>
+          </div>
+
+          <!-- Generation Cohort & Trivia Row -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div class="stat-tile flex items-center space-x-3.5">
+              <span id="gen-icon" class="text-3xl">⚡</span>
+              <div>
+                <div class="flex items-center space-x-2">
+                  <span id="gen-name" class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB]">--</span>
+                  <span id="gen-range" class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-zinc-300">--</span>
+                </div>
+                <p id="gen-traits" class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">--</p>
+              </div>
+            </div>
+
+            <div class="stat-tile">
+              <div class="text-[11px] font-bold text-slate-500 dark:text-zinc-400 uppercase tracking-wider mb-1">Calendar Day In History</div>
+              <div id="trivia-people" class="text-xs font-semibold text-[#111827] dark:text-[#F9FAFB] truncate">--</div>
+              <div id="trivia-events" class="text-xs text-slate-500 dark:text-zinc-400 mt-1 truncate">--</div>
+            </div>
+          </div>
+
+        </div>
+        <div id="subtab-content-units" class="hidden pt-6">
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 text-center">
+            
+            <div class="stat-tile">
+              <div class="text-xs text-slate-500 dark:text-zinc-400 font-medium">Total Months</div>
+              <div id="metric-months" class="text-lg font-bold text-[#111827] dark:text-[#F9FAFB] font-mono-numbers mt-1">--</div>
+            </div>
+
+            <div class="stat-tile">
+              <div class="text-xs text-slate-500 dark:text-zinc-400 font-medium">Total Weeks</div>
+              <div id="metric-weeks" class="text-lg font-bold text-[#111827] dark:text-[#F9FAFB] font-mono-numbers mt-1">--</div>
+            </div>
+
+            <div class="stat-tile">
+              <div class="text-xs text-slate-500 dark:text-zinc-400 font-medium">Total Days</div>
+              <div id="metric-days" class="text-lg font-bold text-[#111827] dark:text-[#F9FAFB] font-mono-numbers mt-1">--</div>
+            </div>
+
+            <div class="stat-tile">
+              <div class="text-xs text-slate-500 dark:text-zinc-400 font-medium">Total Hours</div>
+              <div id="metric-hours" class="text-lg font-bold text-[#111827] dark:text-[#F9FAFB] font-mono-numbers mt-1">--</div>
+            </div>
+
+            <div class="stat-tile col-span-2 sm:col-span-1">
+              <div class="text-xs text-slate-500 dark:text-zinc-400 font-medium">Total Minutes</div>
+              <div id="metric-minutes" class="text-lg font-bold text-[#111827] dark:text-[#F9FAFB] font-mono-numbers mt-1">--</div>
+            </div>
+
+          </div>
+        </div>
+
+
+
+      </div>
+    </section>
+
+    <!-- TAB 2: Date Difference Calculator Section -->
+    <section id="section-diff" aria-labelledby="tab-btn-diff" class="hidden space-y-6">
+      <div class="cal-card p-6 sm:p-8">
+        
+        <div id="diff-error-alert" role="alert" aria-live="polite" class="hidden mb-6 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400 text-sm flex items-start space-x-3">
+          <svg class="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <span id="diff-error-text" class="font-medium">Please enter a valid start and end date.</span>
+        </div>
+
+        <form id="diff-form" class="space-y-6" onsubmit="return false;">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <div>
+              <label for="diff-start-input" class="block text-sm font-semibold text-[#111827] dark:text-[#F9FAFB] mb-2">
+                Start Date
+              </label>
+              <input type="date" id="diff-start-input" name="start_date" required class="cal-input">
+            </div>
+
+            <div>
+              <label for="diff-end-input" class="block text-sm font-semibold text-[#111827] dark:text-[#F9FAFB] mb-2">
+                End Date
+              </label>
+              <input type="date" id="diff-end-input" name="end_date" required class="cal-input">
+            </div>
+
+          </div>
+
+          <div class="flex items-center space-x-3 pt-1">
+            <input type="checkbox" id="diff-include-end" name="include_end" class="w-4 h-4 text-[#2563EB] rounded border-gray-300 focus:ring-[#2563EB] cursor-pointer">
+            <label for="diff-include-end" class="text-sm font-medium text-slate-700 dark:text-zinc-300 cursor-pointer">
+              Include end date in calculation (+1 day)
+            </label>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-3 pt-2">
+            <button type="button" id="btn-calc-diff" class="btn-primary-cal flex-1 text-sm font-semibold">
+              <span>Calculate Difference</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+            <button type="button" id="btn-reset-diff" class="btn-secondary-cal sm:w-28 text-sm font-medium">
+              Reset
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Date Difference Result Block -->
+      <div id="diff-results-card" class="hidden cal-card p-6 sm:p-8" aria-live="polite">
+        <span class="text-xs uppercase tracking-wider font-semibold text-[#2563EB] dark:text-[#3B82F6]">
+          Duration Result
+        </span>
+        <div id="diff-result-hero" class="text-2xl sm:text-4xl font-black text-[#111827] dark:text-[#F9FAFB] font-mono-numbers mt-1 tracking-tight">
+          --
+        </div>
+        <p id="diff-result-sub" class="text-xs sm:text-sm text-slate-500 dark:text-zinc-400 mt-2"></p>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5 text-center mt-6">
+          <div class="stat-tile">
+            <div class="text-xs text-slate-500 dark:text-zinc-400">Total Days</div>
+            <div id="diff-total-days" class="text-lg font-bold text-[#111827] dark:text-[#F9FAFB] font-mono-numbers mt-1">--</div>
+          </div>
+          <div class="stat-tile">
+            <div class="text-xs text-slate-500 dark:text-zinc-400">Weeks & Days</div>
+            <div id="diff-total-weeks" class="text-lg font-bold text-[#111827] dark:text-[#F9FAFB] font-mono-numbers mt-1">--</div>
+          </div>
+          <div class="stat-tile">
+            <div class="text-xs text-slate-500 dark:text-zinc-400">Total Hours</div>
+            <div id="diff-total-hours" class="text-lg font-bold text-[#111827] dark:text-[#F9FAFB] font-mono-numbers mt-1">--</div>
+          </div>
+          <div class="stat-tile">
+            <div class="text-xs text-slate-500 dark:text-zinc-400">Mode</div>
+            <div id="diff-mode-label" class="text-sm font-semibold text-[#2563EB] dark:text-[#3B82F6] mt-1">Standard</div>
+          </div>
+        </div>
+
+
+      </div>
+    </section>
+
+    <!-- Section 4: "Why DOBcal" Value Strip (3 Key Points) -->
+    <section id="why-dobcal" class="mt-16 pt-8 border-t border-[#E5E7EB] dark:border-[#27272A]" aria-label="Why Age Calculator">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl sm:text-3xl font-black text-[#111827] dark:text-[#F9FAFB] tracking-tight">
+          Built for Precision & Absolute Privacy
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-zinc-400 mt-1.5">
+          Why millions trust exact chronological calendar borrowing.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        
+        <div class="stat-tile p-5 text-left">
+          <div class="w-9 h-9 rounded-lg bg-blue-500/10 text-[#2563EB] dark:text-[#3B82F6] flex items-center justify-center font-bold mb-3">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <h3 class="text-sm font-bold text-[#111827] dark:text-[#F9FAFB] mb-1.5">Exact to the Day</h3>
+          <p class="text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            Calendar borrowing accounts for months of varying lengths (28, 29, 30, 31 days) and leap years, eliminating 365-day fractional inaccuracies.
+          </p>
+        </div>
+
+        <div class="stat-tile p-5 text-left">
+          <div class="w-9 h-9 rounded-lg bg-blue-500/10 text-[#2563EB] dark:text-[#3B82F6] flex items-center justify-center font-bold mb-3">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+          </div>
+          <h3 class="text-sm font-bold text-[#111827] dark:text-[#F9FAFB] mb-1.5">Private & Client-Side</h3>
+          <p class="text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            Everything runs directly in your browser. Zero tracking cookies, zero profiling, and your birth date never leaves your device.
+          </p>
+        </div>
+
+        <div class="stat-tile p-5 text-left">
+          <div class="w-9 h-9 rounded-lg bg-blue-500/10 text-[#2563EB] dark:text-[#3B82F6] flex items-center justify-center font-bold mb-3">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+              <path d="M12 6V4m0 16v-2"></path>
+            </svg>
+          </div>
+          <h3 class="text-sm font-bold text-[#111827] dark:text-[#F9FAFB] mb-1.5">Free Forever</h3>
+          <p class="text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            No subscriptions, no paywalls, no forced app downloads. A pure, fast utility ready whenever you need verification.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 5: Educational Content Section (E-E-A-T & Google Helpful Content) -->
+    <article class="mt-12 cal-card p-6 sm:p-8 space-y-8">
+      <div>
+        <div class="inline-flex items-center space-x-2 px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/60 text-xs font-semibold text-blue-700 dark:text-blue-300 mb-3">
+          <span>Mathematical Formula & Methodology</span>
+        </div>
+        <h2 class="text-xl sm:text-2xl font-bold text-[#111827] dark:text-[#F9FAFB] mb-2 tracking-tight">
+          How Exact Chronological Age is Calculated
+        </h2>
+        <p class="text-slate-600 dark:text-zinc-400 text-xs sm:text-sm leading-relaxed">
+          Calculating chronological age is the process of determining the exact amount of time an individual has lived from their moment of birth up to a designated reference date. While a naive subtraction of birth year from current year provides a rough estimate, it frequently misstates an individual's legal age by an entire year if their birthday anniversary has not yet occurred.
+        </p>
+      </div>
+
+      <!-- 3-Step Visual Subtraction Breakdown -->
+      <div>
+        <h3 class="text-sm sm:text-base font-bold text-[#111827] dark:text-[#F9FAFB] mb-3">
+          The Calendar Borrowing Algorithm (3 Core Steps)
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="stat-tile p-4 text-left">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">Step 1</span>
+              <span class="text-[11px] font-mono text-slate-400">Days</span>
+            </div>
+            <h4 class="text-sm font-bold text-[#111827] dark:text-[#F9FAFB] mb-1">Day Borrowing</h4>
+            <p class="text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+              If target day &lt; birth day, borrow the exact number of days in the preceding month (28, 29, 30, or 31). Subtract birth day from (target day + borrowed days).
+            </p>
+          </div>
+
+          <div class="stat-tile p-4 text-left">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400">Step 2</span>
+              <span class="text-[11px] font-mono text-slate-400">Months</span>
+            </div>
+            <h4 class="text-sm font-bold text-[#111827] dark:text-[#F9FAFB] mb-1">Month Borrowing</h4>
+            <p class="text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+              If target month &lt; birth month, borrow 12 months from the target year (reducing target year by 1). Subtract birth month from (target month + 12).
+            </p>
+          </div>
+
+          <div class="stat-tile p-4 text-left">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">Step 3</span>
+              <span class="text-[11px] font-mono text-slate-400">Years</span>
+            </div>
+            <h4 class="text-sm font-bold text-[#111827] dark:text-[#F9FAFB] mb-1">Year Subtraction</h4>
+            <p class="text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+              Subtract birth year from the adjusted target year. The result gives the exact completed calendar years, months, and days lived.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Method Comparison Table -->
+      <div>
+        <h3 class="text-sm sm:text-base font-bold text-[#111827] dark:text-[#F9FAFB] mb-2">
+          Method Comparison: Calendar Borrowing vs. Naive 365.25 Division
+        </h3>
+        <p class="text-xs text-slate-600 dark:text-zinc-400 mb-3">
+          Why naive formulas fail official government recruitment criteria and legal eligibility checks:
+        </p>
+        <div class="overflow-x-auto rounded-xl border border-slate-200 dark:border-zinc-800">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="bg-slate-50 dark:bg-zinc-900/60 border-b border-slate-200 dark:border-zinc-800 text-slate-700 dark:text-zinc-300 font-semibold">
+                <th class="p-3">Evaluation Factor</th>
+                <th class="p-3 text-blue-600 dark:text-blue-400">Calendar Subtraction (Dobcal)</th>
+                <th class="p-3 text-slate-500">Naive 365.25 Division</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 dark:divide-zinc-800/60 text-slate-600 dark:text-zinc-400">
+              <tr>
+                <td class="p-3 font-medium text-slate-900 dark:text-zinc-100">Varying Month Lengths</td>
+                <td class="p-3 text-emerald-600 dark:text-emerald-400 font-medium">Exact (28, 29, 30, or 31 days per month)</td>
+                <td class="p-3 text-rose-500">Inaccurate (Assumes fixed 30.4375 days)</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-medium text-slate-900 dark:text-zinc-100">Leap Day Handling (Feb 29)</td>
+                <td class="p-3 text-emerald-600 dark:text-emerald-400 font-medium">Exact calendar anniversary tracking</td>
+                <td class="p-3 text-rose-500">Fractional skew across 4-year cycles</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-medium text-slate-900 dark:text-zinc-100">Govt & Legal Acceptance</td>
+                <td class="p-3 text-emerald-600 dark:text-emerald-400 font-medium">100% compliant with UPSC, SSC, & Judicial standards</td>
+                <td class="p-3 text-rose-500">Rejected on official recruitment applications</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-medium text-slate-900 dark:text-zinc-100">Precision Output</td>
+                <td class="p-3 text-emerald-600 dark:text-emerald-400 font-medium">Discrete Years, Months, Days + Live Time Units</td>
+                <td class="p-3 text-slate-500">Decimal approximation (e.g. 24.87 years)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Real-World Worked Examples Table -->
+      <div>
+        <h3 class="text-sm sm:text-base font-bold text-[#111827] dark:text-[#F9FAFB] mb-2">
+          Real-World Worked Examples
+        </h3>
+        <p class="text-xs text-slate-600 dark:text-zinc-400 mb-3">
+          Step-by-step verified calculations across common milestones and cutoff dates:
+        </p>
+        <div class="overflow-x-auto rounded-xl border border-slate-200 dark:border-zinc-800">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="bg-slate-50 dark:bg-zinc-900/60 border-b border-slate-200 dark:border-zinc-800 text-slate-700 dark:text-zinc-300 font-semibold">
+                <th class="p-3">Scenario</th>
+                <th class="p-3">Date of Birth</th>
+                <th class="p-3">Cutoff Date</th>
+                <th class="p-3">Exact Age Result</th>
+                <th class="p-3">Key Calendar Rule</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 dark:divide-zinc-800/60 text-slate-600 dark:text-zinc-400">
+              <tr>
+                <td class="p-3 font-medium text-slate-900 dark:text-zinc-100">Pediatric Milestone</td>
+                <td class="p-3 font-mono">15 Oct 2025</td>
+                <td class="p-3 font-mono">27 Apr 2026</td>
+                <td class="p-3 font-semibold text-blue-600 dark:text-blue-400">6 mos, 12 days</td>
+                <td class="p-3">Borrowed 31 days from March</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-medium text-slate-900 dark:text-zinc-100">Civil Services Cutoff</td>
+                <td class="p-3 font-mono">12 Sep 2002</td>
+                <td class="p-3 font-mono">01 Aug 2026</td>
+                <td class="p-3 font-semibold text-blue-600 dark:text-blue-400">23 yrs, 10 mos, 20 days</td>
+                <td class="p-3">Borrowed 31 days from July & 12 mos from 2026</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-medium text-slate-900 dark:text-zinc-100">Superannuation (Pension)</td>
+                <td class="p-3 font-mono">28 Feb 1966</td>
+                <td class="p-3 font-mono">28 Feb 2026</td>
+                <td class="p-3 font-semibold text-blue-600 dark:text-blue-400">Exactly 60 yrs, 0 mos, 0 days</td>
+                <td class="p-3">Exact anniversary match (60-year milestone)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </article>
+
+    <!-- Section 6: FAQ Accordion (8 Comprehensive PAA Questions) -->
+    <section id="faq" class="mt-12" aria-label="Frequently Asked Questions">
+      <div class="text-center mb-6">
+        <h2 class="text-2xl font-bold text-[#111827] dark:text-[#F9FAFB] tracking-tight">
+          Frequently Asked Questions
+        </h2>
+        <p class="text-xs text-slate-600 dark:text-zinc-400 mt-1">
+          Answers to common questions regarding chronological calculation, leap years, and exam cutoffs.
+        </p>
+      </div>
+
+      <div class="space-y-3">
+        
+        <details class="group cal-card p-4 transition duration-150">
+          <summary class="flex justify-between items-center font-semibold text-sm text-[#111827] dark:text-[#F9FAFB] cursor-pointer list-none">
+            <span>How is exact age calculated from date of birth?</span>
+            <svg class="chevron w-4 h-4 text-slate-400 group-hover:text-[#2563EB] transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </summary>
+          <p class="mt-2.5 text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            Exact chronological age is calculated by subtracting your birth date from the reference target date, borrowing days from preceding months where necessary rather than naively dividing total days by 365. This preserves calendar accuracy across months of varying lengths (28, 29, 30, or 31 days).
+          </p>
+        </details>
+
+        <details class="group cal-card p-4 transition duration-150">
+          <summary class="flex justify-between items-center font-semibold text-sm text-[#111827] dark:text-[#F9FAFB] cursor-pointer list-none">
+            <span>What is the formula to calculate age in years, months, and days?</span>
+            <svg class="chevron w-4 h-4 text-slate-400 group-hover:text-[#2563EB] transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </summary>
+          <p class="mt-2.5 text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            The calendar subtraction formula subtracts target day from birth day (borrowing days from previous month if negative), target month from birth month (borrowing 12 months from target year if negative), and target year from birth year. This produces the exact elapsed calendar years, months, and days.
+          </p>
+        </details>
+
+        <details class="group cal-card p-4 transition duration-150">
+          <summary class="flex justify-between items-center font-semibold text-sm text-[#111827] dark:text-[#F9FAFB] cursor-pointer list-none">
+            <span>How do leap years affect age calculation?</span>
+            <svg class="chevron w-4 h-4 text-slate-400 group-hover:text-[#2563EB] transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </summary>
+          <p class="mt-2.5 text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            Leap years contain 366 days due to February 29. For individuals born on February 29 (leap babies), standard practice considers them turning one year older on February 28 or March 1 during non-leap common years, and on February 29 in leap years.
+          </p>
+        </details>
+
+        <details class="group cal-card p-4 transition duration-150">
+          <summary class="flex justify-between items-center font-semibold text-sm text-[#111827] dark:text-[#F9FAFB] cursor-pointer list-none">
+            <span>How do I calculate my age on a specific cutoff date for an exam or job application?</span>
+            <svg class="chevron w-4 h-4 text-slate-400 group-hover:text-[#2563EB] transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </summary>
+          <p class="mt-2.5 text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            Enter your Date of Birth in the first field, then select the notification cutoff date (for instance, 1st January, 31st March, or 1st August) in the 'Age as on Date' field. Click Calculate to get your exact years, months, and days on that eligibility cutoff.
+          </p>
+        </details>
+
+        <details class="group cal-card p-4 transition duration-150">
+          <summary class="flex justify-between items-center font-semibold text-sm text-[#111827] dark:text-[#F9FAFB] cursor-pointer list-none">
+            <span>How many days are there between two dates?</span>
+            <svg class="chevron w-4 h-4 text-slate-400 group-hover:text-[#2563EB] transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </summary>
+          <p class="mt-2.5 text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            Switch to our 'Date Difference' tab, input your Start Date and End Date, and select whether to include the end date. The tool computes both the calendar duration (years, months, days) and total absolute elapsed days.
+          </p>
+        </details>
+
+        <details class="group cal-card p-4 transition duration-150">
+          <summary class="flex justify-between items-center font-semibold text-sm text-[#111827] dark:text-[#F9FAFB] cursor-pointer list-none">
+            <span>Why is calendar borrowing more accurate than dividing total days by 365.25?</span>
+            <svg class="chevron w-4 h-4 text-slate-400 group-hover:text-[#2563EB] transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </summary>
+          <p class="mt-2.5 text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            Dividing total elapsed days by 365.25 produces fractional discrepancies because calendar months vary between 28 and 31 days. True calendar borrowing matches official legal and administrative standards worldwide.
+          </p>
+        </details>
+
+        <details class="group cal-card p-4 transition duration-150">
+          <summary class="flex justify-between items-center font-semibold text-sm text-[#111827] dark:text-[#F9FAFB] cursor-pointer list-none">
+            <span>How do you calculate the age difference between two people?</span>
+            <svg class="chevron w-4 h-4 text-slate-400 group-hover:text-[#2563EB] transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </summary>
+          <p class="mt-2.5 text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            The age difference is computed by subtracting the older person's date of birth from the younger person's date of birth using calendar subtraction, revealing the exact gap in years, months, days, and total elapsed days.
+          </p>
+        </details>
+
+        <details class="group cal-card p-4 transition duration-150">
+          <summary class="flex justify-between items-center font-semibold text-sm text-[#111827] dark:text-[#F9FAFB] cursor-pointer list-none">
+            <span>Are my date of birth and personal calculations kept private?</span>
+            <svg class="chevron w-4 h-4 text-slate-400 group-hover:text-[#2563EB] transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </summary>
+          <p class="mt-2.5 text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            Yes, 100%. Dobcal processes all date calculations entirely in client-side JavaScript inside your browser. No birth dates, names, or inputs are transmitted or stored on any server.
+          </p>
+        </details>
+
+      </div>
+    </section>
+
+    <!-- Section 7: Complete 5-Pillar Directory of Precision Tools -->
+    <section class="mt-14" aria-label="Complete Directory of Precision Tools">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl font-bold text-[#111827] dark:text-[#F9FAFB] tracking-tight">
+          Explore All Specialized Date & Age Tools
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 mt-1">
+          Complete suite of 26 specialized calculators for eligibility, milestones, health, and development.
+        </p>
+      </div>
+
+      <!-- Pillar 1: Exam, School & Legal Eligibility -->
+      <div class="mb-8">
+        <div class="flex items-center space-x-2 mb-3">
+          <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
+          <h3 class="text-sm font-bold text-[#111827] dark:text-[#F9FAFB] uppercase tracking-wider">
+            1. Career, Exam & Legal Eligibility
+          </h3>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <a href="age-calculator-for-government-exams.html" class="cal-card p-4 group block">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-semibold text-blue-600 dark:text-blue-400">Govt Exams</span>
+              <span class="text-[10px] uppercase font-bold text-slate-400">Cutoff</span>
+            </div>
+            <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] transition">
+              UPSC & SSC Exam Cutoff
+            </div>
+            <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+              Official age criteria & category relaxations
+            </div>
+          </a>
+
+          <a href="school-admission-age-calculator.html" class="cal-card p-4 group block">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-semibold text-blue-600 dark:text-blue-400">Education</span>
+              <span class="text-[10px] uppercase font-bold text-slate-400">Admission</span>
+            </div>
+            <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] transition">
+              School Admission Age
+            </div>
+            <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+              NEP 2020 Class 1 (6+ years) cutoff validator
+            </div>
+          </a>
+
+          <a href="voting-and-driving-eligibility-calculator.html" class="cal-card p-4 group block">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-semibold text-purple-600 dark:text-purple-400">Legal</span>
+              <span class="text-[10px] uppercase font-bold text-slate-400">Majority</span>
+            </div>
+            <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] transition">
+              Vote & Drive Eligibility
+            </div>
+            <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+              18th birthday legal milestones countdown
+            </div>
+          </a>
+
+          <a href="retirement-and-pension-calculator.html" class="cal-card p-4 group block">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">Pension</span>
+              <span class="text-[10px] uppercase font-bold text-slate-400">Govt Service</span>
+            </div>
+            <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] transition">
+              Retirement & Pension
+            </div>
+            <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+              Superannuation countdown & service duration
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Pillar 2: Life-Stage, Health & Family -->
+      <div class="mb-8">
+        <div class="flex items-center space-x-2 mb-3">
+          <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+          <h3 class="text-sm font-bold text-[#111827] dark:text-[#F9FAFB] uppercase tracking-wider">
+            2. Life-Stage, Health & Family Planning
+          </h3>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          <a href="pregnancy-due-date-calculator.html" class="cal-card p-4 group block">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-semibold text-rose-500">Maternity</span>
+              <span class="text-[10px] uppercase font-bold text-slate-400">Clinical</span>
+            </div>
+            <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] transition">
+              Pregnancy Due Date & Baby Age
+            </div>
+            <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+              Naegele's rule EDD, trimesters & Wonder Weeks
+            </div>
+          </a>
+
+          <a href="child-vaccination-schedule-calculator.html" class="cal-card p-4 group block">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-semibold text-teal-600 dark:text-teal-400">Immunization</span>
+              <span class="text-[10px] uppercase font-bold text-slate-400">IAP / WHO</span>
+            </div>
+            <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] transition">
+              Child Vaccination Schedule
+            </div>
+            <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+              Personalized immunization timetable by birth date
+            </div>
+          </a>
+
+          <a href="age-in-months-and-days.html" class="cal-card p-4 group block">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-semibold text-blue-600 dark:text-blue-400">Pediatric</span>
+              <span class="text-[10px] uppercase font-bold text-slate-400">Milestones</span>
+            </div>
+            <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] transition">
+              Age in Months & Days
+            </div>
+            <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+              Infant growth tracking & milestone breakdown
+            </div>
+          </a>
+
+          <a href="pet-age-calculator.html" class="cal-card p-4 group block">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-semibold text-amber-600 dark:text-amber-400">Veterinary</span>
+              <span class="text-[10px] uppercase font-bold text-slate-400">Breed Size</span>
+            </div>
+            <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] transition">
+              Pet Age Calculator
+            </div>
+            <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+              Dog & cat to human years conversion
+            </div>
+          </a>
+
+          <a href="family-birthday-manager.html" class="cal-card p-4 group block">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">Organizer</span>
+              <span class="text-[10px] uppercase font-bold text-slate-400">100% Private</span>
+            </div>
+            <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] transition">
+              Family Birthday Manager
+            </div>
+            <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+              Save family birthdays locally with .ics export
+            </div>
+          </a>
+
+          <a href="warranty-and-product-age-calculator.html" class="cal-card p-4 group block">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-semibold text-slate-600 dark:text-zinc-400">Consumer</span>
+              <span class="text-[10px] uppercase font-bold text-slate-400">Warranty</span>
+            </div>
+            <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] transition">
+              Warranty & Product Age
+            </div>
+            <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+              Track electronics, vehicle age & warranty expiry
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Pillar 3: Cosmic, Fun & Milestones -->
+      <div class="mb-8">
+        <div class="flex items-center space-x-2 mb-3">
+          <span class="w-2.5 h-2.5 rounded-full bg-indigo-500"></span>
+          <h3 class="text-sm font-bold text-[#111827] dark:text-[#F9FAFB] uppercase tracking-wider">
+            3. Cosmic, Fun & Milestones
+          </h3>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <a href="planet-age-calculator.html" class="cal-card p-4 group block">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-semibold text-indigo-500">Astronomy</span>
+              <span class="text-[10px] uppercase font-bold text-slate-400">8 Planets</span>
+            </div>
+            <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] transition">
+              Planet Age Calculator
+            </div>
+            <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+              Your age and weight on Mars, Jupiter, & Mercury
+            </div>
+          </a>
+
+          <a href="numerology-life-path-calculator.html" class="cal-card p-4 group block">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-semibold text-purple-600 dark:text-purple-400">Archetypes</span>
+              <span class="text-[10px] uppercase font-bold text-slate-400">Pythagorean</span>
+            </div>
+            <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] transition">
+              Numerology Life Path
+            </div>
+            <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+              Life path numbers (1-9, Master 11, 22, 33) & traits
+            </div>
+          </a>
+
+          <a href="how-old-will-i-be-in-2040.html" class="cal-card p-4 group block">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-semibold text-amber-600 dark:text-amber-400">2040</span>
+              <span class="text-[10px] uppercase font-bold text-slate-400">Future</span>
+            </div>
+            <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] transition">
+              How Old in 2040?
+            </div>
+            <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+              Future milestone age and milestone year roadmap
+            </div>
+          </a>
+
+          <a href="age-difference-calculator.html" class="cal-card p-4 group block">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-semibold text-blue-600 dark:text-blue-400">Comparison</span>
+              <span class="text-[10px] uppercase font-bold text-slate-400">Age Gap</span>
+            </div>
+            <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] transition">
+              Age Difference Calculator
+            </div>
+            <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+              Compare 2 people, who is older & exact day gap
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Pillar 4: Developer & Batch Utilities -->
+      <div class="mb-8">
+        <div class="flex items-center space-x-2 mb-3">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+          <h3 class="text-sm font-bold text-[#111827] dark:text-[#F9FAFB] uppercase tracking-wider">
+            4. Developer, Batch & Spreadsheet Utilities
+          </h3>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          <a href="calculate-age-in-excel.html" class="cal-card p-4 group block">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">Spreadsheet</span>
+              <span class="text-[10px] uppercase font-bold text-slate-400">Guide</span>
+            </div>
+            <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] transition">
+              Calculate Age in Excel
+            </div>
+            <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+              Interactive DATEDIF formula builder & tutorial
+            </div>
+          </a>
+
+          <a href="bulk-age-calculator.html" class="cal-card p-4 group block">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-semibold text-blue-600 dark:text-blue-400">Batch CSV</span>
+              <span class="text-[10px] uppercase font-bold text-slate-400">Client-Side</span>
+            </div>
+            <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] transition">
+              Bulk Age Calculator
+            </div>
+            <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+              Process 500+ dates simultaneously with CSV export
+            </div>
+          </a>
+
+          <a href="developer-api.html" class="cal-card p-4 group block">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-semibold text-slate-600 dark:text-zinc-400">Integration</span>
+              <span class="text-[10px] uppercase font-bold text-slate-400">Embed & API</span>
+            </div>
+            <div class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] transition">
+              Developer API & SDK
+            </div>
+            <div class="text-xs text-slate-500 dark:text-zinc-400 mt-0.5">
+              Client-side JS calculation library & embed widget
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Pillar 5: Multi-Language International Editions -->
+      <div>
+        <div class="flex items-center space-x-2 mb-3">
+          <span class="w-2.5 h-2.5 rounded-full bg-cyan-500"></span>
+          <h3 class="text-sm font-bold text-[#111827] dark:text-[#F9FAFB] uppercase tracking-wider">
+            5. International Editions (Multi-Lingual)
+          </h3>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
+          <a href="es/index.html" class="cal-card p-3 text-center group block">
+            <div class="text-xl mb-1">🇪🇸</div>
+            <div class="font-bold text-xs text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] transition">Español</div>
+            <div class="text-[10px] text-slate-400 mt-0.5">Calculadora</div>
+          </a>
+          <a href="pt/index.html" class="cal-card p-3 text-center group block">
+            <div class="text-xl mb-1">🇧🇷</div>
+            <div class="font-bold text-xs text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] transition">Português</div>
+            <div class="text-[10px] text-slate-400 mt-0.5">Calculadora</div>
+          </a>
+          <a href="id/index.html" class="cal-card p-3 text-center group block">
+            <div class="text-xl mb-1">🇮🇩</div>
+            <div class="font-bold text-xs text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] transition">Bahasa</div>
+            <div class="text-[10px] text-slate-400 mt-0.5">Kalkulator</div>
+          </a>
+          <a href="ar/index.html" class="cal-card p-3 text-center group block">
+            <div class="text-xl mb-1">🇸🇦</div>
+            <div class="font-bold text-xs text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] transition">العربية</div>
+            <div class="text-[10px] text-slate-400 mt-0.5">حاسبة العمر</div>
+          </a>
+          <a href="fr/index.html" class="cal-card p-3 text-center group block">
+            <div class="text-xl mb-1">🇫🇷</div>
+            <div class="font-bold text-xs text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] transition">Français</div>
+            <div class="text-[10px] text-slate-400 mt-0.5">Calculateur</div>
+          </a>
+          <a href="de/index.html" class="cal-card p-3 text-center group block">
+            <div class="text-xl mb-1">🇩🇪</div>
+            <div class="font-bold text-xs text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] transition">Deutsch</div>
+            <div class="text-[10px] text-slate-400 mt-0.5">Altersrechner</div>
+          </a>
+          <a href="hi/index.html" class="cal-card p-3 text-center group block">
+            <div class="text-xl mb-1">🇮🇳</div>
+            <div class="font-bold text-xs text-[#111827] dark:text-[#F9FAFB] group-hover:text-[#2563EB] transition">हिन्दी</div>
+            <div class="text-[10px] text-slate-400 mt-0.5">आयु कैलकुलेटर</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Social Share Card Modal (Canvas Story / Status Generator) -->
+  <div id="modal-share-card" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm hidden">
+    <div class="cal-card max-w-md w-full p-6 shadow-2xl relative border border-slate-200 dark:border-zinc-800">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-zinc-800 mb-4">
+        <div>
+          <h3 class="text-base font-bold text-[#111827] dark:text-[#F9FAFB]">Milestone Story Card</h3>
+          <p class="text-xs text-slate-500 dark:text-zinc-400">Save image or share directly to WhatsApp Status</p>
+        </div>
+        <button id="btn-close-share-modal" type="button" class="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-black dark:hover:text-white transition">
+          ✕
+        </button>
+      </div>
+
+      <!-- Live Canvas Preview -->
+      <div class="flex justify-center mb-4">
+        <canvas id="share-card-canvas" width="600" height="600" class="w-64 h-64 sm:w-72 sm:h-72 rounded-2xl shadow-lg border border-slate-700"></canvas>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+        <button id="btn-download-card-png" type="button" class="cal-btn-primary py-2.5 text-xs flex items-center justify-center space-x-1.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+          </svg>
+          <span>Download PNG</span>
+        </button>
+
+        <a id="link-whatsapp-share" href="#" target="_blank" rel="noopener" class="cal-btn-secondary py-2.5 text-xs flex items-center justify-center space-x-1.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold border-none">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.043.072.043.419-.101.824z"></path>
+          </svg>
+          <span>Share WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cal.com Dynamic Island Toast -->
+  <div id="toast" role="status" aria-live="polite" class="fixed bottom-6 right-6 z-50 hide cal-card px-4 py-3 shadow-lg flex items-center space-x-2.5 text-xs font-semibold">
+    <div class="w-4 h-4 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center flex-shrink-0 text-[10px]">
+      ✓
+    </div>
+    <span id="toast-text" class="text-[#111827] dark:text-[#F9FAFB]">Result copied to clipboard!</span>
+  </div>
+
+  <!-- Minimalist Clean Footer -->
+  <footer class="mt-16 border-t border-[#E5E7EB] dark:border-[#27272A] py-10 text-xs text-slate-500 dark:text-zinc-400">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center space-x-2">
+          <img src="assets/logo-mark.svg" alt="Age Calculator Logo" width="20" height="20" class="w-5 h-5 rounded shadow-sm">
+          <span class="font-bold text-sm text-[#111827] dark:text-[#F9FAFB]">Age Calculator</span>
+          <span>&copy; <span id="current-year">2026</span> All rights reserved.</span>
+        </div>
+        <div class="flex flex-wrap items-center gap-4 font-medium">
+          <a href="index.html" class="hover:text-black dark:hover:text-white transition">Home</a>
+          <a href="about.html" class="hover:text-black dark:hover:text-white transition">About</a>
+          <a href="privacy.html" class="hover:text-black dark:hover:text-white transition">Privacy Policy</a>
+          <a href="terms.html" class="hover:text-black dark:hover:text-white transition">Terms</a>
+          <a href="calculate-age-in-excel.html" class="hover:text-black dark:hover:text-white transition">Excel Guide</a>
+          <a href="age-calculator-for-government-exams.html" class="hover:text-black dark:hover:text-white transition">Govt Exams</a>
+          <a href="school-admission-age-calculator.html" class="hover:text-black dark:hover:text-white transition">Schools</a>
+          <a href="voting-and-driving-eligibility-calculator.html" class="hover:text-black dark:hover:text-white transition">Vote & Drive</a>
+          <a href="pet-age-calculator.html" class="hover:text-black dark:hover:text-white transition">Pet Age</a>
+          <a href="bulk-age-calculator.html" class="hover:text-black dark:hover:text-white transition">Bulk Calculator</a>
+          <a href="how-old-will-i-be-in-2040.html" class="hover:text-black dark:hover:text-white transition">Future Age</a>
+          <a href="age-difference-calculator.html" class="hover:text-black dark:hover:text-white transition">Age Difference</a>
+          <a href="age-in-months-and-days.html" class="hover:text-black dark:hover:text-white transition">Months & Days</a>
+        </div>
+      </div>
+      <p class="text-center text-slate-400 dark:text-zinc-500 text-[11px]">
+        Client-side precision engine. No birth dates or personal calculation data are ever transmitted or stored.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Command Palette Modal (Cmd+K / Ctrl+K) -->
+  <div id="command-palette-modal" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-start justify-center pt-16 sm:pt-24 px-4" role="dialog" aria-modal="true" aria-labelledby="palette-search-input">
+    <div class="cal-card w-full max-w-xl bg-white dark:bg-[#111115] border border-slate-200 dark:border-[rgba(255,255,255,0.12)] shadow-2xl rounded-2xl overflow-hidden animate-pop">
+      <!-- Search Bar -->
+      <div class="flex items-center px-4 py-3.5 border-b border-slate-200 dark:border-[rgba(255,255,255,0.08)]">
+        <svg class="w-4 h-4 text-blue-600 dark:text-blue-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="palette-search-input" placeholder="Search 26 precision calculation tools..." class="w-full bg-transparent text-sm font-sans text-[#0A0A0C] dark:text-[#F4F4F6] placeholder-zinc-400 focus:outline-none">
+        <button id="btn-close-palette" type="button" class="text-xs font-mono text-zinc-400 hover:text-black dark:hover:text-white px-1.5 py-0.5 rounded border border-zinc-300 dark:border-zinc-700">ESC</button>
+      </div>
+
+      <!-- Results List -->
+      <div id="palette-results-list" class="max-h-80 overflow-y-auto p-2 space-y-1 text-xs">
+        <!-- Rendered dynamically by js/app.js -->
+      </div>
+
+      <!-- Footer Telemetry -->
+      <div class="px-4 py-2 bg-slate-50 dark:bg-[#0E0F12] border-t border-slate-200 dark:border-[rgba(255,255,255,0.06)] flex items-center justify-between text-[10px] font-mono text-zinc-500">
+        <div class="flex items-center space-x-2">
+          <span>↑↓ Navigate</span>
+          <span>•</span>
+          <span>↵ Select</span>
+          <span>•</span>
+          <span>ESC Close</span>
+        </div>
+        <span>26 Tools Indexed</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/calculator.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

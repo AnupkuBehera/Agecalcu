@@ -1,0 +1,7 @@
+# robots.txt for Age Calculator (Dobcal)
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://dobcal.pages.dev/sitemap.xml
+

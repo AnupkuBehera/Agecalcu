@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planet Age Calculator – Calculate Age on Other Planets</title>
+  <meta name="description" content="Calculate your exact age and weight across all 8 solar system planets. Discover when your next planetary birthday is on Mercury, Venus, Mars, and Jupiter.">
+  <link rel="canonical" href="https://dobcal.pages.dev/planet-age-calculator.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dobcal.pages.dev/planet-age-calculator.html">
+  <meta property="og:title" content="Planet Age Calculator – Age on Mars, Jupiter, and the Solar System">
+  <meta property="og:description" content="Calculate your chronological age and next birthday on Mercury, Venus, Mars, Jupiter, Saturn, Uranus, and Neptune.">
+  <meta property="og:image" content="https://dobcal.pages.dev/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="assets/logo-mark.svg">
+  <link rel="manifest" href="manifest.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', '-apple-system', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Planet Age Calculator",
+    "url": "https://dobcal.pages.dev/planet-age-calculator.html",
+    "description": "Calculate your chronological age, planetary weight, and next birthday across all solar system planets.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "All"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://dobcal.pages.dev/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Planet Age Calculator",
+        "item": "https://dobcal.pages.dev/planet-age-calculator.html"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why is my age different on other planets?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A year is defined as the time it takes a planet to complete one full orbit around the Sun. Because Mercury orbits the Sun in just 88 Earth days, you have more planetary birthdays there, whereas Mars takes 687 Earth days, making you roughly half your Earth age on Mars."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is my weight calculated on different planets?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Your weight depends on surface gravity. For example, Mars has 38% of Earth's surface gravity, so an individual weighing 70 kg on Earth weighs approximately 26.6 kg on Mars."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How old would a 30-year-old Earthling be on Mars?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A 30-year-old on Earth would be approximately 15.9 Mars years old because one Martian orbital year equals 1.8808 Earth solar years."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="min-h-screen flex flex-col font-sans antialiased relative transition-colors duration-150">
+
+  <!-- Header -->
+  <header class="w-full sticky top-0 z-40 backdrop-blur-md bg-white/80 dark:bg-[#09090B]/80 border-b border-[#E5E7EB] dark:border-[#27272A]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-2.5">
+        <img src="assets/logo-mark.svg" alt="Dobcal Logo" width="32" height="32" class="w-8 h-8 rounded-lg shadow-sm">
+        <div class="flex flex-col">
+          <span class="text-base font-extrabold tracking-tight text-[#111827] dark:text-[#F9FAFB]">Dobcal</span>
+          <span class="text-[10px] uppercase font-semibold tracking-wider text-indigo-500">Cosmic Engine</span>
+        </div>
+      </a>
+
+      <div class="flex items-center space-x-2 sm:space-x-4">
+        <a href="index.html" class="text-xs font-semibold text-slate-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition">Home</a>
+        <a href="numerology-life-path-calculator.html" class="hidden sm:inline text-xs font-semibold text-slate-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition">Numerology</a>
+        <button id="theme-toggle" type="button" aria-label="Toggle theme" class="w-9 h-9 rounded-lg flex items-center justify-center text-slate-600 dark:text-zinc-300 border border-slate-200 dark:border-zinc-800">
+          <span id="theme-icon">◐</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-grow max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 w-full">
+    
+    <div class="text-center max-w-2xl mx-auto mb-8">
+      <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold uppercase tracking-wider mb-3">
+        <span>Orbital Astronomical Physics</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-[#111827] dark:text-[#F9FAFB] tracking-tight">
+        Solar System Planet Age Calculator
+      </h1>
+      <p class="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 mt-2">
+        See how many times you have orbited the Sun on Mercury, Venus, Mars, Jupiter, Saturn, Uranus, and Neptune.
+      </p>
+    </div>
+
+    <!-- Inputs Card -->
+    <div class="cal-card p-6 sm:p-8 mb-8 max-w-2xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label for="planet-dob" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300 mb-1.5">
+            Your Earth Date of Birth
+          </label>
+          <input type="date" id="planet-dob" value="2000-01-01" class="cal-input w-full font-mono text-sm">
+        </div>
+
+        <div>
+          <label for="planet-weight" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300 mb-1.5">
+            Your Earth Weight (optional, kg / lbs)
+          </label>
+          <input type="number" id="planet-weight" value="70" min="1" max="500" class="cal-input w-full font-mono text-sm">
+        </div>
+      </div>
+    </div>
+
+    <!-- 8 Planets Solar Grid -->
+    <div id="planets-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+    </div>
+
+    <!-- Educational Content & FAQs -->
+    <article class="cal-card p-6 sm:p-8 space-y-4 mb-8">
+      <h2 class="text-lg font-bold text-[#111827] dark:text-[#F9FAFB]">Why Age Differs Across Planets (Kepler's Third Law)</h2>
+      <p class="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 leading-relaxed">
+        A year is defined as the time it takes an astronomical body to complete one full revolution around its star. Under <strong>Kepler's Third Law of Planetary Motion</strong>, planets closer to the Sun move faster and have shorter orbital perimeters (Mercury takes only 88 days), while distant gas giants like Neptune take over 164 Earth years to orbit once.
+      </p>
+
+      <!-- FAQ Accordion -->
+      <div class="pt-4 space-y-3">
+        <h3 class="text-sm font-bold text-[#111827] dark:text-[#F9FAFB]">Frequently Asked Questions</h3>
+        <details class="group p-3.5 rounded-xl border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-900/60 transition">
+          <summary class="flex justify-between items-center font-semibold text-xs text-[#111827] dark:text-[#F9FAFB] cursor-pointer list-none">
+            <span>Why is my age different on other planets?</span>
+            <span class="text-slate-400 group-hover:text-indigo-500 transition">↓</span>
+          </summary>
+          <p class="mt-2 text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            A year is defined as the time it takes a planet to complete one full orbit around the Sun. Because Mercury orbits the Sun in just 88 Earth days, you have more planetary birthdays there, whereas Mars takes 687 Earth days, making you roughly half your Earth age on Mars.
+          </p>
+        </details>
+
+        <details class="group p-3.5 rounded-xl border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-900/60 transition">
+          <summary class="flex justify-between items-center font-semibold text-xs text-[#111827] dark:text-[#F9FAFB] cursor-pointer list-none">
+            <span>How is my weight calculated on different planets?</span>
+            <span class="text-slate-400 group-hover:text-indigo-500 transition">↓</span>
+          </summary>
+          <p class="mt-2 text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            Your weight depends on surface gravity. For example, Mars has 38% of Earth's surface gravity, so an individual weighing 70 kg on Earth weighs approximately 26.6 kg on Mars.
+          </p>
+        </details>
+
+        <details class="group p-3.5 rounded-xl border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-900/60 transition">
+          <summary class="flex justify-between items-center font-semibold text-xs text-[#111827] dark:text-[#F9FAFB] cursor-pointer list-none">
+            <span>How old would a 30-year-old Earthling be on Mars?</span>
+            <span class="text-slate-400 group-hover:text-indigo-500 transition">↓</span>
+          </summary>
+          <p class="mt-2 text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
+            A 30-year-old on Earth would be approximately 15.9 Mars years old because one Martian orbital year equals 1.8808 Earth solar years.
+          </p>
+        </details>
+      </div>
+
+      <!-- Related Pillar Tools -->
+      <div class="pt-4 border-t border-slate-200 dark:border-zinc-800">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2.5">Related Fun & Cosmic Tools</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+          <a href="numerology-life-path-calculator.html" class="p-3 rounded-lg border border-slate-200 dark:border-zinc-800 hover:border-indigo-500 transition text-xs font-semibold block">
+            <span class="text-purple-600 dark:text-purple-400">Numerology Life Path</span>
+            <p class="text-[11px] text-slate-500 font-normal mt-0.5">Ruling planet & archetype</p>
+          </a>
+          <a href="how-old-will-i-be-in-2040.html" class="p-3 rounded-lg border border-slate-200 dark:border-zinc-800 hover:border-indigo-500 transition text-xs font-semibold block">
+            <span class="text-amber-600 dark:text-amber-400">How Old in 2040?</span>
+            <p class="text-[11px] text-slate-500 font-normal mt-0.5">Future age projections</p>
+          </a>
+          <a href="age-difference-calculator.html" class="p-3 rounded-lg border border-slate-200 dark:border-zinc-800 hover:border-indigo-500 transition text-xs font-semibold block">
+            <span class="text-blue-600 dark:text-blue-400">Age Difference</span>
+            <p class="text-[11px] text-slate-500 font-normal mt-0.5">Compare two birth dates</p>
+          </a>
+        </div>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-auto border-t border-[#E5E7EB] dark:border-[#27272A] py-8 text-xs text-slate-500 dark:text-zinc-400">
+    <div class="max-w-5xl mx-auto px-4 text-center space-y-2">
+      <p>&copy; 2026 Dobcal. 100% Client-Side Privacy.</p>
+      <div class="flex justify-center space-x-4 font-medium">
+        <a href="index.html" class="hover:underline">Home</a>
+        <a href="numerology-life-path-calculator.html" class="hover:underline">Numerology</a>
+        <a href="how-old-will-i-be-in-2040.html" class="hover:underline">Future Age</a>
+        <a href="pet-age-calculator.html" class="hover:underline">Pet Age</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/calculator.js"></script>
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+    });
+
+    const planetDob = document.getElementById('planet-dob');
+    const planetWeight = document.getElementById('planet-weight');
+    const planetsGrid = document.getElementById('planets-grid');
+
+    function renderPlanets() {
+      if (!planetDob.value) return;
+      try {
+        const res = AgeCalculator.calcPlanetaryAges(planetDob.value);
+        const weightVal = parseFloat(planetWeight.value) || 0;
+        planetsGrid.innerHTML = '';
+
+        res.planets.forEach(p => {
+          const card = document.createElement('div');
+          card.className = 'cal-card p-5 flex flex-col justify-between relative overflow-hidden transition-transform hover:-translate-y-1';
+          
+          const pWeight = weightVal ? Math.round(weightVal * p.weightRatio * 10) / 10 : null;
+          const weightStr = pWeight ? `${pWeight} (${p.weightRatio}x)` : `${p.weightRatio}x gravity`;
+
+          card.innerHTML = `
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-zinc-400">${p.name}</span>
+                <span class="text-lg font-mono font-bold" style="color: ${p.color}">${p.symbol}</span>
+              </div>
+              <div class="text-3xl font-black font-mono text-[#111827] dark:text-[#F9FAFB] tracking-tight">
+                ${p.age} <span class="text-sm font-sans font-normal text-slate-400">Yrs</span>
+              </div>
+              <p class="text-[11px] text-slate-500 dark:text-zinc-400 mt-1">${p.desc}</p>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-100 dark:border-zinc-800 space-y-1 text-xs">
+              <div class="flex justify-between text-slate-600 dark:text-zinc-400">
+                <span>Next Birthday:</span>
+                <span class="font-mono font-semibold text-[#111827] dark:text-[#F9FAFB]">In ${p.nextBirthdayInEarthDays}d</span>
+              </div>
+              <div class="flex justify-between text-slate-600 dark:text-zinc-400">
+                <span>Weight on ${p.name}:</span>
+                <span class="font-mono font-semibold text-[#111827] dark:text-[#F9FAFB]">${weightStr}</span>
+              </div>
+            </div>
+          `;
+          planetsGrid.appendChild(card);
+        });
+      } catch (err) {
+        planetsGrid.innerHTML = `<div class="col-span-full p-4 text-center text-red-500">${err.message}</div>`;
+      }
+    }
+
+    planetDob.addEventListener('input', renderPlanets);
+    planetWeight.addEventListener('input', renderPlanets);
+    renderPlanets();
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Child Vaccination Schedule Calculator by Date of Birth</title>
+  <meta name="description" content="Calculate your child's complete immunization schedule by date of birth based on IAP and WHO guidelines. See upcoming, due now, and completed vaccine dates with 1-click calendar sync.">
+  <link rel="canonical" href="https://dobcal.pages.dev/child-vaccination-schedule-calculator.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dobcal.pages.dev/child-vaccination-schedule-calculator.html">
+  <meta property="og:title" content="Child Vaccination Schedule Calculator (by Date of Birth)">
+  <meta property="og:description" content="Personalized immunization timetable from Birth to 16 years based on Indian Academy of Pediatrics (IAP) and WHO standards.">
+  <meta property="og:image" content="https://dobcal.pages.dev/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="assets/logo-mark.svg">
+  <link rel="manifest" href="manifest.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', '-apple-system', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Child Vaccination Schedule Calculator",
+    "url": "https://dobcal.pages.dev/child-vaccination-schedule-calculator.html",
+    "description": "Calculate personalized child immunization schedule by date of birth according to IAP and WHO guidelines.",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "All"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://dobcal.pages.dev/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Child Vaccination Schedule Calculator",
+        "item": "https://dobcal.pages.dev/child-vaccination-schedule-calculator.html"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What if my child misses a scheduled vaccine date?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most vaccines do not need to be restarted if a dose is delayed; you simply continue from the next dose according to your pediatrician's catch-up immunization guidance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why are there both government UIP and IAP schedules?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Government Universal Immunization Programme (UIP) covers essential vaccines for all citizens. The Indian Academy of Pediatrics (IAP) includes additional protective vaccines such as Pneumococcal (PCV), Rotavirus, Varicella (Chickenpox), Hepatitis A, and HPV."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I export these immunization dates to Google Calendar or Apple Calendar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! Click the 'Download .ICS Calendar' button to generate a standard iCalendar file containing all upcoming doses, which automatically imports into Google Calendar, Apple Calendar, or Outlook."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="min-h-screen flex flex-col font-sans antialiased relative transition-colors duration-150">
+
+  <!-- Header -->
+  <header class="w-full sticky top-0 z-40 backdrop-blur-md bg-white/80 dark:bg-[#09090B]/80 border-b border-[#E5E7EB] dark:border-[#27272A] no-print">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-2.5">
+        <img src="assets/logo-mark.svg" alt="Dobcal Logo" width="32" height="32" class="w-8 h-8 rounded-lg shadow-sm">
+        <div class="flex flex-col">
+          <span class="text-base font-extrabold tracking-tight text-[#111827] dark:text-[#F9FAFB]">Dobcal</span>
+          <span class="text-[10px] uppercase font-semibold tracking-wider text-teal-600 dark:text-teal-400">Child Immunization</span>
+        </div>
+      </a>
+
+      <div class="flex items-center space-x-2 sm:space-x-4">
+        <a href="index.html" class="text-xs font-semibold text-slate-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition">Home</a>
+        <a href="pregnancy-due-date-calculator.html" class="hidden sm:inline text-xs font-semibold text-slate-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition">Pregnancy</a>
+        <a href="school-admission-age-calculator.html" class="hidden sm:inline text-xs font-semibold text-slate-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition">Schools</a>
+        <button id="theme-toggle" type="button" aria-label="Toggle theme" class="w-9 h-9 rounded-lg flex items-center justify-center text-slate-600 dark:text-zinc-300 border border-slate-200 dark:border-zinc-800">
+          <span id="theme-icon">◐</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 w-full">
+    
+    <div class="text-center max-w-2xl mx-auto mb-8 no-print">
+      <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-teal-500/10 text-teal-600 dark:text-teal-400 text-xs font-bold uppercase tracking-wider mb-3">
+        <span>IAP & WHO Universal Immunization Standard</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-[#111827] dark:text-[#F9FAFB] tracking-tight">
+        Child Vaccination Schedule Calculator
+      </h1>
+      <p class="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 mt-2">
+        Enter your baby's date of birth to generate a personalized immunization timetable from Birth to 16 Years.
+      </p>
+    </div>
+
+    <!-- DOB Input Card -->
+    <div class="cal-card p-6 sm:p-8 mb-6 no-print">
+      <div class="max-w-md mx-auto">
+        <label for="child-vax-dob" class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300 mb-1.5 text-center">
+          Child's Date of Birth (DOB)
+        </label>
+        <input type="date" id="child-vax-dob" class="cal-input w-full font-mono text-center font-bold text-base py-2.5">
+      </div>
+
+      <!-- Action Buttons Row -->
+      <div class="flex flex-wrap items-center justify-center gap-3 mt-6 pt-4 border-t border-slate-100 dark:border-zinc-800">
+        <button id="btn-print-vax" type="button" class="cal-btn-secondary text-xs py-2 px-4 flex items-center space-x-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+          </svg>
+          <span>Print Immunization Card</span>
+        </button>
+
+        <button id="btn-download-ics" type="button" class="cal-btn-primary text-xs py-2 px-4 flex items-center space-x-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          <span>Sync All to Calendar (.ics)</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Status Overview Counter -->
+    <div class="grid grid-cols-3 gap-3 mb-6 text-center">
+      <div class="cal-card p-4">
+        <span class="text-[11px] font-bold text-emerald-600 dark:text-emerald-400 block uppercase">Completed</span>
+        <span id="stat-completed" class="text-xl sm:text-2xl font-bold font-mono text-[#111827] dark:text-[#F9FAFB] mt-0.5 block">0</span>
+      </div>
+      <div class="cal-card p-4">
+        <span class="text-[11px] font-bold text-amber-600 dark:text-amber-400 block uppercase">Due Now / Overdue</span>
+        <span id="stat-due" class="text-xl sm:text-2xl font-bold font-mono text-[#111827] dark:text-[#F9FAFB] mt-0.5 block">0</span>
+      </div>
+      <div class="cal-card p-4">
+        <span class="text-[11px] font-bold text-blue-600 dark:text-blue-400 block uppercase">Upcoming</span>
+        <span id="stat-upcoming" class="text-xl sm:text-2xl font-bold font-mono text-[#111827] dark:text-[#F9FAFB] mt-0.5 block">0</span>
+      </div>
+    </div>
+
+    <!-- Vaccination Timetable Table Card -->
+    <div class="cal-card p-6 sm:p-8 mb-8 overflow-hidden">
+      <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-200 dark:border-zinc-800">
+        <div>
+          <h2 class="text-base font-bold text-[#111827] dark:text-[#F9FAFB]">Personalized Vaccination Schedule</h2>
+          <span id="table-subtitle" class="text-xs text-slate-500 dark:text-zinc-400">Child DOB: --</span>
+        </div>
+        <span class="text-[10px] font-mono font-bold px-2.5 py-1 rounded-full bg-teal-50 dark:bg-teal-950 text-teal-700 dark:text-teal-300">
+          IAP 2024 Guidelines
+        </span>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs border border-slate-200 dark:border-zinc-800 rounded-lg">
+          <thead class="bg-slate-100 dark:bg-zinc-800/80 font-bold text-slate-800 dark:text-zinc-200">
+            <tr>
+              <th class="p-3 border-b border-slate-200 dark:border-zinc-800">Age Milestone</th>
+              <th class="p-3 border-b border-slate-200 dark:border-zinc-800">Recommended Date</th>
+              <th class="p-3 border-b border-slate-200 dark:border-zinc-800">Vaccines Due</th>
+              <th class="p-3 border-b border-slate-200 dark:border-zinc-800 text-right">Status</th>
+            </tr>
+          </thead>
+          <tbody id="vax-table-body" class="divide-y divide-slate-200 dark:divide-zinc-800 text-slate-700 dark:text-zinc-300">
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- FAQ Accordion -->
+    <section class="cal-card p-6 sm:p-8 space-y-4 mb-8 no-print">
+      <h2 class="text-lg font-bold text-[#111827] dark:text-[#F9FAFB]">Frequently Asked Questions</h2>
+      
+      <div class="space-y-3 text-xs leading-relaxed text-slate-600 dark:text-zinc-400">
+        <details class="p-3 rounded-lg border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-900 cursor-pointer">
+          <summary class="font-bold text-slate-900 dark:text-zinc-100">What if my child misses a scheduled vaccine date?</summary>
+          <p class="mt-2">Most vaccines do not need to be restarted if a dose is delayed; you simply continue from the next dose according to your pediatrician's catch-up immunization guidance.</p>
+        </details>
+
+        <details class="p-3 rounded-lg border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-900 cursor-pointer">
+          <summary class="font-bold text-slate-900 dark:text-zinc-100">Why are there both government UIP and IAP schedules?</summary>
+          <p class="mt-2">The Government Universal Immunization Programme (UIP) covers essential vaccines for all citizens. The Indian Academy of Pediatrics (IAP) includes additional protective vaccines such as Pneumococcal (PCV), Rotavirus, Varicella (Chickenpox), Hepatitis A, and HPV.</p>
+        </details>
+
+        <details class="p-3 rounded-lg border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-900 cursor-pointer">
+          <summary class="font-bold text-slate-900 dark:text-zinc-100">Can I export these immunization dates to Google Calendar or Apple Calendar?</summary>
+          <p class="mt-2">Yes! Click the 'Download .ICS Calendar' button to generate a standard iCalendar file containing all upcoming doses, which automatically imports into Google Calendar, Apple Calendar, or Outlook.</p>
+        </details>
+      </div>
+
+      <!-- Related Pillar Tools -->
+      <div class="pt-4 border-t border-slate-200 dark:border-zinc-800">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2.5">Related Pediatric & Family Tools</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+          <a href="pregnancy-due-date-calculator.html" class="p-3 rounded-lg border border-slate-200 dark:border-zinc-800 hover:border-teal-500 transition text-xs font-semibold block">
+            <span class="text-rose-500">Pregnancy & Baby Leaps</span>
+            <p class="text-[11px] text-slate-500 font-normal mt-0.5">EDD & Wonder Weeks</p>
+          </a>
+          <a href="school-admission-age-calculator.html" class="p-3 rounded-lg border border-slate-200 dark:border-zinc-800 hover:border-teal-500 transition text-xs font-semibold block">
+            <span class="text-blue-600 dark:text-blue-400">School Admission</span>
+            <p class="text-[11px] text-slate-500 font-normal mt-0.5">NEP 2020 Class 1 cutoff</p>
+          </a>
+          <a href="age-in-months-and-days.html" class="p-3 rounded-lg border border-slate-200 dark:border-zinc-800 hover:border-teal-500 transition text-xs font-semibold block">
+            <span class="text-emerald-600 dark:text-emerald-400">Months & Days</span>
+            <p class="text-[11px] text-slate-500 font-normal mt-0.5">Infant growth calculator</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-auto border-t border-[#E5E7EB] dark:border-[#27272A] py-8 text-xs text-slate-500 dark:text-zinc-400 no-print">
+    <div class="max-w-5xl mx-auto px-4 text-center space-y-2">
+      <p>&copy; 2026 Dobcal. Privacy Guaranteed. Educational tool—consult your pediatrician for clinical advice.</p>
+      <div class="flex justify-center space-x-4 font-medium">
+        <a href="index.html" class="hover:underline">Home</a>
+        <a href="pregnancy-due-date-calculator.html" class="hover:underline">Pregnancy</a>
+        <a href="school-admission-age-calculator.html" class="hover:underline">Schools</a>
+        <a href="retirement-and-pension-calculator.html" class="hover:underline">Retirement</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/calculator.js"></script>
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+    });
+
+    const childVaxDob = document.getElementById('child-vax-dob');
+    const vaxTableBody = document.getElementById('vax-table-body');
+    const tableSubtitle = document.getElementById('table-subtitle');
+    const statCompleted = document.getElementById('stat-completed');
+    const statDue = document.getElementById('stat-due');
+    const statUpcoming = document.getElementById('stat-upcoming');
+    const btnPrint = document.getElementById('btn-print-vax');
+    const btnDownloadIcs = document.getElementById('btn-download-ics');
+
+    // Default to 4 months ago
+    const defDob = new Date();
+    defDob.setDate(defDob.getDate() - 120);
+    childVaxDob.value = defDob.toISOString().split('T')[0];
+
+    let currentVaxSchedule = [];
+
+    function renderSchedule() {
+      if (!childVaxDob.value) return;
+      try {
+        const res = AgeCalculator.calcVaccinationSchedule(childVaxDob.value);
+        currentVaxSchedule = res.schedule;
+        tableSubtitle.textContent = `Child DOB: ${res.dobFormatted}`;
+
+        let comp = 0, due = 0, up = 0;
+        vaxTableBody.innerHTML = '';
+
+        res.schedule.forEach(item => {
+          if (item.status === 'completed') comp++;
+          else if (item.status === 'due') due++;
+          else up++;
+
+          let badgeHtml = '';
+          if (item.status === 'completed') {
+            badgeHtml = '<span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">✓ Completed</span>';
+          } else if (item.status === 'due') {
+            badgeHtml = '<span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300">⚠️ Due Now</span>';
+          } else {
+            badgeHtml = '<span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300">Upcoming</span>';
+          }
+
+          const tr = document.createElement('tr');
+          tr.className = item.status === 'due' ? 'bg-amber-50/50 dark:bg-amber-950/20 font-semibold' : '';
+          tr.innerHTML = `
+            <td class="p-3 font-semibold text-[#111827] dark:text-[#F9FAFB]">${item.ageLabel}</td>
+            <td class="p-3 font-mono">${item.scheduledDate}</td>
+            <td class="p-3">
+              <span class="font-bold text-[#111827] dark:text-[#F9FAFB] block">${item.vaccines}</span>
+              <span class="text-[11px] text-slate-500 dark:text-zinc-400">${item.desc}</span>
+            </td>
+            <td class="p-3 text-right whitespace-nowrap">${badgeHtml}</td>
+          `;
+          vaxTableBody.appendChild(tr);
+        });
+
+        statCompleted.textContent = comp;
+        statDue.textContent = due;
+        statUpcoming.textContent = up;
+      } catch (err) {
+        tableSubtitle.textContent = err.message;
+      }
+    }
+
+    childVaxDob.addEventListener('input', renderSchedule);
+    renderSchedule();
+
+    btnPrint.addEventListener('click', () => {
+      window.print();
+    });
+
+    btnDownloadIcs.addEventListener('click', () => {
+      if (!currentVaxSchedule.length) return;
+      let icsContent = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Dobcal//Child Immunization Schedule//EN',
+        'CALSCALE:GREGORIAN',
+        'METHOD:PUBLISH'
+      ];
+
+      currentVaxSchedule.forEach((v, idx) => {
+        const parts = v.scheduledDate.split('-');
+        const dt = `${parts[0]}${parts[1]}${parts[2]}T090000`;
+        icsContent.push(
+          'BEGIN:VEVENT',
+          `UID:vax-${idx}-${Date.now()}@dobcal.pages.dev`,
+          `DTSTAMP:${dt}Z`,
+          `DTSTART:${dt}`,
+          `SUMMARY:Baby Vaccine Due: ${v.ageLabel} (${v.vaccines.split(',')[0]})`,
+          `DESCRIPTION:Scheduled vaccines: ${v.vaccines} - ${v.desc}. Managed with Dobcal (https://dobcal.pages.dev)`,
+          'BEGIN:VALARM',
+          'TRIGGER:-P1D',
+          'ACTION:DISPLAY',
+          `DESCRIPTION:Vaccine Reminder: ${v.vaccines}`,
+          'END:VALARM',
+          'END:VEVENT'
+        );
+      });
+
+      icsContent.push('END:VCALENDAR');
+      const blob = new Blob([icsContent.join('\r\n')], { type: 'text/calendar;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = `baby-vaccination-schedule-${childVaxDob.value}.ics`;
+      link.click();
+    });
+  </script>
+</body>
+</html>
+
