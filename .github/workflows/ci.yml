@@ -23,4 +23,5 @@ jobs:
       - name: Run Test Suite
         run: |
           node test/test-calc.js
+          node test/test-i18n.js
           node test/validate-html.js

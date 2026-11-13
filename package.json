@@ -4,7 +4,7 @@
   "description": "High-performance, mobile-first age calculator and chronological precision suite",
   "private": true,
   "scripts": {
-    "test": "node test/test-calc.js && node test/validate-html.js",
+    "test": "node test/test-calc.js && node test/test-i18n.js && node test/validate-html.js",
     "deploy": "wrangler pages deploy ."
   },
   "devDependencies": {

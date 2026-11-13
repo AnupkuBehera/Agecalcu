@@ -3,7 +3,7 @@
  * Stale-While-Revalidate caching for lightning-fast loads and offline capability.
  */
 
-const CACHE_NAME = 'dobcal-v2.1';
+const CACHE_NAME = 'dobcal-v2.2';
 const STATIC_ASSETS = [
   '/',
   '/index.html',

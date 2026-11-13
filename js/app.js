@@ -620,113 +620,151 @@ document.addEventListener('DOMContentLoaded', () => {
       if (resultBornDayName) resultBornDayName.textContent = res.dayOfWeekBorn;
 
       // Populate Cultural & Alternative Calendars
-      if (hijriLunarAge && res.hijri) {
-        hijriLunarAge.textContent = `${res.hijri.lunarYears} Lunar Yrs (${res.hijri.lunarMonths}m ${res.hijri.lunarDays}d)`;
-      }
-      if (hijriYearsDesc && res.hijri) {
-        hijriYearsDesc.textContent = `Born: ${res.hijri.birthHijriYear} | Current: ${res.hijri.currentHijriYear} • ~354.37d/yr`;
-      }
-      if (hinduVikramYear && res.hindu) {
-        hinduVikramYear.textContent = `${res.hindu.birthVikramSamvat} (Born) → ${res.hindu.currentVikramSamvat} (Now)`;
-      }
-      if (hinduShakaYear && res.hindu) {
-        hinduShakaYear.textContent = `National Saka Calendar: ${res.hindu.birthShakaSamvat} → ${res.hindu.currentShakaSamvat}`;
-      }
-      if (koreanAges && res.korean) {
-        koreanAges.textContent = `${res.korean.civilLawAge} yrs (Civil Law) · ${res.korean.traditionalKoreanAge} yrs (Traditional)`;
-      }
-      if (birthstoneTitle && res.birthstone) {
-        birthstoneTitle.textContent = `${res.birthstone.stone} (${res.birthstone.color})`;
-      }
-      if (birthstoneDesc && res.birthstone) {
-        birthstoneDesc.textContent = res.birthstone.meaning || 'Symbol of wisdom, vitality & strength';
-      }
-      if (rulerSymbol && res.weekdayRuler) {
-        rulerSymbol.textContent = `${res.weekdayRuler.symbol} ${res.weekdayRuler.ruler.split(' ')[0]}`;
+      try {
+        if (hijriLunarAge && res.hijri) {
+          hijriLunarAge.textContent = `${res.hijri.lunarYears} Lunar Yrs (${res.hijri.lunarMonths}m ${res.hijri.lunarDays}d)`;
+        }
+        if (hijriYearsDesc && res.hijri) {
+          hijriYearsDesc.textContent = `Born: ${res.hijri.birthHijriYear} | Current: ${res.hijri.currentHijriYear} • ~354.37d/yr`;
+        }
+        if (hinduVikramYear && res.hindu) {
+          hinduVikramYear.textContent = `${res.hindu.birthVikramSamvat} (Born) → ${res.hindu.currentVikramSamvat} (Now)`;
+        }
+        if (hinduShakaYear && res.hindu) {
+          hinduShakaYear.textContent = `National Saka Calendar: ${res.hindu.birthShakaSamvat} → ${res.hindu.currentShakaSamvat}`;
+        }
+        if (koreanAges && res.korean) {
+          koreanAges.textContent = `${res.korean.civilLawAge} yrs (Civil Law) · ${res.korean.traditionalKoreanAge} yrs (Traditional)`;
+        }
+        if (birthstoneTitle && res.birthstone) {
+          birthstoneTitle.textContent = `${res.birthstone.stone} (${res.birthstone.color})`;
+        }
+        if (birthstoneDesc && res.birthstone) {
+          birthstoneDesc.textContent = res.birthstone.meaning || 'Symbol of wisdom, vitality & strength';
+        }
+        if (rulerSymbol && res.weekdayRuler) {
+          rulerSymbol.textContent = `${res.weekdayRuler.symbol} ${res.weekdayRuler.ruler.split(' ')[0]}`;
+        }
+      } catch (culturalErr) {
+        console.warn('Cultural calendars rendering warning:', culturalErr);
       }
 
       // Populate Astrological signs
-      if (zodiacSymbol) zodiacSymbol.textContent = res.westernZodiac.symbol;
-      if (zodiacName) zodiacName.textContent = res.westernZodiac.name;
-      if (zodiacElement) zodiacElement.textContent = `${res.westernZodiac.element} Element`;
+      try {
+        if (zodiacSymbol) zodiacSymbol.textContent = res.westernZodiac.symbol;
+        if (zodiacName) zodiacName.textContent = res.westernZodiac.name;
+        if (zodiacElement) zodiacElement.textContent = `${res.westernZodiac.element} Element`;
 
-      if (chineseZodiacEmoji) chineseZodiacEmoji.textContent = res.chineseZodiac.emoji;
-      if (chineseZodiacName) chineseZodiacName.textContent = res.chineseZodiac.animal;
-      if (chineseZodiacElement) chineseZodiacElement.textContent = `${res.chineseZodiac.element} Sign`;
+        if (chineseZodiacEmoji) chineseZodiacEmoji.textContent = res.chineseZodiac.emoji;
+        if (chineseZodiacName) chineseZodiacName.textContent = res.chineseZodiac.animal;
+        if (chineseZodiacElement) chineseZodiacElement.textContent = `${res.chineseZodiac.element} Sign`;
+      } catch (zodiacErr) {
+        console.warn('Zodiac rendering warning:', zodiacErr);
+      }
 
       // Populate Milestone & Biological stats
-      if (milestoneName) milestoneName.textContent = `${res.milestones.nextDayMilestone.toLocaleString()} Days`;
-      if (milestoneSub) milestoneSub.textContent = `${res.milestones.daysToMilestone.toLocaleString()} days to go (${res.milestones.milestoneDateFormatted})`;
-      if (bioSleep) bioSleep.textContent = `${res.biological.sleepHours.toLocaleString()} hrs`;
-      if (bioHeartbeats) bioHeartbeats.textContent = `${res.biological.heartbeats.toLocaleString()} beats`;
-      if (bioBreaths) bioBreaths.textContent = `${res.biological.breaths.toLocaleString()} breaths`;
+      try {
+        if (milestoneName) milestoneName.textContent = `${res.milestones.nextDayMilestone.toLocaleString()} Days`;
+        if (milestoneSub) milestoneSub.textContent = `${res.milestones.daysToMilestone.toLocaleString()} days to go (${res.milestones.milestoneDateFormatted})`;
+        if (bioSleep) bioSleep.textContent = `${res.biological.sleepHours.toLocaleString()} hrs`;
+        if (bioHeartbeats) bioHeartbeats.textContent = `${res.biological.heartbeats.toLocaleString()} beats`;
+        if (bioBreaths) bioBreaths.textContent = `${res.biological.breaths.toLocaleString()} breaths`;
+      } catch (milestoneErr) {
+        console.warn('Milestone rendering warning:', milestoneErr);
+      }
 
       // Populate Vedic Astrology & Panchang
-      if (res.vedic) {
-        if (vedicNakshatra) vedicNakshatra.textContent = `${res.vedic.nakshatra} (Pada ${res.vedic.pada})`;
-        if (vedicDeity) vedicDeity.textContent = `Deity: ${res.vedic.deity} • Symbol: ${res.vedic.symbol}`;
-        if (vedicRashi) vedicRashi.textContent = `${res.vedic.rashi} (${res.vedic.rashiEnglish})`;
-        if (vedicRashiSub) vedicRashiSub.textContent = `Lord: ${res.vedic.lord} • Element: ${res.vedic.element}`;
-        if (vedicTithi) vedicTithi.textContent = `${res.vedic.tithi} (${res.vedic.paksha} Paksha)`;
-        if (vedicMonth) vedicMonth.textContent = `Hindu Month: ${res.vedic.hinduMonth}`;
+      try {
+        if (res.vedic) {
+          if (vedicNakshatra) vedicNakshatra.textContent = `${res.vedic.nakshatra} (Pada ${res.vedic.pada})`;
+          if (vedicDeity) vedicDeity.textContent = `Deity: ${res.vedic.deity} • Symbol: ${res.vedic.symbol}`;
+          if (vedicRashi) vedicRashi.textContent = `${res.vedic.rashi} (${res.vedic.rashiEnglish})`;
+          if (vedicRashiSub) vedicRashiSub.textContent = `Lord: ${res.vedic.lord} • Element: ${res.vedic.element}`;
+          if (vedicTithi) vedicTithi.textContent = `${res.vedic.tithi} (${res.vedic.paksha} Paksha)`;
+          if (vedicMonth) vedicMonth.textContent = `Hindu Month: ${res.vedic.hinduMonth}`;
+        }
+      } catch (vedicErr) {
+        console.warn('Vedic rendering warning:', vedicErr);
       }
 
       // Populate Numerology
-      if (res.numerology) {
-        if (numLifePath) numLifePath.textContent = res.numerology.lifePathNumber;
-        if (numArchetypeTitle) numArchetypeTitle.textContent = res.numerology.archetype.title;
-        if (numArchetypeTraits) numArchetypeTraits.textContent = `${res.numerology.archetype.traits} • Gemstone: ${res.numerology.archetype.gemstone}`;
-        if (numBdayNum) numBdayNum.textContent = res.numerology.birthdayNumber;
+      try {
+        if (res.numerology) {
+          if (numLifePath) numLifePath.textContent = res.numerology.lifePathNumber;
+          if (numArchetypeTitle) numArchetypeTitle.textContent = res.numerology.archetype.title;
+          if (numArchetypeTraits) numArchetypeTraits.textContent = `${res.numerology.archetype.traits} • Gemstone: ${res.numerology.archetype.gemstone}`;
+          if (numBdayNum) numBdayNum.textContent = res.numerology.birthdayNumber;
+        }
+      } catch (numErr) {
+        console.warn('Numerology rendering warning:', numErr);
       }
 
       // Populate Cosmic Planetary Ages Grid
-      if (hubPlanetsGrid && res.planetary) {
-        const planetsList = Array.isArray(res.planetary)
-          ? res.planetary
-          : (res.planetary.planets || []);
-        hubPlanetsGrid.innerHTML = planetsList.map(p => `
-          <div class="stat-tile text-center">
-            <div class="text-2xl mb-1">${p.symbol}</div>
-            <div class="font-bold text-xs text-slate-700 dark:text-zinc-300">${p.planet || p.name}</div>
-            <div class="text-base font-extrabold text-[#111827] dark:text-[#F9FAFB] font-mono mt-0.5">${p.planetaryAge ?? p.age}</div>
-            <div class="text-[10px] text-slate-500 dark:text-zinc-400">yrs (${p.orbitalPeriodEarthDays ?? p.orbitalDays}d orbit)</div>
-          </div>
-        `).join('');
+      try {
+        if (hubPlanetsGrid && res.planetary) {
+          const planetsList = Array.isArray(res.planetary)
+            ? res.planetary
+            : (Array.isArray(res.planetary.planets)
+              ? res.planetary.planets
+              : (typeof res.planetary.map === 'function' ? Array.from(res.planetary) : []));
+          hubPlanetsGrid.innerHTML = planetsList.map(p => `
+            <div class="stat-tile text-center">
+              <div class="text-2xl mb-1">${p.symbol || '🪐'}</div>
+              <div class="font-bold text-xs text-slate-700 dark:text-zinc-300">${p.planet || p.name || 'Planet'}</div>
+              <div class="text-base font-extrabold text-[#111827] dark:text-[#F9FAFB] font-mono mt-0.5">${p.planetaryAge ?? p.age ?? '—'}</div>
+              <div class="text-[10px] text-slate-500 dark:text-zinc-400">yrs (${p.orbitalPeriodEarthDays ?? p.orbitalDays ?? 0}d orbit)</div>
+            </div>
+          `).join('');
+        }
+      } catch (planetaryErr) {
+        console.warn('Planetary grid rendering warning:', planetaryErr);
       }
 
       // Populate Generation Cohort
-      if (res.generation) {
-        if (genName) genName.textContent = res.generation.name;
-        if (genRange) genRange.textContent = `${res.generation.start}–${res.generation.end}`;
-        if (genTraits) genTraits.textContent = res.generation.traits;
-        if (genIcon) genIcon.textContent = res.generation.icon;
+      try {
+        if (res.generation) {
+          if (genName) genName.textContent = res.generation.name;
+          if (genRange) genRange.textContent = `${res.generation.start}–${res.generation.end}`;
+          if (genTraits) genTraits.textContent = res.generation.traits;
+          if (genIcon) genIcon.textContent = res.generation.icon;
+        }
+      } catch (genErr) {
+        console.warn('Generation rendering warning:', genErr);
       }
 
       // Populate Calendar Day Trivia
-      if (res.trivia) {
-        if (triviaPeople) triviaPeople.textContent = (res.trivia.famousBirthdays && res.trivia.famousBirthdays.length) ? `Born this day: ${res.trivia.famousBirthdays.join(', ')}` : 'Historical celebrations on this day';
-        if (triviaEvents) triviaEvents.textContent = (res.trivia.historicalEvents && res.trivia.historicalEvents.length) ? `History: ${res.trivia.historicalEvents[0]}` : 'Notable historical anniversaries';
+      try {
+        if (res.trivia) {
+          if (triviaPeople) triviaPeople.textContent = (res.trivia.famousBirthdays && res.trivia.famousBirthdays.length) ? `Born this day: ${res.trivia.famousBirthdays.join(', ')}` : 'Historical celebrations on this day';
+          if (triviaEvents) triviaEvents.textContent = (res.trivia.historicalEvents && res.trivia.historicalEvents.length) ? `History: ${res.trivia.historicalEvents[0]}` : 'Notable historical anniversaries';
+        }
+      } catch (triviaErr) {
+        console.warn('Trivia rendering warning:', triviaErr);
       }
 
       // Populate 10,000-Day Milestone Banner
-      if (text10kDate && res.milestoneDays) {
-        text10kDate.textContent = res.milestoneDays.tenThousandDate;
-        if (badge10k) {
-          if (res.milestoneDays.is10kPassed) {
-            badge10k.textContent = 'Achieved';
-            badge10k.className = 'text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900 text-emerald-700 dark:text-emerald-300';
-          } else {
-            badge10k.textContent = 'Upcoming';
-            badge10k.className = 'text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300';
+      try {
+        if (text10kDate && res.milestoneDays) {
+          text10kDate.textContent = res.milestoneDays.tenThousandDate;
+          if (badge10k) {
+            if (res.milestoneDays.is10kPassed) {
+              badge10k.textContent = 'Achieved';
+              badge10k.className = 'text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900 text-emerald-700 dark:text-emerald-300';
+            } else {
+              badge10k.textContent = 'Upcoming';
+              badge10k.className = 'text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300';
+            }
+          }
+          if (text10kCountdown) {
+            if (res.milestoneDays.is10kPassed) {
+              text10kCountdown.textContent = `Turned 10,000 days old ${Math.abs(res.milestoneDays.daysTo10k).toLocaleString()} days ago`;
+            } else {
+              text10kCountdown.textContent = `In ${res.milestoneDays.daysTo10k.toLocaleString()} days (${res.milestoneDays.tenThousandDate})`;
+            }
           }
         }
-        if (text10kCountdown) {
-          if (res.milestoneDays.is10kPassed) {
-            text10kCountdown.textContent = `Turned 10,000 days old ${Math.abs(res.milestoneDays.daysTo10k).toLocaleString()} days ago`;
-          } else {
-            text10kCountdown.textContent = `In ${res.milestoneDays.daysTo10k.toLocaleString()} days (${res.milestoneDays.tenThousandDate})`;
-          }
-        }
+      } catch (milestone10kErr) {
+        console.warn('10k milestone rendering warning:', milestone10kErr);
       }
 
       // Populate Metrics Grid with localized numbers

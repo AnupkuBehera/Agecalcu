@@ -236,6 +236,29 @@ test('calcPlanetaryAges calculates accurate orbital ages across solar planets', 
   const mars = res.planets.find(p => p.name === 'Mars');
   assert.ok(mercury.age > 100); // 26 Earth years ≈ 107 Mercury years
   assert.ok(mars.age < 15);    // 26 Earth years ≈ 13.8 Mars years
+
+  // Dual-compatibility: caller can map/filter/iterate directly on res
+  assert.strictEqual(typeof res.map, 'function');
+  const mapped = res.map(p => p.name);
+  assert.strictEqual(mapped.length, 8);
+  assert.ok(mapped.includes('Mercury'));
+  assert.ok(mapped.includes('Neptune'));
+  const filtered = res.filter(p => p.age < 20);
+  assert.ok(filtered.length >= 1);
+  let iteratedCount = 0;
+  for (const p of res) {
+    if (p.name) iteratedCount++;
+  }
+  assert.strictEqual(iteratedCount, 8);
+});
+
+// Baby Age & Mental Leaps Tests
+test('calcBabyAge computes weeks, extra days, and Wonder Weeks leaps', () => {
+  const baby = Calc.calcBabyAge('2026-05-01', '2026-11-01');
+  assert.strictEqual(baby.months, 6);
+  assert.strictEqual(baby.totalWeeks, 26);
+  assert.ok(baby.currentLeap);
+  assert.strictEqual(baby.leaps.length, 10);
 });
 
 // Numerology Tests

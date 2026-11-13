@@ -257,7 +257,7 @@ pages.forEach(p => {
   if (!content.includes('href="css/style.css"')) {
     throw new Error(`Missing link to css/style.css in ${p.file}`);
   }
-  if (!p.skipCalcScript && !content.includes('src="js/calculator.js"')) {
+  if (!p.skipCalcScript && !/src="js\/calculator\.js(?:\?[^"]*)?"/.test(content)) {
     throw new Error(`Missing link to js/calculator.js in ${p.file}`);
   }
 
@@ -321,6 +321,21 @@ pages.forEach(p => {
   const expectedHeight = p.file === 'embed-widget.html' ? 'height="20"' : 'height="32"';
   if (!content.includes(expectedWidth) || !content.includes(expectedHeight)) {
     throw new Error(`Missing explicit width/height on logo in ${p.file}`);
+  }
+
+  // Validate internal hyperlinks and assets
+  const srcRegex = /(?:src|href)=["']([^"':#?][^"']*)["']/gi;
+  let assetMatch;
+  while ((assetMatch = srcRegex.exec(content)) !== null) {
+    const rawTarget = assetMatch[1].split('?')[0].split('#')[0];
+    if (rawTarget.startsWith('http://') || rawTarget.startsWith('https://') || rawTarget.startsWith('mailto:') || rawTarget.startsWith('tel:') || rawTarget.startsWith('javascript:') || rawTarget.includes('${')) {
+      continue;
+    }
+    const cleanTarget = rawTarget.startsWith('/') ? rawTarget.slice(1) : rawTarget;
+    if (!cleanTarget) continue;
+    if (!fs.existsSync(cleanTarget)) {
+      throw new Error(`Broken internal link in ${p.file}: "${rawTarget}"`);
+    }
   }
 
   console.log(`✓ ${p.file}: Title (${titleText.length}c), Meta Desc (${descText.length}c), ${schemaCount} JSON-LD schemas (incl. BreadcrumbList), CLS 32x32 logo, and ${p.requiredIds.length} DOM elements verified`);

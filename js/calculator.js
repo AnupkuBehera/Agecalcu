@@ -759,6 +759,16 @@
       totalDays,
       earthYears: Math.round(earthYears * 100) / 100,
       planets: results,
+      // Array-like method delegations for universal compatibility
+      map: (fn) => results.map(fn),
+      forEach: (fn) => results.forEach(fn),
+      filter: (fn) => results.filter(fn),
+      find: (fn) => results.find(fn),
+      reduce: (...args) => results.reduce(...args),
+      some: (fn) => results.some(fn),
+      every: (fn) => results.every(fn),
+      get length() { return results.length; },
+      [Symbol.iterator]: () => results[Symbol.iterator](),
     };
   }
 
