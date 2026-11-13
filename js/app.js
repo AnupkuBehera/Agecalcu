@@ -677,12 +677,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Populate Cosmic Planetary Ages Grid
       if (hubPlanetsGrid && res.planetary) {
-        hubPlanetsGrid.innerHTML = res.planetary.map(p => `
+        const planetsList = Array.isArray(res.planetary)
+          ? res.planetary
+          : (res.planetary.planets || []);
+        hubPlanetsGrid.innerHTML = planetsList.map(p => `
           <div class="stat-tile text-center">
             <div class="text-2xl mb-1">${p.symbol}</div>
-            <div class="font-bold text-xs text-slate-700 dark:text-zinc-300">${p.planet}</div>
-            <div class="text-base font-extrabold text-[#111827] dark:text-[#F9FAFB] font-mono mt-0.5">${p.planetaryAge}</div>
-            <div class="text-[10px] text-slate-500 dark:text-zinc-400">yrs (${p.orbitalPeriodEarthDays}d orbit)</div>
+            <div class="font-bold text-xs text-slate-700 dark:text-zinc-300">${p.planet || p.name}</div>
+            <div class="text-base font-extrabold text-[#111827] dark:text-[#F9FAFB] font-mono mt-0.5">${p.planetaryAge ?? p.age}</div>
+            <div class="text-[10px] text-slate-500 dark:text-zinc-400">yrs (${p.orbitalPeriodEarthDays ?? p.orbitalDays}d orbit)</div>
           </div>
         `).join('');
       }
@@ -1334,6 +1337,27 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
+
+  // --- Mobile Navigation Drawer Toggle ---
+  const btnMobileMenu = document.getElementById('btn-mobile-menu');
+  const mobileNavDrawer = document.getElementById('mobile-nav-drawer');
+  const iconMenuOpen = document.getElementById('icon-menu-open');
+  const iconMenuClose = document.getElementById('icon-menu-close');
+
+  if (btnMobileMenu && mobileNavDrawer) {
+    btnMobileMenu.addEventListener('click', () => {
+      const isClosed = mobileNavDrawer.classList.contains('hidden');
+      if (isClosed) {
+        mobileNavDrawer.classList.remove('hidden');
+        if (iconMenuOpen) iconMenuOpen.classList.add('hidden');
+        if (iconMenuClose) iconMenuClose.classList.remove('hidden');
+      } else {
+        mobileNavDrawer.classList.add('hidden');
+        if (iconMenuOpen) iconMenuOpen.classList.remove('hidden');
+        if (iconMenuClose) iconMenuClose.classList.add('hidden');
+      }
+    });
+  }
 
   // --- PWA Service Worker Registration ---
   if ('serviceWorker' in navigator) {

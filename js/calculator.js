@@ -745,7 +745,12 @@
       const nextBdayDays = Math.round(p.orbitalDays - (totalDays % p.orbitalDays));
       return {
         ...p,
+        planet: p.name,
+        name: p.name,
+        planetaryAge: planetaryAge,
         age: planetaryAge,
+        orbitalPeriodEarthDays: p.orbitalDays,
+        orbitalDays: p.orbitalDays,
         nextBirthdayInEarthDays: nextBdayDays,
       };
     });

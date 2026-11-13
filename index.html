@@ -223,46 +223,64 @@
 
   <!-- Sticky Minimal Navbar (Ultra-Premium Instrument Style) -->
   <header class="w-full sticky top-0 z-40 backdrop-blur-md bg-white/80 dark:bg-[#08080A]/80 border-b border-[#E5E7EB] dark:border-[rgba(255,255,255,0.08)] transition-colors duration-150">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
       
       <!-- Brand Wordmark -->
-      <a href="#" class="flex items-center space-x-2.5 group">
+      <a href="index.html" class="shrink-0 flex items-center space-x-2.5 group">
         <img src="assets/logo-mark.svg" alt="Dobcal Chronometer Logo" width="32" height="32" class="w-8 h-8 rounded-lg shadow-sm group-hover:scale-105 transition-transform duration-150">
         <div class="flex flex-col">
-          <span class="text-base font-black tracking-tight text-[#0A0A0C] dark:text-[#F4F4F6]">
+          <span class="text-base font-black tracking-tight text-[#0A0A0C] dark:text-[#F4F4F6] whitespace-nowrap">
             Dobcal
           </span>
-          <span class="text-[9px] uppercase font-mono font-bold tracking-[0.16em] text-[#2563EB] dark:text-[#3B82F6]">
+          <span class="text-[9px] uppercase font-mono font-bold tracking-[0.16em] text-[#2563EB] dark:text-[#3B82F6] whitespace-nowrap">
             Chronometer
           </span>
         </div>
       </a>
 
-      <!-- Minimal Nav Links -->
-      <nav class="hidden md:flex items-center space-x-6 text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-zinc-400">
-        <a href="#section-age" onclick="document.getElementById('tab-btn-age').click();" class="hover:text-black dark:hover:text-white transition">Age Calculator</a>
-        <a href="#section-diff" onclick="document.getElementById('tab-btn-diff').click();" class="hover:text-black dark:hover:text-white transition">Date Difference</a>
-        <a href="calculate-age-in-excel.html" class="hover:text-black dark:hover:text-white transition">Excel Guide</a>
-        <a href="age-calculator-for-government-exams.html" class="hover:text-black dark:hover:text-white transition">Govt Exams</a>
-        <a href="how-old-will-i-be-in-2040.html" class="hover:text-black dark:hover:text-white transition">Future Age</a>
-        <a href="age-difference-calculator.html" class="hover:text-black dark:hover:text-white transition">Age Gap</a>
+      <!-- Desktop Navigation Links (Clean, No-Wrap, with Dropdown) -->
+      <nav class="hidden lg:flex items-center space-x-1 xl:space-x-2 text-xs font-semibold tracking-wide text-slate-600 dark:text-zinc-400">
+        <a href="#section-age" onclick="document.getElementById('tab-btn-age').click();" class="whitespace-nowrap px-2.5 py-1.5 rounded-md hover:text-black dark:hover:text-white hover:bg-slate-100 dark:hover:bg-zinc-800/60 transition">Age Calculator</a>
+        <a href="#section-diff" onclick="document.getElementById('tab-btn-diff').click();" class="whitespace-nowrap px-2.5 py-1.5 rounded-md hover:text-black dark:hover:text-white hover:bg-slate-100 dark:hover:bg-zinc-800/60 transition">Date Difference</a>
+        <a href="calculate-age-in-excel.html" class="whitespace-nowrap px-2.5 py-1.5 rounded-md hover:text-black dark:hover:text-white hover:bg-slate-100 dark:hover:bg-zinc-800/60 transition">Excel Guide</a>
+        <a href="age-calculator-for-government-exams.html" class="whitespace-nowrap px-2.5 py-1.5 rounded-md hover:text-black dark:hover:text-white hover:bg-slate-100 dark:hover:bg-zinc-800/60 transition">Govt Exams</a>
+        
+        <!-- More Tools Dropdown -->
+        <div class="relative group inline-block">
+          <button type="button" aria-haspopup="true" aria-expanded="false" class="whitespace-nowrap flex items-center space-x-1 px-2.5 py-1.5 rounded-md hover:text-black dark:hover:text-white hover:bg-slate-100 dark:hover:bg-zinc-800/60 transition">
+            <span>More Tools</span>
+            <svg class="w-3 h-3 text-slate-400 group-hover:text-slate-600 dark:group-hover:text-zinc-200 transition-transform duration-150 group-hover:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-150 absolute left-0 mt-1 w-56 rounded-xl bg-white dark:bg-[#121216] border border-slate-200 dark:border-zinc-800 shadow-xl py-2 z-50">
+            <a href="how-old-will-i-be-in-2040.html" class="block px-3.5 py-2 text-xs text-slate-700 dark:text-zinc-300 hover:bg-slate-50 dark:hover:bg-zinc-800/60 transition">Future Age in 2040</a>
+            <a href="age-difference-calculator.html" class="block px-3.5 py-2 text-xs text-slate-700 dark:text-zinc-300 hover:bg-slate-50 dark:hover:bg-zinc-800/60 transition">Age Gap Calculator</a>
+            <a href="school-admission-age-calculator.html" class="block px-3.5 py-2 text-xs text-slate-700 dark:text-zinc-300 hover:bg-slate-50 dark:hover:bg-zinc-800/60 transition">School Admission Age</a>
+            <a href="retirement-and-pension-calculator.html" class="block px-3.5 py-2 text-xs text-slate-700 dark:text-zinc-300 hover:bg-slate-50 dark:hover:bg-zinc-800/60 transition">Retirement & Pension</a>
+            <a href="pet-age-calculator.html" class="block px-3.5 py-2 text-xs text-slate-700 dark:text-zinc-300 hover:bg-slate-50 dark:hover:bg-zinc-800/60 transition">Pet Age Calculator</a>
+            <a href="planet-age-calculator.html" class="block px-3.5 py-2 text-xs text-slate-700 dark:text-zinc-300 hover:bg-slate-50 dark:hover:bg-zinc-800/60 transition">Planetary Age Calculator</a>
+            <div class="border-t border-slate-100 dark:border-zinc-800 my-1"></div>
+            <a href="developer-api.html" class="block px-3.5 py-2 text-xs text-blue-600 dark:text-blue-400 font-semibold hover:bg-slate-50 dark:hover:bg-zinc-800/60 transition">Developer SDK & API →</a>
+          </div>
+        </div>
       </nav>
 
       <!-- Right Controls: Language Switcher, Status Pill & Theme Toggle -->
-      <div class="flex items-center space-x-2.5">
+      <div class="shrink-0 flex items-center space-x-2 sm:space-x-2.5">
         <!-- Global Language Selector -->
         <div class="relative inline-block text-left">
-          <select id="global-lang-select" aria-label="Select Language" class="h-8 pl-2.5 pr-6 py-0.5 text-xs font-mono font-semibold rounded-lg bg-slate-50 dark:bg-[#111115] border border-slate-200 dark:border-[rgba(255,255,255,0.08)] text-slate-700 dark:text-zinc-300 focus:outline-none focus:ring-1 focus:ring-blue-500 cursor-pointer">
-            <option value="en">🌐 English (EN)</option>
-            <option value="es">🇪🇸 Español (ES)</option>
-            <option value="pt">🇧🇷 Português (PT)</option>
-            <option value="id">🇮🇩 Indonesia (ID)</option>
-            <option value="ar">🇸🇦 العربية (AR)</option>
-            <option value="fr">🇫🇷 Français (FR)</option>
-            <option value="de">🇩🇪 Deutsch (DE)</option>
-            <option value="hi">🇮🇳 हिन्दी (HI)</option>
-            <option value="bn">🇮🇳 বাংলা (BN)</option>
-            <option value="or">🇮🇳 ଓଡ଼ିଆ (OR)</option>
+          <select id="global-lang-select" aria-label="Select Language" class="h-8 max-w-[125px] pl-2 pr-6 py-0.5 text-xs font-mono font-medium rounded-lg bg-slate-50 dark:bg-[#111115] border border-slate-200 dark:border-[rgba(255,255,255,0.08)] text-slate-700 dark:text-zinc-300 focus:outline-none focus:ring-1 focus:ring-blue-500 cursor-pointer truncate">
+            <option value="en">🌐 English</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="pt">🇧🇷 Português</option>
+            <option value="id">🇮🇩 Indonesia</option>
+            <option value="ar">🇸🇦 العربية</option>
+            <option value="fr">🇫🇷 Français</option>
+            <option value="de">🇩🇪 Deutsch</option>
+            <option value="hi">🇮🇳 हिन्दी</option>
+            <option value="bn">🇮🇳 বাংলা</option>
+            <option value="or">🇮🇳 ଓଡ଼ିଆ</option>
           </select>
         </div>
 
@@ -275,7 +293,7 @@
           <span class="hidden md:inline font-mono text-[10px] text-zinc-400">⌘K</span>
         </button>
 
-        <div class="hidden sm:flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-[#16171D] border border-slate-200 dark:border-[rgba(255,255,255,0.08)] text-[10px] font-mono font-bold tracking-wider text-slate-700 dark:text-zinc-300">
+        <div class="hidden xl:flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-[#16171D] border border-slate-200 dark:border-[rgba(255,255,255,0.08)] text-[10px] font-mono font-bold tracking-wider text-slate-700 dark:text-zinc-300">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
           <span>OFFLINE ENGINE</span>
         </div>
@@ -289,8 +307,35 @@
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
         </button>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="btn-mobile-menu" type="button" aria-label="Toggle Mobile Navigation" class="lg:hidden w-9 h-9 rounded-lg flex items-center justify-center text-slate-600 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-[#16171D] border border-slate-200 dark:border-[rgba(255,255,255,0.08)] transition-colors">
+          <svg id="icon-menu-open" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg id="icon-menu-close" class="w-4 h-4 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
       </div>
 
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-nav-drawer" class="hidden lg:hidden border-t border-slate-200 dark:border-[rgba(255,255,255,0.08)] bg-white/95 dark:bg-[#08080A]/95 backdrop-blur-md px-4 py-4 space-y-2.5">
+      <div class="grid grid-cols-2 gap-2 text-xs font-semibold">
+        <a href="#section-age" onclick="document.getElementById('tab-btn-age').click(); document.getElementById('btn-mobile-menu').click();" class="p-2.5 rounded-lg bg-slate-50 dark:bg-zinc-900 text-slate-800 dark:text-zinc-200 hover:bg-blue-50 dark:hover:bg-blue-950/40">Age Calculator</a>
+        <a href="#section-diff" onclick="document.getElementById('tab-btn-diff').click(); document.getElementById('btn-mobile-menu').click();" class="p-2.5 rounded-lg bg-slate-50 dark:bg-zinc-900 text-slate-800 dark:text-zinc-200 hover:bg-blue-50 dark:hover:bg-blue-950/40">Date Difference</a>
+        <a href="calculate-age-in-excel.html" class="p-2.5 rounded-lg bg-slate-50 dark:bg-zinc-900 text-slate-800 dark:text-zinc-200 hover:bg-blue-50 dark:hover:bg-blue-950/40">Excel Guide</a>
+        <a href="age-calculator-for-government-exams.html" class="p-2.5 rounded-lg bg-slate-50 dark:bg-zinc-900 text-slate-800 dark:text-zinc-200 hover:bg-blue-50 dark:hover:bg-blue-950/40">Govt Exams</a>
+        <a href="how-old-will-i-be-in-2040.html" class="p-2.5 rounded-lg bg-slate-50 dark:bg-zinc-900 text-slate-800 dark:text-zinc-200 hover:bg-blue-50 dark:hover:bg-blue-950/40">Future Age in 2040</a>
+        <a href="age-difference-calculator.html" class="p-2.5 rounded-lg bg-slate-50 dark:bg-zinc-900 text-slate-800 dark:text-zinc-200 hover:bg-blue-50 dark:hover:bg-blue-950/40">Age Gap</a>
+        <a href="school-admission-age-calculator.html" class="p-2.5 rounded-lg bg-slate-50 dark:bg-zinc-900 text-slate-800 dark:text-zinc-200 hover:bg-blue-50 dark:hover:bg-blue-950/40">School Admission</a>
+        <a href="retirement-and-pension-calculator.html" class="p-2.5 rounded-lg bg-slate-50 dark:bg-zinc-900 text-slate-800 dark:text-zinc-200 hover:bg-blue-50 dark:hover:bg-blue-950/40">Retirement</a>
+      </div>
     </div>
   </header>
 
@@ -333,11 +378,11 @@
         <div class="mb-6 pb-4 border-b border-[#E5E7EB] dark:border-[rgba(255,255,255,0.08)] space-y-3">
           
           <!-- Instant Age Milestones (Tachymeter Scale) -->
-          <div class="flex flex-wrap items-center justify-between gap-2.5">
-            <span class="font-mono text-[11px] font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-[0.14em]">
+          <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+            <span class="w-28 shrink-0 font-mono text-[11px] font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-[0.14em]">
               Milestone:
             </span>
-            <div class="flex flex-wrap gap-1.5 font-mono text-xs">
+            <div class="flex flex-wrap items-center gap-1.5 font-mono text-xs">
               <button type="button" class="quick-age-btn preset-chip" data-age="18">18Y</button>
               <button type="button" class="quick-age-btn preset-chip" data-age="21">21Y</button>
               <button type="button" class="quick-age-btn preset-chip active" data-age="25">25Y</button>
@@ -348,11 +393,11 @@
           </div>
 
           <!-- Cutoff Dates -->
-          <div class="flex flex-wrap items-center justify-between gap-2.5 pt-1">
-            <span class="font-mono text-[11px] font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-[0.14em]">
+          <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 pt-1">
+            <span class="w-28 shrink-0 font-mono text-[11px] font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-[0.14em]">
               Target Date:
             </span>
-            <div class="flex flex-wrap gap-1.5 font-mono text-xs">
+            <div class="flex flex-wrap items-center gap-1.5 font-mono text-xs">
               <button type="button" class="preset-chip active" data-preset="today">Today</button>
               <button type="button" class="preset-chip" data-preset="1jan">1 Jan</button>
               <button type="button" class="preset-chip" data-preset="31mar">31 Mar</button>
