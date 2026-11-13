@@ -15,30 +15,34 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const globalLangSelect = document.getElementById('global-lang-select');
-  if (globalLangSelect) {
-    globalLangSelect.value = window.DobcalI18n ? window.DobcalI18n.getLanguage() : 'en';
-    globalLangSelect.addEventListener('change', (e) => {
-      const lang = e.target.value;
-      if (window.DobcalI18n && lang) {
-        window.DobcalI18n.setLanguage(lang);
-        if (latestAgeResult) {
-          calculateAge();
-        }
+  const mobileLangSelect = document.getElementById('mobile-lang-select');
+  const currentLang = window.DobcalI18n ? window.DobcalI18n.getLanguage() : 'en';
+  if (globalLangSelect) globalLangSelect.value = currentLang;
+  if (mobileLangSelect) mobileLangSelect.value = currentLang;
+
+  function handleLanguageSwitch(lang) {
+    if (window.DobcalI18n && lang) {
+      window.DobcalI18n.setLanguage(lang);
+      if (globalLangSelect) globalLangSelect.value = lang;
+      if (mobileLangSelect) mobileLangSelect.value = lang;
+      if (latestAgeResult) {
+        calculateAge();
       }
-    });
+    }
+  }
+
+  if (globalLangSelect) {
+    globalLangSelect.addEventListener('change', (e) => handleLanguageSwitch(e.target.value));
+  }
+  if (mobileLangSelect) {
+    mobileLangSelect.addEventListener('change', (e) => handleLanguageSwitch(e.target.value));
   }
 
   const langButtons = document.querySelectorAll('.lang-btn');
   langButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
       const lang = e.currentTarget.getAttribute('data-lang');
-      if (window.DobcalI18n && lang) {
-        window.DobcalI18n.setLanguage(lang);
-        if (globalLangSelect) globalLangSelect.value = lang;
-        if (latestAgeResult) {
-          calculateAge();
-        }
-      }
+      handleLanguageSwitch(lang);
     });
   });
 
@@ -1202,6 +1206,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Command Palette Controller (Cmd+K / Ctrl+K) ---
   const btnOpenPalette = document.getElementById('btn-open-palette');
+  const btnOpenPaletteMobile = document.getElementById('btn-open-palette-mobile');
   const modalPalette = document.getElementById('command-palette-modal');
   const btnClosePalette = document.getElementById('btn-close-palette');
   const paletteInput = document.getElementById('palette-search-input');
@@ -1285,6 +1290,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (btnOpenPalette) btnOpenPalette.addEventListener('click', openPalette);
+  if (btnOpenPaletteMobile) btnOpenPaletteMobile.addEventListener('click', openPalette);
   if (btnClosePalette) btnClosePalette.addEventListener('click', closePalette);
   if (modalPalette) {
     modalPalette.addEventListener('click', (e) => {

@@ -222,8 +222,8 @@
   <canvas id="confetti-canvas" class="hidden" aria-hidden="true"></canvas>
 
   <!-- Sticky Minimal Navbar (Ultra-Premium Instrument Style) -->
-  <header class="w-full sticky top-0 z-40 backdrop-blur-md bg-white/80 dark:bg-[#08080A]/80 border-b border-[#E5E7EB] dark:border-[rgba(255,255,255,0.08)] transition-colors duration-150">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
+  <header class="w-full sticky top-0 z-50 backdrop-blur-md bg-white/90 dark:bg-[#08080A]/90 border-b border-[#E5E7EB] dark:border-[rgba(255,255,255,0.08)] transition-colors duration-150">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2 sm:gap-4">
       
       <!-- Brand Wordmark -->
       <a href="index.html" class="shrink-0 flex items-center space-x-2.5 group">
@@ -238,8 +238,8 @@
         </div>
       </a>
 
-      <!-- Desktop Navigation Links (Clean, No-Wrap, with Dropdown) -->
-      <nav class="hidden lg:flex items-center space-x-1 xl:space-x-2 text-xs font-semibold tracking-wide text-slate-600 dark:text-zinc-400">
+      <!-- Desktop Navigation Links (≥ 1280px: Zero-Overlap, No-Wrap with Dropdown) -->
+      <nav class="hidden xl:flex items-center space-x-1 2xl:space-x-2 text-xs font-semibold tracking-wide text-slate-600 dark:text-zinc-400">
         <a href="#section-age" onclick="document.getElementById('tab-btn-age').click();" class="whitespace-nowrap px-2.5 py-1.5 rounded-md hover:text-black dark:hover:text-white hover:bg-slate-100 dark:hover:bg-zinc-800/60 transition">Age Calculator</a>
         <a href="#section-diff" onclick="document.getElementById('tab-btn-diff').click();" class="whitespace-nowrap px-2.5 py-1.5 rounded-md hover:text-black dark:hover:text-white hover:bg-slate-100 dark:hover:bg-zinc-800/60 transition">Date Difference</a>
         <a href="calculate-age-in-excel.html" class="whitespace-nowrap px-2.5 py-1.5 rounded-md hover:text-black dark:hover:text-white hover:bg-slate-100 dark:hover:bg-zinc-800/60 transition">Excel Guide</a>
@@ -266,10 +266,10 @@
         </div>
       </nav>
 
-      <!-- Right Controls: Language Switcher, Status Pill & Theme Toggle -->
-      <div class="shrink-0 flex items-center space-x-2 sm:space-x-2.5">
-        <!-- Global Language Selector -->
-        <div class="relative inline-block text-left">
+      <!-- Right Controls: Language Switcher, Search Palette & Theme Toggle -->
+      <div class="shrink-0 flex items-center space-x-1.5 sm:space-x-2">
+        <!-- Global Language Selector (Visible on tablet and desktop, hidden on narrow mobile) -->
+        <div class="relative hidden sm:inline-block text-left">
           <select id="global-lang-select" aria-label="Select Language" class="h-8 max-w-[125px] pl-2 pr-6 py-0.5 text-xs font-mono font-medium rounded-lg bg-slate-50 dark:bg-[#111115] border border-slate-200 dark:border-[rgba(255,255,255,0.08)] text-slate-700 dark:text-zinc-300 focus:outline-none focus:ring-1 focus:ring-blue-500 cursor-pointer truncate">
             <option value="en">🌐 English</option>
             <option value="es">🇪🇸 Español</option>
@@ -284,8 +284,8 @@
           </select>
         </div>
 
-        <!-- Search / Command Palette Button -->
-        <button id="btn-open-palette" type="button" aria-label="Open Command Palette" class="h-8 px-2.5 rounded-lg flex items-center space-x-1.5 text-xs text-slate-600 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-[#16171D] border border-slate-200 dark:border-[rgba(255,255,255,0.08)] transition-colors">
+        <!-- Search / Command Palette Button (Visible on sm+) -->
+        <button id="btn-open-palette" type="button" aria-label="Open Command Palette" class="hidden sm:flex h-8 px-2.5 rounded-lg items-center space-x-1.5 text-xs text-slate-600 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-[#16171D] border border-slate-200 dark:border-[rgba(255,255,255,0.08)] transition-colors">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -293,12 +293,8 @@
           <span class="hidden md:inline font-mono text-[10px] text-zinc-400">⌘K</span>
         </button>
 
-        <div class="hidden xl:flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-slate-100 dark:bg-[#16171D] border border-slate-200 dark:border-[rgba(255,255,255,0.08)] text-[10px] font-mono font-bold tracking-wider text-slate-700 dark:text-zinc-300">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span>OFFLINE ENGINE</span>
-        </div>
-
-        <button id="theme-toggle" type="button" aria-label="Toggle dark mode" class="w-9 h-9 rounded-lg flex items-center justify-center text-slate-600 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-[#16171D] border border-slate-200 dark:border-[rgba(255,255,255,0.08)] transition-colors">
+        <!-- Theme Toggle Button (Always visible) -->
+        <button id="theme-toggle" type="button" aria-label="Toggle dark mode" class="w-9 h-9 shrink-0 rounded-lg flex items-center justify-center text-slate-600 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-[#16171D] border border-slate-200 dark:border-[rgba(255,255,255,0.08)] transition-colors">
           <svg id="theme-sun" class="w-4 h-4 hidden text-amber-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="5"></circle>
             <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
@@ -308,8 +304,8 @@
           </svg>
         </button>
 
-        <!-- Mobile Menu Toggle Button -->
-        <button id="btn-mobile-menu" type="button" aria-label="Toggle Mobile Navigation" class="lg:hidden w-9 h-9 rounded-lg flex items-center justify-center text-slate-600 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-[#16171D] border border-slate-200 dark:border-[rgba(255,255,255,0.08)] transition-colors">
+        <!-- Mobile & Tablet Menu Toggle Button (Visible on < 1280px) -->
+        <button id="btn-mobile-menu" type="button" aria-label="Toggle Navigation Menu" class="xl:hidden w-9 h-9 shrink-0 rounded-lg flex items-center justify-center text-slate-600 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-[#16171D] border border-slate-200 dark:border-[rgba(255,255,255,0.08)] transition-colors">
           <svg id="icon-menu-open" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <line x1="3" y1="12" x2="21" y2="12"></line>
             <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -324,8 +320,33 @@
 
     </div>
 
-    <!-- Mobile Navigation Drawer -->
-    <div id="mobile-nav-drawer" class="hidden lg:hidden border-t border-slate-200 dark:border-[rgba(255,255,255,0.08)] bg-white/95 dark:bg-[#08080A]/95 backdrop-blur-md px-4 py-4 space-y-2.5">
+    <!-- Mobile & Tablet Navigation Drawer (Slide-Down) -->
+    <div id="mobile-nav-drawer" class="hidden xl:hidden border-t border-slate-200 dark:border-[rgba(255,255,255,0.08)] bg-white/95 dark:bg-[#08080A]/95 backdrop-blur-md px-4 py-4 space-y-3">
+      <!-- Mobile Quick Search & Language Controls (Shown on mobile < sm) -->
+      <div class="flex sm:hidden items-center gap-2 pb-2 border-b border-slate-100 dark:border-zinc-800">
+        <button id="btn-open-palette-mobile" type="button" class="flex-1 h-9 px-3 rounded-lg flex items-center space-x-2 text-xs text-slate-600 dark:text-zinc-300 bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-[rgba(255,255,255,0.08)]">
+          <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span>Search calculators...</span>
+          <span class="ml-auto font-mono text-[10px] text-zinc-400">⌘K</span>
+        </button>
+        <select id="mobile-lang-select" aria-label="Select Mobile Language" class="h-9 max-w-[130px] pl-2 pr-6 py-0.5 text-xs font-mono font-medium rounded-lg bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-[rgba(255,255,255,0.08)] text-slate-700 dark:text-zinc-300 focus:outline-none cursor-pointer truncate">
+          <option value="en">🌐 English</option>
+          <option value="es">🇪🇸 Español</option>
+          <option value="pt">🇧🇷 Português</option>
+          <option value="id">🇮🇩 Indonesia</option>
+          <option value="ar">🇸🇦 العربية</option>
+          <option value="fr">🇫🇷 Français</option>
+          <option value="de">🇩🇪 Deutsch</option>
+          <option value="hi">🇮🇳 हिन्दी</option>
+          <option value="bn">🇮🇳 বাংলা</option>
+          <option value="or">🇮🇳 ଓଡ଼ିଆ</option>
+        </select>
+      </div>
+
+      <!-- Tools Grid -->
       <div class="grid grid-cols-2 gap-2 text-xs font-semibold">
         <a href="#section-age" onclick="document.getElementById('tab-btn-age').click(); document.getElementById('btn-mobile-menu').click();" class="p-2.5 rounded-lg bg-slate-50 dark:bg-zinc-900 text-slate-800 dark:text-zinc-200 hover:bg-blue-50 dark:hover:bg-blue-950/40">Age Calculator</a>
         <a href="#section-diff" onclick="document.getElementById('tab-btn-diff').click(); document.getElementById('btn-mobile-menu').click();" class="p-2.5 rounded-lg bg-slate-50 dark:bg-zinc-900 text-slate-800 dark:text-zinc-200 hover:bg-blue-50 dark:hover:bg-blue-950/40">Date Difference</a>
@@ -335,6 +356,17 @@
         <a href="age-difference-calculator.html" class="p-2.5 rounded-lg bg-slate-50 dark:bg-zinc-900 text-slate-800 dark:text-zinc-200 hover:bg-blue-50 dark:hover:bg-blue-950/40">Age Gap</a>
         <a href="school-admission-age-calculator.html" class="p-2.5 rounded-lg bg-slate-50 dark:bg-zinc-900 text-slate-800 dark:text-zinc-200 hover:bg-blue-50 dark:hover:bg-blue-950/40">School Admission</a>
         <a href="retirement-and-pension-calculator.html" class="p-2.5 rounded-lg bg-slate-50 dark:bg-zinc-900 text-slate-800 dark:text-zinc-200 hover:bg-blue-50 dark:hover:bg-blue-950/40">Retirement</a>
+        <a href="pet-age-calculator.html" class="p-2.5 rounded-lg bg-slate-50 dark:bg-zinc-900 text-slate-800 dark:text-zinc-200 hover:bg-blue-50 dark:hover:bg-blue-950/40">Pet Age</a>
+        <a href="planet-age-calculator.html" class="p-2.5 rounded-lg bg-slate-50 dark:bg-zinc-900 text-slate-800 dark:text-zinc-200 hover:bg-blue-50 dark:hover:bg-blue-950/40">Planetary Age</a>
+      </div>
+
+      <!-- Engine Status & Offline Capability -->
+      <div class="pt-2 flex items-center justify-between text-[11px] font-mono text-zinc-500 dark:text-zinc-400 border-t border-slate-100 dark:border-zinc-800">
+        <span class="flex items-center space-x-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Client-Side Chrono Engine</span>
+        </span>
+        <a href="developer-api.html" class="text-blue-600 dark:text-blue-400 font-semibold hover:underline">API Docs →</a>
       </div>
     </div>
   </header>
